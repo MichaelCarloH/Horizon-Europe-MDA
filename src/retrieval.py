@@ -22,6 +22,11 @@ class ProjectRetriever:
         """Retrieve similar project descriptions."""
         results = self.collection.query(query_texts=[text], n_results=top_k)
         return results["documents"][0] if "documents" in results else []
+    
+    def close(self):
+        """Close the ChromaDB client."""
+        self.client.close()
+        print("ChromaDB client closed.")
 
 # Example Usage
 if __name__ == "__main__":

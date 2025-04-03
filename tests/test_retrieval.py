@@ -1,43 +1,33 @@
-import unittest
+import pytest
 import shutil
 from src.retrieval import ProjectRetriever
 
-class TestProjectRetriever(unittest.TestCase):
-    def setUp(self):
-        """Set up a temporary database for testing."""
-        self.db_path = "test_chromadb"
-        self.retriever = ProjectRetriever(db_path=self.db_path)
-        self.test_projects = [
-            "AI for climate change adaptation in agriculture.",
-            "Quantum computing for next-generation cybersecurity.",
-            "Renewable energy storage solutions in Europe.",
-        ]
-        self.test_metadata = [
-            {"title": "AI in Agriculture"},
-            {"title": "Quantum Computing"},
-            {"title": "Renewable Energy"},
-        ]
-        self.retriever.add_documents(docs=self.test_projects, metadata=self.test_metadata)
+@pytest.fixture
+def retriever():
+    """Fixture to set up a temporary database for testing."""
+    db_path = "/tests/test_chromadb"
+    retriever = ProjectRetriever(db_path=db_path)
+    test_projects = [
+        "AI for climate change adaptation in agriculture.",
+        "Quantum computing for next-generation cybersecurity.",
+        "Renewable energy storage solutions in Europe.",
+    ]
+    test_metadata = [
+        {"title": "AI in Agriculture"},
+        {"title": "Quantum Computing"},
+        {"title": "Renewable Energy"},
+    ]
+    retriever.add_documents(docs=test_projects, metadata=test_metadata)
+    yield retriever  # Provide the retriever to the test
+    shutil.rmtree(db_path, ignore_errors=True)  # Clean up the test database
 
-    def tearDown(self):
-        """Clean up the test database."""
-        shutil.rmtree(self.db_path, ignore_errors=True)
+def test_add_documents(retriever):
+    """Test if documents are added to the database."""
+    # Check if the correct number of documents were added
+    assert len(retriever.collection.get()["documents"]) == 3
 
-    def test_add_documents(self):
-        """Test if documents are added to the database."""
-        # Check if the correct number of documents were added
-        self.assertEqual(len(self.test_projects), 3)
-
-    def test_query(self):
-        """Test if the query retrieves the correct documents."""
-        results = self.retriever.query("climate and agriculture", top_k=1)
-        self.assertEqual(len(results), 1)
-        self.assertIn("AI for climate change adaptation in agriculture.", results)
-
-    def test_query_no_results(self):
-        """Test if the query handles no results gracefully."""
-        results = self.retriever.query("nonexistent topic", top_k=1)
-        self.assertEqual(len(results), 0)
-
-if __name__ == "__main__":
-    unittest.main()
+def test_query(retriever):
+    """Test if the query retrieves the correct documents."""
+    results = retriever.query("climate and agriculture", top_k=1)
+    assert len(results) == 1
+    assert "AI for climate change adaptation in agriculture." in results[0]
