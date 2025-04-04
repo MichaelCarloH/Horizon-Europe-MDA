@@ -12,7 +12,7 @@ import shutil
 load_dotenv()
 openai.api_key = os.environ['OPENAI_API_KEY']
 
-CHROMA_PATH = "chroma"
+CHROMA_PATH = "backend/chroma"
 DATA_PATH = "data/pdf"  # Path to the directory containing PDFs
 
 
