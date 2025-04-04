@@ -1,10 +1,11 @@
+'use client'
 import { useState } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 
 const ChatComponent = () => {
-  const [query, setQuery] = useState("");
-  const [response, setResponse] = useState("");
+  const [query, setQuery] = useState(""); // For user input
+  const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]); // To store the conversation history
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -15,6 +16,9 @@ const ChatComponent = () => {
   const handleSubmit = async () => {
     if (!query) return;
 
+    // Add user's message to the chat
+    setMessages((prevMessages) => [...prevMessages, { sender: "user", text: query }]);
+
     setLoading(true);
     setError(null);
     try {
@@ -22,21 +26,60 @@ const ChatComponent = () => {
         query_text: query,
         k: 3, // You can customize this if you want
       });
-      setResponse(res.data.response);  // Assuming the backend sends a response field
+      const botResponse = res.data.response;  // Assuming the backend sends a response field
+
+      // Add bot's response to the chat
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { sender: "bot", text: botResponse },
+      ]);
     } catch (err) {
       setError("Error processing query.");
     } finally {
       setLoading(false);
     }
+
+    setQuery(""); // Clear the input field after sending the query
   };
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center bg-gray-100 p-6">
-      <div className="max-w-2xl w-full bg-white rounded-lg shadow-md p-6 space-y-4 overflow-auto">
-        <h1 className="text-3xl font-semibold text-center text-gray-800 mb-4">Ask the AI Chatbot</h1>
+    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#f7fafc', padding: '1.5rem' }}>
+      {/* Fixed Header */}
+      <div style={{ position: 'sticky', top: 0, width: '100%', backgroundColor: 'white', padding: '1.5rem', borderRadius: '0.375rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', zIndex: 10 }}>
+        <h1 style={{ fontSize: '2rem', fontWeight: '600', textAlign: 'center', color: '#2d3748' }}>Ask the AI Chatbot</h1>
+      </div>
+
+      {/* Chat Messages and Input Area */}
+      <div style={{ maxWidth: '100%', width: '100%', backgroundColor: 'white', borderRadius: '0.375rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', padding: '1.5rem', overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
         
-        <div className="flex flex-col space-y-4">
-          {/* Input Field */}
+        {/* Chat Messages Section */}
+        <div style={{ flex: 1, overflowY: 'auto', marginBottom: '1rem' }}>
+          {messages.map((message, index) => (
+            <div key={index} style={{ display: 'flex', justifyContent: message.sender === "user" ? 'flex-end' : 'flex-start' }}>
+              <div
+                style={{
+                  padding: '1rem',
+                  maxWidth: '80%',
+                  borderRadius: '0.375rem',
+                  backgroundColor: message.sender === "user" ? '#bee3f8' : '#edf2f7',
+                  color: message.sender === "user" ? '#3182ce' : '#2d3748',
+                  boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                {message.sender === "user" ? (
+                  <p style={{ fontWeight: '500' }}>{message.text}</p>
+                ) : (
+                  <div style={{ fontSize: '1rem', color: '#2d3748' }}>
+                    <ReactMarkdown>{message.text}</ReactMarkdown>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Input Field and Button */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <input
             type="text"
             value={query}
@@ -45,41 +88,22 @@ const ChatComponent = () => {
             className="p-3 border border-blue-400 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           />
 
-          {/* Submit Button */}
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600 transition"
+            style={{
+              backgroundColor: '#3182ce',
+              color: 'white',
+              padding: '0.75rem',
+              borderRadius: '0.375rem',
+              cursor: 'pointer',
+              transition: 'background-color 0.3s',
+            }}
           >
             {loading ? "Processing..." : "Submit"}
           </button>
 
-          {/* Error Message */}
-          {error && <div className="text-red-500 text-center">{error}</div>}
-
-          <div className="mt-4 space-y-4">
-            {/* Query Display */}
-            <div className="query-container flex items-center space-x-2">
-              <span className="text-lg font-medium text-gray-700">Your Query:</span>
-              <p className="bg-blue-100 p-3 rounded-lg text-blue-600 shadow-md">{query}</p>
-            </div>
-
-            {/* Response Display */}
-            {response && (
-              <div className="mt-4 p-4 bg-gray-100 rounded-md shadow-md h-64 overflow-y-auto">
-                <h2 className="font-semibold text-xl mb-2">Response:</h2>
-                <ReactMarkdown
-                  children={response} // Passing the raw markdown content
-                  components={{
-                    h1: ({ children }) => <h1 className="text-3xl font-bold text-blue-600">{children}</h1>,
-                    p: ({ children }) => <p className="text-lg text-gray-700">{children}</p>,
-                    code: ({ children }) => <code className="bg-gray-200 p-1 rounded">{children}</code>,
-                    // You can add more custom renderers for markdown elements here
-                  }}
-                />
-              </div>
-            )}
-          </div>
+          {error && <div style={{ color: '#e53e3e', textAlign: 'center' }}>{error}</div>}
         </div>
       </div>
     </div>
