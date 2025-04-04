@@ -48,6 +48,11 @@
 - Build a **Flask/FastAPI** backend to handle queries
 - Expose endpoints for project search and summaries
 
+$headers = @{"Content-Type"="application/json"}
+$body = '{"query_text": "What is the project about?", "k": 3}'
+Invoke-WebRequest -Uri http://127.0.0.1:8000/query/ -Method POST -Headers $headers -Body $body
+
+
 ### 6. Data Visualization & Dashboard (`src/dashboard.py`)
 - Develop an interactive dashboard with **Dash/Plotly**
 - Provide insights on funding distribution, research themes, and collaborations

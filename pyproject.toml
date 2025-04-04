@@ -26,6 +26,7 @@ dependencies = [
     "seaborn>=0.13.2",
     "sentence-transformers>=4.0.1",
     "transformers>=4.50.3",
+    "uvicorn>=0.34.0",
 ]
 
 [dependency-groups]
