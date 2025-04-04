@@ -10,13 +10,13 @@
 │   │── __init__.py
 │   │── data_processing.py    # Preprocessing (cleaning, formatting)
 │   │── topic_modeling.py     # LDA/BERT embeddings for themes
-│   │── retrieval.py          # FAISS/ChromaDB for document search
-│   │── rag_model.py          # Integration with OpenAI/LLM
-│   │── api.py                # Flask/FastAPI for querying the dataset
+│   │── create_database.py          # FAISS/ChromaDB for document search
+│   │── query_database.py          # Integration with OpenAI/LLM
 │   │── dashboard.py          # Dash/Plotly app for visualization
 │── /models              # Saved models (LDA, embeddings, etc.)
 │── /config              # Configuration files (API keys, settings)
 │── /deployment          # Azure deployment scripts (Docker, Terraform)
+│── api.py                # Flask/FastAPI for querying the dataset
 │── requirements.txt      # Dependencies
 │── .gitignore           # Ignore unnecessary files
 │── README.md            # Project documentation
@@ -48,6 +48,8 @@
 - Build a **Flask/FastAPI** backend to handle queries
 - Expose endpoints for project search and summaries
 
+- Command to intercat with local host in PS
+  
 $headers = @{"Content-Type"="application/json"}
 $body = '{"query_text": "What is the project about?", "k": 3}'
 Invoke-WebRequest -Uri http://127.0.0.1:8000/query/ -Method POST -Headers $headers -Body $body
