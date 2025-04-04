@@ -1,6 +1,6 @@
 // src/app/chatbot/page.tsx
 'use client'
-import ChatComponent from "@/app/components/chat_component";  // Importing the chatbot component
+import ChatComponent from "@/app/chatbot/chat_component";  // Importing the chatbot component
 
 export default function ChatbotPage() {
   return (

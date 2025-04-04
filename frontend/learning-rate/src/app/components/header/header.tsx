@@ -21,7 +21,7 @@ const Header = async () => {
             data-testid="logo-image"
           />
           <span className="ml-3 text-xl text-white" data-testid="company-name">
-            Learning Rate
+           EuroRAG 
           </span>
         </a>
         <nav
@@ -34,9 +34,6 @@ const Header = async () => {
           <Link className="mr-5 hover:text-gray-900" href="/chatbot" data-testid="nav-lessons">
             Chatbot 
           </Link>
-          <a className="mr-5 hover:text-gray-900" href="/playground" data-testid="nav-playground">
-            Playground
-          </a>
           <Link className="mr-5 hover:text-gray-900" href="/about" data-testid="nav-about">
             About Us
           </Link>

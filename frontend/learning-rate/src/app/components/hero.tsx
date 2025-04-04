@@ -38,7 +38,7 @@ const Hero = () => {
   const imageVisible = useIsVisible(imageRef);
 
   return (
-    <section className="body-font bg-sky-700">
+    <section className="body-font bg-sky-600">
       <div className="container mx-auto flex px-40 py-20 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <div
@@ -46,7 +46,7 @@ const Hero = () => {
             className={`transition-opacity ease-in duration-700 ${headerVisible ? "opacity-100" : "opacity-0"}`}
           >
             <h1 className="title-font sm:text-5xl text-3xl text-white mb-4 font-medium">
-              Your gateway to understanding neural networks
+              Quickly find the right document you need!
             </h1>
           </div>
           <div
@@ -54,11 +54,10 @@ const Hero = () => {
             className={`transition-opacity ease-in duration-700 delay-300 ${paragraphVisible ? "opacity-100" : "opacity-0"}`}
           >
             <p className="mb-8 leading-relaxed text-white">
-              Learning Rate is an educational website designed to teach
-              beginners how neural networks work. Whether you&apos;re new to the
-              concept or looking to deepen your understanding, we&apos;ve got you
-              covered. Dive into the world of artificial intelligence and
-              discover the magic behind neural networks.
+            Horizon Europe fully integrates the power of RAG (Retrieval-Augmented Generation) 
+            for efficient and seamless information retrieval. Our platform helps researchers 
+            and policymakers quickly find and analyze critical Horizon Europe documents using advanced AI technologies. 
+
             </p>
           </div>
           <div
@@ -77,7 +76,7 @@ const Hero = () => {
           className={`lg:max-w-lg lg:w-full md:w-1/2 w-5/6 shadow-xl bg-white rounded-3xl p-5 transition-opacity ease-in duration-2000 delay-600 ${imageVisible ? "opacity-100" : "opacity-0"}`}
         >
           <Image
-            src={"/NeurNet.png"}
+            src={"/Horizon-Europe.png"}
             alt="hero"
             width={720}
             height={600}

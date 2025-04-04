@@ -3,7 +3,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Hero from '../app/components/hero';
 import LessonsInfo from '@/app/components/lessons_info';
-import PGInfo from '@/app/components/playground_info';
+import PGInfo from '@/app/components/chatbot_info';
 
 
 // Mock next/image to avoid fetchPriority warning

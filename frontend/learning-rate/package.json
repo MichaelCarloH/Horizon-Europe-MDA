@@ -28,10 +28,12 @@
     "react": "^18",
     "react-dom": "^18",
     "react-flow-renderer": "^10.3.17",
+    "react-markdown": "^10.1.0",
     "react-router": "^6.23.0",
     "react-router-dom": "^6.23.1",
     "react-step-progress-bar": "^1.0.3",
     "reactflow": "^11.11.3",
+    "remark-gfm": "^4.0.1",
     "smallneuron": "^1.1.1",
     "ts-node": "^10.9.2",
     "zod": "^3.23.8"
