@@ -31,8 +31,8 @@ const Header = async () => {
           <Link className="mr-5 hover:text-gray-900" href="/" data-testid="nav-home">
             Home
           </Link>
-          <Link className="mr-5 hover:text-gray-900" href="/lessons" data-testid="nav-lessons">
-            Lessons
+          <Link className="mr-5 hover:text-gray-900" href="/chatbot" data-testid="nav-lessons">
+            Chatbot 
           </Link>
           <a className="mr-5 hover:text-gray-900" href="/playground" data-testid="nav-playground">
             Playground

@@ -1,5 +1,5 @@
-// pages/index.tsx (or a new component)
-
+// src/app/components/chat_component.tsx
+'use client'
 import { useState } from "react";
 import axios from "axios";
 
@@ -32,26 +32,34 @@ const ChatComponent = () => {
   };
 
   return (
-    <div>
-      <h1>LLM Query Chatbot</h1>
-      <input
-        type="text"
-        value={query}
-        onChange={handleQueryChange}
-        placeholder="Ask a question"
-      />
-      <button onClick={handleSubmit} disabled={loading}>
-        {loading ? "Processing..." : "Submit"}
-      </button>
+    <div className="max-w-md mx-auto p-6 border rounded-lg shadow-md bg-white">
+      <h1 className="text-2xl font-semibold text-center mb-4">Ask the AI Chatbot</h1>
+      
+      <div className="flex flex-col space-y-4">
+        <input
+          type="text"
+          value={query}
+          onChange={handleQueryChange}
+          placeholder="Ask a question"
+          className="p-2 border border-gray-300 rounded"
+        />
+        <button
+          onClick={handleSubmit}
+          disabled={loading}
+          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition"
+        >
+          {loading ? "Processing..." : "Submit"}
+        </button>
 
-      {error && <div style={{ color: "red" }}>{error}</div>}
+        {error && <div className="text-red-500 text-center">{error}</div>}
 
-      {response && (
-        <div>
-          <h2>Response:</h2>
-          <p>{response}</p>
-        </div>
-      )}
+        {response && (
+          <div className="mt-4 p-4 bg-gray-100 rounded-md">
+            <h2 className="font-semibold">Response:</h2>
+            <p>{response}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
