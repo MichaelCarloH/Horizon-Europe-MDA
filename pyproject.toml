@@ -14,7 +14,6 @@ dependencies = [
     "langchain-community>=0.3.20",
     "langchain-openai>=0.3.12",
     "matplotlib>=3.10.1",
-    "matplotlib>=3.10.1",
     "numpy>=1.21.4",
     "openai>=1.70.0",
     "pandas>=2.2.3",

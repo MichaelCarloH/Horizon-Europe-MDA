@@ -57,6 +57,14 @@ class DocumentProcessor:
         print(f"Loaded {len(documents)} documents from {self.data_path}.")
         return self  # Return self to allow chaining
 
+    def get_document_count(self):
+        if os.path.exists(self.chroma_path):
+            # You could list files or use Chroma API to get the count of saved documents.
+            print(f"Documents in Chroma: {len(os.listdir(self.chroma_path))}")
+        else:
+            print("❌ Chroma database not found!")
+
+
     def split_text(self):
         """
         Split the loaded documents into smaller chunks for embedding.
