@@ -5,6 +5,7 @@
 ## Project Structure
 
 ```plaintext
+```plaintext 
 /horizon-europe-analysis
 │── /data                # Raw and processed datasets
 │── /notebooks           # Jupyter notebooks for exploration & testing
