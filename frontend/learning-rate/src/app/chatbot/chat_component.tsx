@@ -22,7 +22,7 @@ const ChatComponent = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.post("http://localhost:8000/query/", {
+      const res = await axios.post("https://euro-rag-app.azurewebsites.net/query", { //for local host: "http://localhost:8000/query/"
         query_text: query,
         k: 3, // You can customize this if you want
       });

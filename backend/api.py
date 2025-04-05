@@ -14,7 +14,10 @@ app = FastAPI()
 # Enable CORS for the frontend (make sure to replace this with your frontend's URL)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Your frontend's URL, adjust as needed
+    allow_origins=[
+        "http://localhost:3000",  # Local development URL
+        "https://horizon-europe-mda.vercel.app/",  # Your deployed frontend URL
+    ],  # Your frontend's URL, adjust as needed
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
@@ -45,4 +48,4 @@ def query_db(request: QueryRequest):
         logger.error(f"Error processing query: {str(e)}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-# To run: uvicorn main:app --reload
+# To run: uvicorn api:app --reload
