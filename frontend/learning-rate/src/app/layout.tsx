@@ -13,8 +13,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const csrfToken = headers().get('X-CSRF-Token') || 'missing';
 
   return {
-    title: "Learning Rate",
-    description: "Building an Intuitive Understanding of Artifial Intelligence.",
+    title: "EuroRAG",
+    description: "Building a fast and easy way to access Horizon Europe documents",
     other: {
       'x-csrf-token': csrfToken,
     },

@@ -1,6 +1,5 @@
 'use client'
 import Section from "./components/section";
-import TeamFaceRecognition from "./components/teamPicture";
 
 export default function Home() {
     return (
@@ -23,7 +22,7 @@ export default function Home() {
                 image={"/personComputer.jpeg"} imgW={500} imgH={500} alternative={"A graphic of a computer screen with code or a neural network visualization."} 
                 leftToRight={true}     
         />
-        <TeamFaceRecognition/>
+       
       </main>
     );
   };
