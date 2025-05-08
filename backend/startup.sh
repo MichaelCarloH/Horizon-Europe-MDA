@@ -16,4 +16,4 @@ echo "Installing dependencies..."
 pip install --no-cache-dir -r requirements.txt
 
 echo "Starting application..."
-exec python -m gunicorn --config gunicorn.conf.py api:app 
+exec python -m gunicorn --config gunicorn.conf.py main:app 
