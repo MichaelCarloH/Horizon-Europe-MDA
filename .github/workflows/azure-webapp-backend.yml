@@ -45,20 +45,4 @@ jobs:
         app-name: mda-horizon-backend-2025
         slot-name: production
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: deployment.zip
-
-    - name: Install dependencies in Azure
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: mda-horizon-backend-2025
-        slot-name: production
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: deployment.zip
-        startup-command: |
-          cd /home/site/wwwroot
-          python -m venv venv
-          source venv/bin/activate
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install gunicorn
-          python -m gunicorn --config gunicorn.conf.py api:app 
+        package: deployment.zip 
