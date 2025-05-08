@@ -121,23 +121,40 @@ class DatabaseCreator:
     def save_to_chroma(self, chunks: List[Dict[str, Any]]) -> None:
         """Save document chunks to Chroma database."""
         try:
-            # Clear existing database if it exists
-            if os.path.exists(CHROMA_PATH):
-                logger.info(f"Clearing existing Chroma database at {CHROMA_PATH}")
-                shutil.rmtree(CHROMA_PATH)
-            
             logger.info(f"Saving {len(chunks)} chunks to Chroma database at {CHROMA_PATH}")
+            
+            # Initialize embeddings
+            embedding_function = OpenAIEmbeddings()
+            
+            # If database exists, try to load it first
+            if os.path.exists(CHROMA_PATH):
+                try:
+                    logger.info("Found existing Chroma database, attempting to append")
+                    vector_store = Chroma(
+                        collection_name="horizon_europe",
+                        embedding_function=embedding_function,
+                        persist_directory=CHROMA_PATH
+                    )
+                    # Add new documents to existing collection
+                    vector_store.add_documents(chunks)
+                    logger.info("Successfully appended to existing Chroma database")
+                    return
+                except Exception as e:
+                    logger.warning(f"Could not append to existing database: {str(e)}")
+                    logger.info("Will create new database instead")
+            
+            # Create new database if we couldn't append or if it doesn't exist
             self.vector_store = Chroma.from_documents(
                 documents=chunks,
-                embedding=self.embeddings,
+                embedding=embedding_function,
                 collection_name="horizon_europe",
-                persist_directory=CHROMA_PATH  # Use persistent storage
+                persist_directory=CHROMA_PATH
             )
-            logger.info("Successfully saved to Chroma database")
+            logger.info("Successfully created new Chroma database")
             
             # Verify the save
             if os.path.exists(CHROMA_PATH):
-                logger.info(f"Chroma database created at {CHROMA_PATH}")
+                logger.info(f"Chroma database available at {CHROMA_PATH}")
             else:
                 logger.error("Chroma database was not created!")
         except Exception as e:

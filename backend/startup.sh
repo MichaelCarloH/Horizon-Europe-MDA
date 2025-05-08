@@ -3,6 +3,9 @@ set -e
 
 cd /home/site/wwwroot
 
+# Set Azure environment variable
+export AZURE_ENVIRONMENT=true
+
 echo "Creating virtual environment..."
 python -m venv venv
 

@@ -1,10 +1,16 @@
 import sys
 import os
-import sqlite3
-import pysqlite3
 
-# Override the default sqlite3 with pysqlite3
-sys.modules['sqlite3'] = pysqlite3
+# Add the current directory to Python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+import sqlite3
+
+# Only use pysqlite3 in Azure environment
+if os.getenv("AZURE_ENVIRONMENT"):
+    import pysqlite3
+    # Override the default sqlite3 with pysqlite3
+    sys.modules['sqlite3'] = pysqlite3
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -35,16 +41,28 @@ app.add_middleware(
     allow_headers=["Content-Type", "Authorization"],
 )
 
-# Initialize the database creator and query processor
-processor = DatabaseCreator()
+def initialize_database():
+    """Initialize the database with proper error handling."""
+    try:
+        # Create new database or append to existing
+        processor = DatabaseCreator()
+        processor.run()
+        logger.info("Database initialization completed")
+        return True
+    except Exception as e:
+        logger.error(f"Error initializing database: {str(e)}")
+        # If we're running locally, continue anyway
+        if not os.getenv("AZURE_ENVIRONMENT"):
+            logger.info("Running locally - continuing despite database error")
+            return True
+        return False
+
+# Initialize the query processor
 query_processor = QueryProcessor()
 
-# Create database on startup
-try:
-    processor.run()
-except Exception as e:
-    logger.error(f"Error creating database: {str(e)}")
-    raise HTTPException(status_code=500, detail=f"Failed to create database: {str(e)}")
+# Create or update database on startup - but don't fail if it doesn't work locally
+if not initialize_database():
+    logger.warning("Database initialization failed, but continuing startup")
 
 class Query(BaseModel):
     query_text: str

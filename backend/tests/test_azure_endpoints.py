@@ -2,6 +2,7 @@ import pytest
 import requests
 import json
 import time
+import os
 from typing import Dict, Any
 
 AZURE_URL = "https://mda-horizon-backend-2025.azurewebsites.net"
@@ -19,10 +20,17 @@ def test_query_endpoint():
         "Accept": "application/json"
     }
     data = {
-        "query_text": "What are the main objectives of Horizon Europe?"
+        "query_text": "Who is Michael Carlo?"
     }
     
+    print("\nSending query to:", f"{AZURE_URL}/query")
+    print("Headers:", headers)
+    print("Data:", json.dumps(data, indent=2))
+    
     response = requests.post(f"{AZURE_URL}/query", headers=headers, json=data)
+    print("\nResponse status:", response.status_code)
+    print("Response headers:", dict(response.headers))
+    
     assert response.status_code == 200
     
     response_data = response.json()
@@ -42,7 +50,14 @@ def test_query_endpoint_with_source_info():
         "query_text": "Tell me about the budget of Horizon Europe"
     }
     
+    print("\nSending query to:", f"{AZURE_URL}/query")
+    print("Headers:", headers)
+    print("Data:", json.dumps(data, indent=2))
+    
     response = requests.post(f"{AZURE_URL}/query", headers=headers, json=data)
+    print("\nResponse status:", response.status_code)
+    print("Response headers:", dict(response.headers))
+    
     assert response.status_code == 200
     
     response_data = response.json()
