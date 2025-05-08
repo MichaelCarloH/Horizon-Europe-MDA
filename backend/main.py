@@ -20,12 +20,19 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 # Configure CORS
+allowed_origins = [
+    "http://localhost:3000",  # Local development
+    "https://mda-horizon-frontend.azurewebsites.net",  # Production frontend
+    "https://mda-horizon-frontend-2025.azurewebsites.net",  # Alternative production URL
+    "https://horizon-europe-mda.vercel.app"  # Vercel deployment
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with your frontend URL
+    allow_origins=allowed_origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 
 # Initialize the database creator and query processor
@@ -44,7 +51,7 @@ class Query(BaseModel):
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy"}
+    return {"message": "RAG API is running!"}
 
 @app.post("/query")
 async def query_endpoint(query: Query):
