@@ -1,9 +1,16 @@
+import sys
+import os
+import sqlite3
+import pysqlite3
+
+# Override the default sqlite3 with pysqlite3
+sys.modules['sqlite3'] = pysqlite3
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import os
-from src.create_database import DocumentProcessor
-from src.query_database import query_database
+from src.create_database import DatabaseCreator
+from src.query_database import QueryProcessor
 import logging
 
 # Configure logging
@@ -21,34 +28,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize database if it doesn't exist
-CHROMA_PATH = os.getenv("CHROMA_PATH", "chroma")
-DATA_PATH = os.getenv("DATA_PATH", "data/pdf")
+# Initialize the database creator and query processor
+processor = DatabaseCreator()
+query_processor = QueryProcessor()
 
-if not os.path.exists(CHROMA_PATH):
-    logger.info("Database not found. Creating database...")
-    try:
-        processor = DocumentProcessor(data_path=DATA_PATH, chroma_path=CHROMA_PATH)
-        processor.create_database_pipeline()
-        logger.info("Database created successfully.")
-    except Exception as e:
-        logger.error(f"Error creating database: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Failed to create database: {str(e)}")
-else:
-    logger.info("Database already exists. Skipping creation.")
+# Create database on startup
+try:
+    processor.create_database_pipeline()
+except Exception as e:
+    logger.error(f"Error creating database: {str(e)}")
+    raise HTTPException(status_code=500, detail=f"Failed to create database: {str(e)}")
 
-class Question(BaseModel):
-    text: str
+class Query(BaseModel):
+    query_text: str
 
-@app.get("/")
-async def root():
-    return {"message": "MDA Horizon Backend API is running"}
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
 
 @app.post("/query")
-async def query(question: Question):
+async def query_endpoint(query: Query):
     try:
-        logger.info(f"Received query: {question.text}")
-        response = query_database(question.text)
+        response = query_processor.query(query.query_text)
         return {"response": response}
     except Exception as e:
         logger.error(f"Error processing query: {str(e)}")

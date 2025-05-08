@@ -1,5 +1,7 @@
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
+from langchain.chains import RetrievalQA
+from langchain_openai import ChatOpenAI
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 import os
@@ -73,8 +75,49 @@ def query_database(query_text: str, k: int = 3):
 class QueryProcessor:
     def __init__(self):
         """Initialize the query processor."""
-        self.chroma_database = Chroma(
-            collection_name="horizon_europe",
-            embedding_function=OpenAIEmbeddings(),
-            persist_directory=None  # Use in-memory storage
-        )
+        self.embeddings = OpenAIEmbeddings()
+        self.vector_store = None
+        self.qa_chain = None
+
+    def initialize_vector_store(self):
+        """Initialize the Chroma vector store."""
+        try:
+            self.vector_store = Chroma(
+                collection_name="horizon_europe",
+                embedding_function=self.embeddings,
+                persist_directory=None  # Use in-memory storage
+            )
+            logger.info("Successfully initialized Chroma vector store")
+            return True
+        except Exception as e:
+            logger.error(f"Error initializing vector store: {str(e)}")
+            raise Exception(f"Failed to initialize vector store: {str(e)}")
+
+    def initialize_qa_chain(self):
+        """Initialize the QA chain."""
+        try:
+            if not self.vector_store:
+                self.initialize_vector_store()
+            
+            self.qa_chain = RetrievalQA.from_chain_type(
+                llm=ChatOpenAI(temperature=0),
+                chain_type="stuff",
+                retriever=self.vector_store.as_retriever()
+            )
+            logger.info("Successfully initialized QA chain")
+            return True
+        except Exception as e:
+            logger.error(f"Error initializing QA chain: {str(e)}")
+            raise Exception(f"Failed to initialize QA chain: {str(e)}")
+
+    def query(self, query_text: str) -> str:
+        """Process a query and return the response."""
+        try:
+            if not self.qa_chain:
+                self.initialize_qa_chain()
+            
+            response = self.qa_chain.invoke({"query": query_text})
+            return response["result"]
+        except Exception as e:
+            logger.error(f"Error processing query: {str(e)}")
+            raise Exception(f"Failed to process query: {str(e)}")

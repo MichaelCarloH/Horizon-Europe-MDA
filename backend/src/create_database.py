@@ -1,13 +1,12 @@
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.schema import Document
-from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
-import openai
-from dotenv import load_dotenv
+from langchain_openai import OpenAIEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import PyPDFLoader
 import os
-import shutil
 import logging
+from typing import List
+from langchain.schema import Document
+from dotenv import load_dotenv
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -15,62 +14,81 @@ logger = logging.getLogger(__name__)
 # Load environment variables
 load_dotenv()
 
-# Use environment variables with defaults
-CHROMA_PATH = os.getenv("CHROMA_PATH", "chroma")
-DATA_PATH = os.getenv("DATA_PATH", "data/pdf")
+class DatabaseCreator:
+    def __init__(self):
+        """Initialize the database creator."""
+        self.pdf_path = os.getenv("PDF_PATH", "data/pdf")
+        self.embeddings = OpenAIEmbeddings()
+        self.text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000,
+            chunk_overlap=200,
+            length_function=len,
+        )
+        self.documents: List[Document] = []
+        self.chunks: List[Document] = []
+        self.vector_store = None
 
-class DocumentProcessor:
-    def __init__(self, data_path: str = DATA_PATH, chroma_path: str = CHROMA_PATH):
-        self.data_path = data_path
-        self.chroma_path = chroma_path
-        self.documents = []
-        self.chunks = []
+    def load_pdfs(self):
+        """Load PDF documents from the specified directory."""
+        try:
+            logger.info(f"Loading PDFs from {self.pdf_path}")
+            pdf_files = [f for f in os.listdir(self.pdf_path) if f.endswith('.pdf')]
+            
+            for pdf_file in pdf_files:
+                file_path = os.path.join(self.pdf_path, pdf_file)
+                logger.info(f"Loading PDF: {pdf_file}")
+                loader = PyPDFLoader(file_path)
+                self.documents.extend(loader.load())
+            
+            logger.info(f"Loaded {len(self.documents)} documents")
+            return True
+        except Exception as e:
+            logger.error(f"Error loading PDFs: {str(e)}")
+            raise Exception(f"Failed to load PDFs: {str(e)}")
+
+    def split_documents(self):
+        """Split documents into chunks."""
+        try:
+            logger.info("Splitting documents into chunks...")
+            self.chunks = self.text_splitter.split_documents(self.documents)
+            logger.info(f"Split into {len(self.chunks)} chunks")
+            return True
+        except Exception as e:
+            logger.error(f"Error splitting documents: {str(e)}")
+            raise Exception(f"Failed to split documents: {str(e)}")
+
+    def save_to_chroma(self):
+        """Save documents to Chroma database."""
+        try:
+            logger.info("Creating new Chroma database...")
+            self.vector_store = Chroma.from_documents(
+                documents=self.chunks,
+                embedding=self.embeddings,
+                persist_directory=None  # Use in-memory storage
+            )
+            logger.info("Successfully created Chroma database")
+            return True
+        except Exception as e:
+            logger.error(f"Error saving to Chroma: {str(e)}")
+            raise Exception(f"Failed to save to Chroma: {str(e)}")
 
     def create_database_pipeline(self):
+        """Run the complete database creation pipeline."""
         try:
             logger.info("Starting database creation pipeline...")
-            self.load_documents()
-            logger.info(f"Loaded {len(self.documents)} documents.")
-            
-            self.split_text()
-            logger.info(f"Split into {len(self.chunks)} chunks.")
-            
+            self.load_pdfs()
+            self.split_documents()
             self.save_to_chroma()
-            logger.info("Database pipeline complete!")
-            return self
+            logger.info("Database creation completed successfully")
+            return True
         except Exception as e:
             logger.error(f"Error in database pipeline: {str(e)}")
             raise Exception(f"Failed to create database: {str(e)}")
 
-    def load_documents(self):
-        """
-        Load all PDF files from the specified directory and extract text.
-        """
-        try:
-            documents = []
-            if not os.path.exists(self.data_path):
-                logger.error(f"Directory '{self.data_path}' does not exist.")
-                raise FileNotFoundError(f"Data directory not found: {self.data_path}")
-
-            for file_name in os.listdir(self.data_path):
-                if file_name.endswith(".pdf"):
-                    file_path = os.path.join(self.data_path, file_name)
-                    logger.info(f"Loading PDF: {file_name}")
-                    loader = PyPDFLoader(file_path)
-                    docs = loader.load()
-                    documents.extend(docs)
-
-            self.documents = documents
-            logger.info(f"Loaded {len(documents)} documents from {self.data_path}.")
-            return self
-        except Exception as e:
-            logger.error(f"Error loading documents: {str(e)}")
-            raise Exception(f"Failed to load documents: {str(e)}")
-
     def get_document_count(self):
-        if os.path.exists(self.chroma_path):
+        if os.path.exists(CHROMA_PATH):
             # You could list files or use Chroma API to get the count of saved documents.
-            print(f"Documents in Chroma: {len(os.listdir(self.chroma_path))}")
+            print(f"Documents in Chroma: {len(os.listdir(CHROMA_PATH))}")
         else:
             print("❌ Chroma database not found!")
 
@@ -101,20 +119,4 @@ class DocumentProcessor:
         except Exception as e:
             logger.error(f"Error splitting text: {str(e)}")
             raise Exception(f"Failed to split text: {str(e)}")
-
-    def save_to_chroma(self):
-        """Save documents to Chroma database."""
-        try:
-            logger.info("Creating new Chroma database...")
-            chroma_database = Chroma.from_documents(
-                documents=self.chunks,
-                embedding=OpenAIEmbeddings(),
-                persist_directory=None,  # Use in-memory storage
-                collection_name="horizon_europe"
-            )
-            self.chroma_database = chroma_database
-            logger.info("Successfully created Chroma database")
-        except Exception as e:
-            logger.error(f"Error saving to Chroma: {str(e)}")
-            raise Exception(f"Failed to save to Chroma: {str(e)}")
 
