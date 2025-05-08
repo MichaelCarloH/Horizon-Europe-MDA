@@ -1,14 +1,18 @@
 #!/bin/bash
+set -e
+
 cd /home/site/wwwroot
 
-# Create and activate virtual environment
+echo "Creating virtual environment..."
 python -m venv venv
 source venv/bin/activate
 
-# Upgrade pip and install dependencies
+echo "Upgrading pip..."
 python -m pip install --upgrade pip
+
+echo "Installing dependencies..."
 pip install -r requirements.txt
 pip install gunicorn
 
-# Start the application
-python -m gunicorn --config gunicorn.conf.py api:app 
+echo "Starting application..."
+exec python -m gunicorn --config gunicorn.conf.py api:app 

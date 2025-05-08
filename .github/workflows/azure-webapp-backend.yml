@@ -35,9 +35,10 @@ jobs:
         pip install -r requirements.txt
         pip install gunicorn
 
-    - name: Create deployment package
+    - name: Prepare deployment package
       run: |
         cd backend
+        chmod +x startup.sh
         zip -r ../deployment.zip . -x "*.git*" "*.pyc" "__pycache__/*" "venv/*"
 
     - name: Deploy to Azure Web App
