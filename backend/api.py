@@ -43,10 +43,13 @@ def home():
 @app.post("/query/")
 def query_db(request: QueryRequest):
     try:
+        logger.info(f"Processing query: {request.query_text}")
         response = query_database(request.query_text, request.k)
+        logger.info("Query processed successfully")
         return {"query": request.query_text, "response": response}
     except Exception as e:
-        logger.error(f"Error processing query: {str(e)}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        error_msg = f"Error processing query: {str(e)}"
+        logger.error(error_msg)
+        raise HTTPException(status_code=500, detail=error_msg)
 
 # To run: uvicorn api:app --reload
