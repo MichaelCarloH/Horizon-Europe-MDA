@@ -41,8 +41,8 @@ jobs:
       run: |
         cd backend
         chmod +x startup.sh
-        # Include the virtual environment in the deployment
-        zip -r ../deployment.zip . venv -x "*.git*" "*.pyc" "__pycache__/*"
+        # Create deployment package without virtual environment
+        zip -r ../deployment.zip . -x "*.git*" "*.pyc" "__pycache__/*" "venv/*"
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
