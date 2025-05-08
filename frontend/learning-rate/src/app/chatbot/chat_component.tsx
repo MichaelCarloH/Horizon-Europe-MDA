@@ -22,23 +22,41 @@ const ChatComponent = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.post("https://mda-horizon-backend-2024.azurewebsites.net/query/", { //test "http://localhost:8000/query/"
+      console.log('Sending request to:', "https://mda-horizon-backend-2024.azurewebsites.net/query/");
+      const res = await axios.post("https://mda-horizon-backend-2024.azurewebsites.net/query/", {
         query_text: query,
-        k: 3, // You can customize this if you want
+        k: 3,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        timeout: 10000, // 10 second timeout
       });
-      const botResponse = res.data.response;  // Assuming the backend sends a response field
+      console.log('Response received:', res.data);
+      const botResponse = res.data.response;
 
-      // Add bot's response to the chat
       setMessages((prevMessages) => [
         ...prevMessages,
         { sender: "bot", text: botResponse },
       ]);
     } catch (err) {
-      console.error('Error details:', err);
+      console.error('Full error:', err);
       if (axios.isAxiosError(err)) {
-        setError(`Error: ${err.response?.data?.detail || err.message}`);
+        if (err.code === 'ECONNABORTED') {
+          setError('Request timed out. Please try again.');
+        } else if (err.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          setError(`Server error: ${err.response.status} - ${err.response.data?.detail || err.message}`);
+        } else if (err.request) {
+          // The request was made but no response was received
+          setError('No response from server. Please check your connection.');
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          setError(`Error: ${err.message}`);
+        }
       } else {
-        setError("Error processing query. Please try again.");
+        setError('An unexpected error occurred. Please try again.');
       }
     } finally {
       setLoading(false);
