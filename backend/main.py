@@ -1,10 +1,10 @@
 import sys
 import os
 import sqlite3
-#import pysqlite3
+import pysqlite3
 
 # Override the default sqlite3 with pysqlite3
-#sys.modules['sqlite3'] = pysqlite3
+sys.modules['sqlite3'] = pysqlite3
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -41,7 +41,7 @@ query_processor = QueryProcessor()
 
 # Create database on startup
 try:
-    processor.create_database_pipeline()
+    processor.run()
 except Exception as e:
     logger.error(f"Error creating database: {str(e)}")
     raise HTTPException(status_code=500, detail=f"Failed to create database: {str(e)}")
