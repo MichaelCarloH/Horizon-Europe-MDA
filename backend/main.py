@@ -4,6 +4,11 @@ from pydantic import BaseModel
 import os
 from src.create_database import DocumentProcessor
 from src.query_database import query_database
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
@@ -18,13 +23,19 @@ app.add_middleware(
 
 # Initialize database if it doesn't exist
 CHROMA_PATH = os.getenv("CHROMA_PATH", "chroma")
+DATA_PATH = os.getenv("DATA_PATH", "data/pdf")
+
 if not os.path.exists(CHROMA_PATH):
-    print("Database not found. Creating database...")
-    processor = DocumentProcessor()
-    processor.create_database_pipeline()
-    print("Database created successfully.")
+    logger.info("Database not found. Creating database...")
+    try:
+        processor = DocumentProcessor(data_path=DATA_PATH, chroma_path=CHROMA_PATH)
+        processor.create_database_pipeline()
+        logger.info("Database created successfully.")
+    except Exception as e:
+        logger.error(f"Error creating database: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to create database: {str(e)}")
 else:
-    print("Database already exists. Skipping creation.")
+    logger.info("Database already exists. Skipping creation.")
 
 class Question(BaseModel):
     text: str
@@ -36,9 +47,11 @@ async def root():
 @app.post("/query")
 async def query(question: Question):
     try:
+        logger.info(f"Received query: {question.text}")
         response = query_database(question.text)
         return {"response": response}
     except Exception as e:
+        logger.error(f"Error processing query: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
