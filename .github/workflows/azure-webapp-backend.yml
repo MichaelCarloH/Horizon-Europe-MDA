@@ -32,14 +32,17 @@ jobs:
         python -m venv venv
         source venv/bin/activate
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install gunicorn
+        pip install --no-cache-dir -r requirements.txt
+        pip install --no-cache-dir gunicorn
+        # Create a requirements.txt with exact versions
+        pip freeze > requirements.lock
 
-    - name: Prepare deployment package
+    - name: Create deployment package
       run: |
         cd backend
         chmod +x startup.sh
-        zip -r ../deployment.zip . -x "*.git*" "*.pyc" "__pycache__/*" "venv/*"
+        # Include the virtual environment in the deployment
+        zip -r ../deployment.zip . venv -x "*.git*" "*.pyc" "__pycache__/*"
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
