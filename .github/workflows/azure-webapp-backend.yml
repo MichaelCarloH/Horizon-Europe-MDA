@@ -20,24 +20,24 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: Install uv
+    - name: Install system dependencies
       run: |
-        curl -LsSf https://astral.sh/uv/install.sh | sh
-        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+        sudo apt-get update
+        sudo apt-get install -y build-essential python3-dev
 
     - name: Install dependencies
       run: |
         cd backend
-        uv venv
-        source .venv/bin/activate
-        uv pip install -r requirements.txt
-        uv pip install gunicorn
+        python -m venv venv
+        source venv/bin/activate
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install gunicorn
 
     - name: Create deployment package
       run: |
         cd backend
-        # Create deployment package including the virtual environment
-        zip -r ../deployment.zip . -x "*.git*" "*.pyc" "__pycache__/*"
+        zip -r ../deployment.zip . -x "*.git*" "*.pyc" "__pycache__/*" "venv/*"
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
@@ -56,9 +56,9 @@ jobs:
         package: deployment.zip
         startup-command: |
           cd /home/site/wwwroot
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-          uv venv
-          source .venv/bin/activate
-          uv pip install -r requirements.txt
-          uv pip install gunicorn
+          python -m venv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install gunicorn
           python -m gunicorn --config gunicorn.conf.py api:app 
