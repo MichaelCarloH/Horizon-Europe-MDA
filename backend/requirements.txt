@@ -1,6 +1,6 @@
 fastapi>=0.115.9
 uvicorn>=0.34.0
-pydantic==2.6.1
+pydantic>=2.7.4
 chromadb>=0.6.3
 python-dotenv==1.0.1
 gunicorn==21.2.0
