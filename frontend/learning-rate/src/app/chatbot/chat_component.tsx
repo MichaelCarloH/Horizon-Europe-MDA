@@ -22,8 +22,8 @@ const ChatComponent = () => {
     setLoading(true);
     setError(null);
     try {
-      console.log('Sending request to:', "https://mda-horizon-backend-2024.azurewebsites.net/query/");
-      const res = await axios.post("https://mda-horizon-backend-2024.azurewebsites.net/query/", {
+      console.log('Sending request to:', "https://mda-horizon-backend-2025.azurewebsites.net/query/");
+      const res = await axios.post("http://localhost:3000/chatbot", {
         query_text: query,
         k: 3,
       }, {
