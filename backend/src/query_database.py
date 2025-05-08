@@ -29,7 +29,11 @@ def query_database(query_text: str, k: int = 3):
     try:
         logger.info(f"Initializing embeddings and database connection...")
         embedding_function = OpenAIEmbeddings()
-        db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
+        db = Chroma(
+            collection_name="horizon_europe",
+            embedding_function=embedding_function,
+            persist_directory=None  # Use in-memory storage
+        )
 
         # Search the DB for relevant documents
         logger.info(f"Searching database for query: {query_text}")
