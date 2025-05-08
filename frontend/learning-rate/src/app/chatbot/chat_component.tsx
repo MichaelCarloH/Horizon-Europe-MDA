@@ -22,19 +22,33 @@ const ChatComponent = () => {
     setLoading(true);
     setError(null);
     try {
-      console.log('Sending request to:', "https://mda-horizon-backend-2025.azurewebsites.net/query/");
-      const res = await axios.post("http://localhost:3000/chatbot", {
-        query_text: query,
-        k: 3,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        timeout: 10000, // 10 second timeout
-      });
-      console.log('Response received:', res.data);
-      const botResponse = res.data.response;
+      const url = "https://mda-horizon-backend-2025.azurewebsites.net/query";
+      const payload = { query_text: query };
+      const headers = {
+        'Content-Type': 'application/json',
+        'Origin': 'https://horizon-europe-mda.vercel.app',
+        'Accept': 'application/json'
+      };
 
+      console.log('Request details:', {
+        url,
+        payload,
+        headers
+      });
+
+      const res = await axios.post(url, payload, {
+        headers,
+        timeout: 10000, // 10 second timeout
+        withCredentials: false // Don't send cookies
+      });
+
+      console.log('Response details:', {
+        status: res.status,
+        headers: res.headers,
+        data: res.data
+      });
+
+      const botResponse = res.data.response;
       setMessages((prevMessages) => [
         ...prevMessages,
         { sender: "bot", text: botResponse },
@@ -47,15 +61,27 @@ const ChatComponent = () => {
         } else if (err.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
+          console.error('Error response:', {
+            status: err.response.status,
+            statusText: err.response.statusText,
+            headers: err.response.headers,
+            data: err.response.data
+          });
           setError(`Server error: ${err.response.status} - ${err.response.data?.detail || err.message}`);
         } else if (err.request) {
           // The request was made but no response was received
+          console.error('No response received:', {
+            request: err.request,
+            message: err.message
+          });
           setError('No response from server. Please check your connection.');
         } else {
           // Something happened in setting up the request that triggered an Error
+          console.error('Request setup error:', err.message);
           setError(`Error: ${err.message}`);
         }
       } else {
+        console.error('Unexpected error:', err);
         setError('An unexpected error occurred. Please try again.');
       }
     } finally {
