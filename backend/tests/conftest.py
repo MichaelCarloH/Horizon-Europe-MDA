@@ -4,6 +4,8 @@ import sys
 import subprocess
 import time
 import requests
+import shutil
+from pathlib import Path
 from dotenv import load_dotenv
 
 # Load environment variables
