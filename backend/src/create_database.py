@@ -103,27 +103,17 @@ class DocumentProcessor:
             raise Exception(f"Failed to split text: {str(e)}")
 
     def save_to_chroma(self):
-        """
-        Save the document chunks to a Chroma vector database.
-        """
+        """Save documents to Chroma database."""
         try:
-            if not self.chunks:
-                logger.error("No chunks to save.")
-                raise ValueError("No chunks available for saving")
-
-            # Clear out the database first
-            if os.path.exists(self.chroma_path):
-                logger.info(f"Clearing existing database at {self.chroma_path}")
-                shutil.rmtree(self.chroma_path)
-
-            # Create a new DB from the documents
             logger.info("Creating new Chroma database...")
             chroma_database = Chroma.from_documents(
-                self.chunks, OpenAIEmbeddings(), persist_directory=self.chroma_path
+                documents=self.chunks,
+                embedding=OpenAIEmbeddings(),
+                persist_directory=None,  # Use in-memory storage
+                collection_name="horizon_europe"
             )
-            chroma_database.persist()
-            logger.info(f"Saved {len(self.chunks)} chunks to {self.chroma_path}")
-            return self
+            self.chroma_database = chroma_database
+            logger.info("Successfully created Chroma database")
         except Exception as e:
             logger.error(f"Error saving to Chroma: {str(e)}")
             raise Exception(f"Failed to save to Chroma: {str(e)}")

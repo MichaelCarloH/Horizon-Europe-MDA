@@ -65,3 +65,12 @@ def query_database(query_text: str, k: int = 3):
     except Exception as e:
         logger.error(f"Error in query_database: {str(e)}")
         raise Exception(f"Failed to process query: {str(e)}")
+
+class QueryProcessor:
+    def __init__(self):
+        """Initialize the query processor."""
+        self.chroma_database = Chroma(
+            collection_name="horizon_europe",
+            embedding_function=OpenAIEmbeddings(),
+            persist_directory=None  # Use in-memory storage
+        )
