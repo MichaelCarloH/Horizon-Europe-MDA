@@ -28,17 +28,14 @@ jobs:
     - name: Install dependencies
       run: |
         cd backend
+        uv venv
+        source .venv/bin/activate
         uv pip install -r requirements.txt
         uv pip install gunicorn
 
     - name: Create deployment package
       run: |
         cd backend
-        # Create a virtual environment and install dependencies
-        python -m venv venv
-        source venv/bin/activate
-        uv pip install -r requirements.txt
-        uv pip install gunicorn
         # Create deployment package including the virtual environment
         zip -r ../deployment.zip . -x "*.git*" "*.pyc" "__pycache__/*"
 
@@ -59,7 +56,9 @@ jobs:
         package: deployment.zip
         startup-command: |
           cd /home/site/wwwroot
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install gunicorn
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          uv venv
+          source .venv/bin/activate
+          uv pip install -r requirements.txt
+          uv pip install gunicorn
           python -m gunicorn --config gunicorn.conf.py api:app 
