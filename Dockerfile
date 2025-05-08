@@ -11,7 +11,7 @@ COPY pyproject.toml uv.lock ./
 RUN pip install uv 
 RUN apt-get update && apt-get install -y build-essential
 # Ensure uvicorn is installed
-RUN pip install uvicorn
+RUN pip install fastapi uvicorn
 
 RUN uv sync 
 

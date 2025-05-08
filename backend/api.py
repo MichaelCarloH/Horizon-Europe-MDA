@@ -9,6 +9,7 @@ from src.query_database import query_database
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Azure deployment ready
 app = FastAPI()
 
 # Enable CORS for the frontend (make sure to replace this with your frontend's URL)
