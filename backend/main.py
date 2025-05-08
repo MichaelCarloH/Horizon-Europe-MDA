@@ -1,10 +1,10 @@
 import sys
 import os
 import sqlite3
-import pysqlite3
+#import pysqlite3
 
 # Override the default sqlite3 with pysqlite3
-sys.modules['sqlite3'] = pysqlite3
+#sys.modules['sqlite3'] = pysqlite3
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
