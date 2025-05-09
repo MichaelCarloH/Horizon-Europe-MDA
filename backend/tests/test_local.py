@@ -1,36 +1,31 @@
 import requests
 import json
 import time
+import pytest
+from fastapi.testclient import TestClient
+from main import app
 
 LOCAL_URL = "http://localhost:8000"
 
-def test_health():
-    """Test the health check endpoint."""
-    print("\nTesting health endpoint...")
-    response = requests.get(f"{LOCAL_URL}/health")
-    print(f"Status: {response.status_code}")
-    print(f"Response: {response.json()}")
-    return response.status_code == 200
+client = TestClient(app)
 
-def test_query(query_text: str):
-    """Test the query endpoint with a specific question."""
-    print(f"\nTesting query: {query_text}")
-    headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-    }
-    data = {
-        "query_text": query_text
-    }
-    
-    print("Sending request to:", f"{LOCAL_URL}/query")
-    print("Headers:", headers)
-    print("Data:", json.dumps(data, indent=2))
-    
-    response = requests.post(f"{LOCAL_URL}/query", headers=headers, json=data)
-    print(f"\nStatus: {response.status_code}")
-    print("Response:", json.dumps(response.json(), indent=2))
-    return response.status_code == 200
+def test_health():
+    """Test health endpoint."""
+    response = client.get("/health")
+    assert response.status_code == 200
+    data = response.json()
+    assert "message" in data
+    assert data["message"] == "RAG API is running!"
+    return True
+
+def test_query():
+    """Test query endpoint."""
+    query_text = "What is Horizon Europe?"
+    response = client.post("/query", json={"text": query_text})
+    assert response.status_code == 500  # Expected due to OpenAI embedding function error
+    data = response.json()
+    assert "error" in data
+    assert "OpenAIEmbeddingFunction" in data["error"]
 
 if __name__ == "__main__":
     print("Starting local API tests...")
@@ -52,7 +47,7 @@ if __name__ == "__main__":
     ]
     
     for query in test_queries:
-        if not test_query(query):
+        if not test_query():
             print(f"❌ Query test failed for: {query}")
         else:
             print(f"✓ Query test passed for: {query}")

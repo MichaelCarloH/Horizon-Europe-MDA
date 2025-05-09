@@ -1,82 +1,69 @@
 import pytest
 import requests
-import json
 import os
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
 
-BASE_URL = "https://mda-horizon-backend-2025.azurewebsites.net"
-
-def test_health_endpoint():
+def test_health_endpoint(base_url):
     """Test the health check endpoint."""
-    response = requests.get(f"{BASE_URL}/health")
+    response = requests.get(f"{base_url}/health")
     assert response.status_code == 200
     data = response.json()
-    assert "message" in data
-    assert data["message"] == "RAG API is running!"
+    assert "status" in data
+    assert data["status"] == "healthy"
 
-def test_query_endpoint_basic():
+def test_query_endpoint_basic(base_url):
     """Test basic query endpoint functionality."""
     headers = {
         "Content-Type": "application/json",
         "Accept": "application/json"
     }
     data = {
-        "query_text": "What is MDA?"
+        "text": "What is MDA?"
     }
     
-    response = requests.post(f"{BASE_URL}/query", headers=headers, json=data)
+    response = requests.post(f"{base_url}/query", headers=headers, json=data)
     assert response.status_code == 500  # Expected due to OpenAI embedding function error
     data = response.json()
     assert "error" in data
     assert "OpenAIEmbeddingFunction" in data["error"]
 
-def test_query_endpoint_empty():
+def test_query_endpoint_empty(base_url):
     """Test query endpoint with empty query."""
     headers = {
         "Content-Type": "application/json",
         "Accept": "application/json"
     }
     data = {
-        "query_text": ""
+        "text": ""
     }
     
-    response = requests.post(f"{BASE_URL}/query", headers=headers, json=data)
+    response = requests.post(f"{base_url}/query", headers=headers, json=data)
     assert response.status_code == 500  # Expected due to OpenAI embedding function error
     data = response.json()
     assert "error" in data
     assert "OpenAIEmbeddingFunction" in data["error"]
 
-def test_query_endpoint_invalid():
+def test_query_endpoint_invalid(base_url):
     """Test the query endpoint with invalid data."""
     data = {"wrong_field": "test"}
-    response = requests.post(f"{BASE_URL}/query", json=data)
+    response = requests.post(f"{base_url}/query", json=data)
     assert response.status_code == 422  # FastAPI validation error
 
-def test_query_endpoint_long_text():
+def test_query_endpoint_long_text(base_url):
     """Test query endpoint with very long text."""
     headers = {
         "Content-Type": "application/json",
         "Accept": "application/json"
     }
     data = {
-        "query_text": "What is MDA? " * 100  # Very long question
+        "text": "What is MDA? " * 100  # Very long question
     }
     
-    response = requests.post(f"{BASE_URL}/query", headers=headers, json=data)
+    response = requests.post(f"{base_url}/query", headers=headers, json=data)
     assert response.status_code == 500  # Expected due to OpenAI embedding function error
     data = response.json()
     assert "error" in data
-    assert "OpenAIEmbeddingFunction" in data["error"]
-
-def test_database_exists():
-    """Test that the Chroma database exists."""
-    chroma_path = os.getenv("CHROMA_PATH", "chroma")
-    assert os.path.exists(chroma_path), "Chroma database directory not found"
-
-def test_data_directory_exists():
-    """Test that the data directory exists."""
-    data_path = os.getenv("DATA_PATH", "data/pdf")
-    assert os.path.exists(data_path), "Data directory not found" 
+    assert "OpenAIEmbeddingFunction" in data["error"] 

@@ -1,0 +1,4 @@
+# Azure-specific dependencies
+pysqlite3-binary
+opencensus-ext-azure>=1.1.8
+azure-storage-blob>=12.19.0 
