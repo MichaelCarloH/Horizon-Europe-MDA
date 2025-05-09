@@ -5202,3 +5202,529 @@ Exception: Failed to save to Chroma: '_type'
 2025-05-09 15:29:55,184 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
 2025-05-09 15:29:55,545 - src.vector_store - INFO - VectorStoreManager initialized successfully
 2025-05-09 15:29:56,208 - main - INFO - Starting up services...
+2025-05-09 15:30:06,678 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:30:06,712 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:30:07,018 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:30:07,610 - main - INFO - Starting up services...
+2025-05-09 15:30:21,476 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 15:30:21,477 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 15:30:23,482 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 15:30:23,526 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-09 15:30:23,527 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-09 15:49:40,289 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:49:40,407 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:49:41,022 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:49:41,794 - main - INFO - Starting up services...
+2025-05-09 15:49:57,360 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:49:57,420 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:49:57,803 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:49:58,560 - main - INFO - Starting up services...
+2025-05-09 15:50:04,285 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:50:04,324 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:50:04,696 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:50:05,546 - main - INFO - Starting up services...
+2025-05-09 15:50:15,312 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:50:15,333 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:50:15,669 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:50:16,405 - main - INFO - Starting up services...
+2025-05-09 15:50:22,953 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:50:22,975 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:50:23,303 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:50:24,058 - main - INFO - Starting up services...
+2025-05-09 15:50:30,011 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:50:30,034 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:50:30,379 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:50:31,091 - main - INFO - Starting up services...
+2025-05-09 15:56:40,607 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:56:40,633 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:56:40,987 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:56:41,762 - main - INFO - Starting up services...
+2025-05-09 15:56:48,706 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:56:48,741 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:56:49,203 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:56:50,463 - main - INFO - Starting up services...
+2025-05-09 18:09:36,621 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 18:09:36,622 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 18:09:37,834 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:09:38,154 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-09 18:09:38,155 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-09 18:09:40,200 - src.query_processor - ERROR - Error processing query: 'QueryProcessor' object has no attribute '_initialize_chain'
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\src\query_processor.py", line 85, in query
+    chain = self._initialize_chain()
+            ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'QueryProcessor' object has no attribute '_initialize_chain'. Did you mean: 'initialize_qa_chain'?
+2025-05-09 18:10:19,486 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:10:19,582 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:10:20,317 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:10:21,156 - main - INFO - Starting up services...
+2025-05-09 18:10:28,345 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:10:28,416 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:10:28,926 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:10:29,752 - main - INFO - Starting up services...
+2025-05-09 18:10:41,388 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 18:10:41,389 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 18:10:42,530 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:10:42,764 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-09 18:10:42,764 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-09 18:10:44,896 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-09 18:10:45,678 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-09 18:10:46,783 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:10:46,834 - src.query_processor - ERROR - Error processing query: Embedding dimension 1536 does not match collection dimensionality 3072
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\src\query_processor.py", line 82, in query
+    result = self.qa_chain.invoke({"query": text})
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\base.py", line 167, in invoke
+    raise e
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\base.py", line 157, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\retrieval_qa\base.py", line 151, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\retrieval_qa\base.py", line 271, in _get_docs
+    return self.retriever.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        question, config={"callbacks": run_manager.get_child()}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\retrievers.py", line 258, in invoke
+    result = self._get_relevant_documents(
+        input, run_manager=run_manager, **_kwargs
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\vectorstores\base.py", line 1079, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **_kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 603, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+        query, k, filter=filter, **kwargs
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 701, in similarity_search_with_score
+    results = self.__query_collection(
+        query_embeddings=[query_embedding],
+    ...<3 lines>...
+        **kwargs,
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\utils\utils.py", line 54, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 393, in __query_collection
+    return self._collection.query(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        query_texts=query_texts,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\models\Collection.py", line 222, in query
+    query_results = self._client._query(
+        collection_id=self.id,
+    ...<6 lines>...
+        database=self.database,
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py", line 150, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Michael\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Michael\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 103, in wrapper
+    return self._rate_limit_enforcer.rate_limit(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\rate_limit\simple_rate_limit\__init__.py", line 24, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 805, in _query
+    self._validate_dimension(scan.collection, len(embedding), update=False)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 896, in _validate_dimension
+    raise InvalidDimensionException(
+        f"Embedding dimension {dim} does not match collection dimensionality {collection['dimension']}"
+    )
+chromadb.errors.InvalidDimensionException: Embedding dimension 1536 does not match collection dimensionality 3072
+2025-05-09 18:11:41,395 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 18:11:41,395 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 18:11:42,221 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:11:42,454 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-09 18:11:42,454 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-09 18:11:45,247 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:11:45,263 - src.query_processor - ERROR - Error processing query: Embedding dimension 1536 does not match collection dimensionality 3072
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\src\query_processor.py", line 82, in query
+    result = self.qa_chain.invoke({"query": text})
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\base.py", line 167, in invoke
+    raise e
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\base.py", line 157, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\retrieval_qa\base.py", line 151, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\retrieval_qa\base.py", line 271, in _get_docs
+    return self.retriever.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        question, config={"callbacks": run_manager.get_child()}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\retrievers.py", line 258, in invoke
+    result = self._get_relevant_documents(
+        input, run_manager=run_manager, **_kwargs
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\vectorstores\base.py", line 1079, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **_kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 603, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+        query, k, filter=filter, **kwargs
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 701, in similarity_search_with_score
+    results = self.__query_collection(
+        query_embeddings=[query_embedding],
+    ...<3 lines>...
+        **kwargs,
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\utils\utils.py", line 54, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 393, in __query_collection
+    return self._collection.query(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        query_texts=query_texts,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\models\Collection.py", line 222, in query
+    query_results = self._client._query(
+        collection_id=self.id,
+    ...<6 lines>...
+        database=self.database,
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py", line 150, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Michael\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Michael\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 103, in wrapper
+    return self._rate_limit_enforcer.rate_limit(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\rate_limit\simple_rate_limit\__init__.py", line 24, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 805, in _query
+    self._validate_dimension(scan.collection, len(embedding), update=False)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 896, in _validate_dimension
+    raise InvalidDimensionException(
+        f"Embedding dimension {dim} does not match collection dimensionality {collection['dimension']}"
+    )
+chromadb.errors.InvalidDimensionException: Embedding dimension 1536 does not match collection dimensionality 3072
+2025-05-09 18:15:49,078 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:15:49,113 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:15:49,707 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:15:50,574 - main - INFO - Starting up services...
+2025-05-09 18:16:32,973 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 18:16:32,974 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 18:16:33,893 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:16:34,245 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-09 18:16:34,246 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-09 18:16:36,367 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-09 18:16:37,233 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-09 18:16:37,966 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:16:38,009 - src.query_processor - ERROR - Error processing query: Embedding dimension 1536 does not match collection dimensionality 3072
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\src\query_processor.py", line 82, in query
+    result = self.qa_chain.invoke({"query": text})
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\base.py", line 167, in invoke
+    raise e
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\base.py", line 157, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\retrieval_qa\base.py", line 151, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\retrieval_qa\base.py", line 271, in _get_docs
+    return self.retriever.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        question, config={"callbacks": run_manager.get_child()}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\retrievers.py", line 258, in invoke
+    result = self._get_relevant_documents(
+        input, run_manager=run_manager, **_kwargs
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\vectorstores\base.py", line 1079, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **_kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 603, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+        query, k, filter=filter, **kwargs
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 701, in similarity_search_with_score
+    results = self.__query_collection(
+        query_embeddings=[query_embedding],
+    ...<3 lines>...
+        **kwargs,
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\utils\utils.py", line 54, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 393, in __query_collection
+    return self._collection.query(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        query_texts=query_texts,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\models\Collection.py", line 222, in query
+    query_results = self._client._query(
+        collection_id=self.id,
+    ...<6 lines>...
+        database=self.database,
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py", line 150, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Michael\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Michael\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 103, in wrapper
+    return self._rate_limit_enforcer.rate_limit(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\rate_limit\simple_rate_limit\__init__.py", line 24, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 805, in _query
+    self._validate_dimension(scan.collection, len(embedding), update=False)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 896, in _validate_dimension
+    raise InvalidDimensionException(
+        f"Embedding dimension {dim} does not match collection dimensionality {collection['dimension']}"
+    )
+chromadb.errors.InvalidDimensionException: Embedding dimension 1536 does not match collection dimensionality 3072
+2025-05-09 18:18:21,919 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:18:21,948 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:18:22,363 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:18:23,471 - main - INFO - Starting up services...
+2025-05-09 18:18:34,190 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:18:34,220 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:18:34,606 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:18:35,489 - main - INFO - Starting up services...
+2025-05-09 18:18:54,460 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:18:54,489 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:18:54,856 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:18:55,628 - main - INFO - Starting up services...
+2025-05-09 18:19:41,430 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 18:19:41,431 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 18:19:42,541 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:19:42,857 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-09 18:19:42,857 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-09 18:19:45,269 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:19:45,328 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-09 18:19:46,066 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-09 18:19:46,305 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:19:46,344 - src.query_processor - ERROR - Error processing query: Embedding dimension 1536 does not match collection dimensionality 3072
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\src\query_processor.py", line 101, in query
+    result = self.qa_chain.invoke({"query": text})
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\base.py", line 167, in invoke
+    raise e
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\base.py", line 157, in invoke
+    self._call(inputs, run_manager=run_manager)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\retrieval_qa\base.py", line 151, in _call
+    docs = self._get_docs(question, run_manager=_run_manager)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain\chains\retrieval_qa\base.py", line 271, in _get_docs
+    return self.retriever.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        question, config={"callbacks": run_manager.get_child()}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\retrievers.py", line 258, in invoke
+    result = self._get_relevant_documents(
+        input, run_manager=run_manager, **_kwargs
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\vectorstores\base.py", line 1079, in _get_relevant_documents
+    docs = self.vectorstore.similarity_search(query, **_kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 603, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+        query, k, filter=filter, **kwargs
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 701, in similarity_search_with_score
+    results = self.__query_collection(
+        query_embeddings=[query_embedding],
+    ...<3 lines>...
+        **kwargs,
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\utils\utils.py", line 54, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 393, in __query_collection
+    return self._collection.query(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        query_texts=query_texts,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\models\Collection.py", line 222, in query
+    query_results = self._client._query(
+        collection_id=self.id,
+    ...<6 lines>...
+        database=self.database,
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py", line 150, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 338, in wrapped_f
+    return copy(f, *args, **kw)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 400, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Michael\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Michael\AppData\Roaming\uv\python\cpython-3.13.2-windows-x86_64-none\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\tenacity\__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 103, in wrapper
+    return self._rate_limit_enforcer.rate_limit(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\rate_limit\simple_rate_limit\__init__.py", line 24, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 805, in _query
+    self._validate_dimension(scan.collection, len(embedding), update=False)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 896, in _validate_dimension
+    raise InvalidDimensionException(
+        f"Embedding dimension {dim} does not match collection dimensionality {collection['dimension']}"
+    )
+chromadb.errors.InvalidDimensionException: Embedding dimension 1536 does not match collection dimensionality 3072
+2025-05-09 18:20:48,860 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:20:48,929 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:20:49,381 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:20:50,399 - main - INFO - Starting up services...
+2025-05-09 18:21:00,889 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:21:00,926 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:21:01,307 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:21:02,091 - main - INFO - Starting up services...
+2025-05-09 18:21:13,482 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:21:13,510 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:21:13,888 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:21:14,817 - main - INFO - Starting up services...
+2025-05-09 18:21:28,437 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 18:21:28,438 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 18:21:29,573 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:21:29,803 - src.vector_store - ERROR - Error adding documents: Embedding dimension 1536 does not match collection dimensionality 3072
+2025-05-09 18:21:29,803 - main - ERROR - Error uploading document: Embedding dimension 1536 does not match collection dimensionality 3072
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\main.py", line 115, in upload_document
+    vector_store.add_documents(documents)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\src\vector_store.py", line 112, in add_documents
+    self.vector_store.add_documents(documents=chunks, ids=ids)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_core\vectorstores\base.py", line 288, in add_documents
+    return self.add_texts(texts, metadatas, **kwargs)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 551, in add_texts
+    self._collection.upsert(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        metadatas=metadatas,  # type: ignore
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        ids=ids_with_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\models\Collection.py", line 344, in upsert
+    self._client._upsert(
+    ~~~~~~~~~~~~~~~~~~~~^
+        collection_id=self.id,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        database=self.database,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py", line 150, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 103, in wrapper
+    return self._rate_limit_enforcer.rate_limit(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\rate_limit\simple_rate_limit\__init__.py", line 24, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 552, in _upsert
+    self._validate_embedding_record_set(coll, records_to_submit)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py", line 150, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 879, in _validate_embedding_record_set
+    self._validate_dimension(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        collection, len(record["embedding"]), update=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 896, in _validate_dimension
+    raise InvalidDimensionException(
+        f"Embedding dimension {dim} does not match collection dimensionality {collection['dimension']}"
+    )
+chromadb.errors.InvalidDimensionException: Embedding dimension 1536 does not match collection dimensionality 3072
+2025-05-09 18:22:43,917 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:22:43,937 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:22:44,442 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:22:45,159 - main - INFO - Starting up services...
+2025-05-09 18:22:56,620 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 18:22:56,620 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 18:22:57,173 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:22:57,283 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-09 18:22:57,283 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-09 18:23:00,009 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:23:00,067 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-09 18:23:00,704 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-09 18:23:00,998 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:23:01,033 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
+2025-05-09 18:23:01,826 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 18:23:01,835 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?

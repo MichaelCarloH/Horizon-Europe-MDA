@@ -60,9 +60,9 @@ class VectorStoreManager:
             if not os.getenv("OPENAI_API_KEY"):
                 raise ValueError("OPENAI_API_KEY environment variable is not set")
             
-            # Initialize embeddings with the latest model
+            # Initialize embeddings with text-embedding-ada-002 (1536 dimensions)
             self.embeddings = OpenAIEmbeddings(
-                model="text-embedding-3-large",  # Using the latest model
+                model="text-embedding-ada-002",
                 openai_api_key=settings.OPENAI_API_KEY
             )
             
