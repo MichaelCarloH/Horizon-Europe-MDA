@@ -4967,3 +4967,238 @@ Exception: Failed to add documents: 'NoneType' object has no attribute 'add_docu
 2025-05-09 15:10:12,610 - src.vector_store - INFO - Using Chroma directory: chroma
 2025-05-09 15:10:12,643 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
 2025-05-09 15:10:12,917 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:10:28,311 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:10:28,311 - src.vector_store - ERROR - Error initializing vector store: 'Settings' object has no attribute 'COLLECTION_PATH'
+2025-05-09 15:10:28,312 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:10:29,384 - main - INFO - Starting up services...
+2025-05-09 15:10:31,457 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 15:10:31,458 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:10:31,458 - src.vector_store - ERROR - Error initializing vector store: 'Settings' object has no attribute 'COLLECTION_PATH'
+2025-05-09 15:10:31,458 - src.vector_store - ERROR - Error adding documents: 'NoneType' object has no attribute 'add_documents'
+2025-05-09 15:10:31,459 - main - ERROR - Error uploading document: Failed to add documents: 'NoneType' object has no attribute 'add_documents'
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\src\vector_store.py", line 155, in add_documents
+    self.vector_store.add_documents(documents)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'add_documents'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\main.py", line 112, in upload_document
+    vector_store.add_documents(documents)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\src\vector_store.py", line 160, in add_documents
+    raise Exception(f"Failed to add documents: {str(e)}")
+Exception: Failed to add documents: 'NoneType' object has no attribute 'add_documents'
+2025-05-09 15:13:21,915 - src.vector_store - ERROR - Error getting collection stats: 'Settings' object has no attribute 'COLLECTION_PATH'
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\src\vector_store.py", line 185, in get_collection_stats
+    "persist_directory": settings.COLLECTION_PATH,
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\pydantic\main.py", line 989, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'Settings' object has no attribute 'COLLECTION_PATH'. Did you mean: 'COLLECTION_NAME'?
+2025-05-09 15:13:21,919 - main - ERROR - Error getting vector store stats: 'Settings' object has no attribute 'COLLECTION_PATH'
+2025-05-09 15:13:39,525 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:13:39,557 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:13:39,826 - src.vector_store - ERROR - Error initializing vector store: '_type'
+2025-05-09 15:13:39,826 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:13:40,612 - main - INFO - Starting up services...
+2025-05-09 15:13:45,651 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:13:45,682 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:13:46,007 - src.vector_store - ERROR - Error initializing vector store: '_type'
+2025-05-09 15:13:46,008 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:13:46,754 - main - INFO - Starting up services...
+2025-05-09 15:16:49,211 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:16:49,786 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:16:50,052 - src.vector_store - INFO - Creating new Chroma database
+2025-05-09 15:16:50,082 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:17:00,193 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:17:00,760 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:17:01,021 - src.vector_store - INFO - Creating new Chroma database
+2025-05-09 15:17:01,051 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:17:06,070 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:17:06,614 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:17:06,878 - src.vector_store - INFO - Creating new Chroma database
+2025-05-09 15:17:06,907 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:17:28,366 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:17:29,079 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:17:29,415 - src.vector_store - INFO - Creating new Chroma database
+2025-05-09 15:17:29,457 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:17:35,606 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:17:36,157 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:17:36,415 - src.vector_store - INFO - Creating new Chroma database
+2025-05-09 15:17:36,444 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:18:12,702 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:18:12,742 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:18:13,024 - src.vector_store - INFO - Creating new Chroma database
+2025-05-09 15:18:13,054 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:18:25,010 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:18:25,040 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:18:25,342 - src.vector_store - ERROR - Error initializing vector store: '_type'
+2025-05-09 15:18:25,342 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:18:25,984 - main - INFO - Starting up services...
+2025-05-09 15:19:05,387 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:19:05,419 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:19:05,684 - src.vector_store - ERROR - Error initializing vector store: '_type'
+2025-05-09 15:19:05,685 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:19:06,334 - main - INFO - Starting up services...
+2025-05-09 15:20:56,080 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:20:56,081 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:20:56,955 - main - INFO - Starting up services...
+2025-05-09 15:21:39,205 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:21:39,207 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:21:39,913 - main - INFO - Starting up services...
+2025-05-09 15:21:59,909 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:21:59,910 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:22:00,593 - main - INFO - Starting up services...
+2025-05-09 15:22:19,117 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 15:22:19,118 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 15:22:19,118 - src.vector_store - INFO - Saving 3 chunks to Chroma database at chroma
+2025-05-09 15:22:19,118 - src.vector_store - INFO - Found existing Chroma database, attempting to append
+2025-05-09 15:22:19,147 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:22:19,409 - src.vector_store - WARNING - Could not append to existing database: '_type'
+2025-05-09 15:22:19,410 - src.vector_store - INFO - Will create new database instead
+2025-05-09 15:22:19,440 - src.vector_store - ERROR - Error saving to Chroma: '_type'
+2025-05-09 15:22:19,440 - src.vector_store - ERROR - Error adding documents: Failed to save to Chroma: '_type'
+2025-05-09 15:22:19,441 - main - ERROR - Error uploading document: Failed to save to Chroma: '_type'
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\src\vector_store.py", line 101, in save_to_chroma
+    self.vector_store = Chroma.from_documents(
+                        ~~~~~~~~~~~~~~~~~~~~~^
+        documents=chunks,
+        ^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        persist_directory=settings.CHROMA_PATH
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 1234, in from_documents
+    return cls.from_texts(
+           ~~~~~~~~~~~~~~^
+        texts=texts,
+        ^^^^^^^^^^^^
+    ...<8 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 1161, in from_texts
+    chroma_collection = cls(
+        collection_name=collection_name,
+    ...<5 lines>...
+        **kwargs,
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 337, in __init__
+    self.__ensure_collection()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\langchain_chroma\vectorstores.py", line 344, in __ensure_collection
+    self._chroma_collection = self._client.get_or_create_collection(
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        name=self._collection_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        embedding_function=None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        metadata=self._collection_metadata,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\client.py", line 194, in get_or_create_collection
+    model = self._server.get_or_create_collection(
+        name=name,
+    ...<3 lines>...
+        configuration=configuration,
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py", line 150, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 103, in wrapper
+    return self._rate_limit_enforcer.rate_limit(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\rate_limit\simple_rate_limit\__init__.py", line 24, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 288, in get_or_create_collection
+    return self.create_collection(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        name=name,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        database=database,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py", line 150, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 103, in wrapper
+    return self._rate_limit_enforcer.rate_limit(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\rate_limit\simple_rate_limit\__init__.py", line 24, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\segment.py", line 242, in create_collection
+    coll, created = self._sysdb.create_collection(
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        id=model.id,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        database=database,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py", line 150, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\db\mixins\sysdb.py", line 294, in create_collection
+    existing = self.get_collections(name=name, tenant=tenant, database=database)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\telemetry\opentelemetry\__init__.py", line 150, in wrapper
+    return f(*args, **kwargs)
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\db\mixins\sysdb.py", line 521, in get_collections
+    configuration = self._load_config_from_json_str_and_migrate(
+        str(collection_id), rows[0][2]
+    )
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\db\mixins\sysdb.py", line 886, in _load_config_from_json_str_and_migrate
+    return CollectionConfigurationInternal.from_json_str(json_str)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\configuration.py", line 188, in from_json_str
+    return cls.from_json(config_json)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\venv\Lib\site-packages\chromadb\api\configuration.py", line 209, in from_json
+    f"Trying to instantiate configuration of type {cls.__name__} from JSON with type {json_map['_type']}"
+                                                                                      ~~~~~~~~^^^^^^^^^
+KeyError: '_type'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Michael\Code\mda\backend\main.py", line 112, in upload_document
+    vector_store.add_documents(documents)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\src\vector_store.py", line 135, in add_documents
+    self.save_to_chroma(chunks)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Michael\Code\mda\backend\src\vector_store.py", line 116, in save_to_chroma
+    raise Exception(f"Failed to save to Chroma: {str(e)}")
+Exception: Failed to save to Chroma: '_type'
+2025-05-09 15:25:18,329 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:25:18,359 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:25:18,628 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:25:27,978 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:25:28,003 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:25:28,260 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:25:52,066 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:25:52,098 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:25:52,385 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:28:35,992 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:28:36,024 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:28:36,332 - src.vector_store - ERROR - Error in VectorStoreManager initialization: '_type'
+2025-05-09 15:28:50,512 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:28:50,553 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:28:50,909 - src.vector_store - WARNING - Existing database is incompatible: '_type'
+2025-05-09 15:28:50,911 - src.vector_store - INFO - Creating new database...
+2025-05-09 15:28:51,048 - src.vector_store - ERROR - Error in VectorStoreManager initialization: [WinError 32] The process cannot access the file because it is being used by another process: 'chroma\\chroma.sqlite3'
+2025-05-09 15:29:37,357 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:29:37,403 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:29:38,076 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:29:39,110 - main - INFO - Starting up services...
+2025-05-09 15:29:55,149 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 15:29:55,184 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 15:29:55,545 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 15:29:56,208 - main - INFO - Starting up services...

@@ -5,9 +5,8 @@ pydantic-settings==2.0.0
 python-dotenv==1.0.1
 langchain==0.1.0
 langchain-openai==0.0.2
-langchain-community==0.0.13
-langchain-core==0.1.15
 langchain-chroma==0.0.1
+langchain-core==0.1.15
 chromadb==0.4.22
 numpy>=1.26.0,<2.0.0
 openai>=1.10.0
