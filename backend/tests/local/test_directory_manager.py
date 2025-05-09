@@ -32,7 +32,9 @@ def test_get_path():
     manager = DirectoryManager()
     path = manager.get_path("test", "file.txt")
     assert isinstance(path, (str, Path))
-    assert str(path).endswith("test/file.txt")
+    # Handle both Windows and Unix-style paths
+    path_str = str(path).replace('\\', '/')
+    assert path_str.endswith("test/file.txt")
 
 def test_directory_properties():
     """Test directory properties."""

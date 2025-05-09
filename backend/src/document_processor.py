@@ -8,7 +8,7 @@ from langchain_community.document_loaders import (
 from langchain.schema import Document
 import os
 import logging
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Union
 import hashlib
 from datetime import datetime
 from .config import settings
@@ -89,14 +89,17 @@ class DocumentProcessor:
             logger.error(f"Error loading document {file_path}: {str(e)}")
             raise
 
-    def process_document(self, file_path: str) -> List[Document]:
+    def process_document(self, document: Union[str, Document]) -> List[Document]:
         """Process a single document and return its chunks."""
         try:
-            # Load the document
-            documents = self._load_document(file_path)
-            
-            # Extract metadata
-            base_metadata = self._extract_metadata(file_path)
+            # If document is a file path, load it
+            if isinstance(document, str):
+                documents = self._load_document(document)
+                base_metadata = self._extract_metadata(document)
+            else:
+                # If it's already a Document, use it directly
+                documents = [document]
+                base_metadata = document.metadata.copy()
             
             # Process each page/section
             processed_chunks = []
@@ -129,11 +132,11 @@ class DocumentProcessor:
                 )
                 final_chunks.append(chunk)
             
-            logger.info(f"Processed {file_path} into {len(final_chunks)} chunks")
+            logger.info(f"Processed document into {len(final_chunks)} chunks")
             return final_chunks
             
         except Exception as e:
-            logger.error(f"Error processing document {file_path}: {str(e)}")
+            logger.error(f"Error processing document: {str(e)}")
             raise
 
     def process_directory(self, directory_path: str) -> List[Document]:
@@ -158,4 +161,26 @@ class DocumentProcessor:
             
         except Exception as e:
             logger.error(f"Error processing directory {directory_path}: {str(e)}")
+            raise
+
+    def process_documents(self, documents: List[Dict[str, Any]]) -> List[Document]:
+        """Process multiple documents and return their chunks."""
+        try:
+            processed_chunks = []
+            for doc in documents:
+                # Convert dict to Document if needed
+                if isinstance(doc, dict):
+                    content = doc.get("content", "")
+                    metadata = doc.get("metadata", {})
+                    doc = Document(page_content=content, metadata=metadata)
+                
+                # Process the document
+                chunks = self.process_document(doc)
+                processed_chunks.extend(chunks)
+            
+            logger.info(f"Processed {len(documents)} documents into {len(processed_chunks)} chunks")
+            return processed_chunks
+            
+        except Exception as e:
+            logger.error(f"Error processing documents: {str(e)}")
             raise 

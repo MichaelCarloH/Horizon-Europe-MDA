@@ -20,21 +20,23 @@ class Settings(BaseSettings):
     # OpenAI settings
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
     OPENAI_MODEL: str = "gpt-3.5-turbo"
+    EMBEDDING_MODEL: str = "text-embedding-ada-002"
     MAX_RESULTS: int = 5
     OPENAI_TEMPERATURE: float = 0.7
-    OPENAI_MAX_TOKENS: int = 2048
+    OPENAI_MAX_TOKENS: int = 1000
     
     # Database settings
     DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./data/chroma.db")
     
     # Path settings
-    CHROMA_PATH: str = "data/chroma"
+    CHROMA_PATH: str = os.getenv("CHROMA_PATH", "chroma")
     DATA_PATH: str = os.getenv("DATA_PATH", "data/pdf")
     
     # Vector store settings
     VECTOR_STORE_DIR: Path = Path("data/vector_store")
     CHUNK_SIZE: int = 1000
     CHUNK_OVERLAP: int = 200
+    MAX_CHUNKS_PER_DOCUMENT: int = 100
     
     # API settings
     API_VERSION: str = "1.0.0"
@@ -51,8 +53,8 @@ class Settings(BaseSettings):
     TEMPERATURE: float = 0.0
     
     # Cache Settings
-    ENABLE_CACHE: bool = True
-    CACHE_TTL: int = 3600  # 1 hour
+    ENABLE_CACHE: bool = False
+    CACHE_TTL: int = 3600  # 1 hour in seconds
     
     # New settings
     ALLOWED_ORIGINS: List[str] = [
@@ -63,7 +65,10 @@ class Settings(BaseSettings):
     ]
     
     # Added from the code block
-    COLLECTION_NAME: str = "mda_documents"
+    COLLECTION_NAME: str = "horizon_europe"
+    
+    # Upload settings
+    UPLOAD_DIR: str = "uploads"
     
     model_config = {
         "env_file": ".env",
@@ -88,3 +93,6 @@ class Settings(BaseSettings):
 
 # Create global settings instance
 settings = Settings() 
+
+# Ensure upload directory exists
+os.makedirs(settings.UPLOAD_DIR, exist_ok=True) 

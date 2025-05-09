@@ -1,13 +1,13 @@
 import logging
 from typing import List, Dict, Any, Optional
-from datetime import datetime
+from datetime import datetime, UTC
+import os
 
-from langchain_community.cache import InMemoryCache
 from langchain_openai import ChatOpenAI
-from langchain.chains import ConversationalRetrievalChain
-from langchain.memory import ConversationBufferMemory
+from langchain.chains import RetrievalQA
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import Chroma
 
-from src.vector_store import VectorStoreManager
 from src.config import settings
 from src.utils.logging_config import setup_logging
 
@@ -16,128 +16,106 @@ logger = logging.getLogger(__name__)
 
 class QueryProcessor:
     def __init__(self):
-        """Initialize the QueryProcessor with vector store and QA chain."""
-        try:
-            self.vector_store = VectorStoreManager()
-            self.memory = ConversationBufferMemory(
-                memory_key="chat_history",
-                return_messages=True
-            )
-            self.qa_chain = self._initialize_chain()
-            
-            # Initialize cache if enabled
-            if settings.ENABLE_CACHE:
-                self.cache = {}
-                self.cache_ttl = settings.CACHE_TTL
-            else:
-                self.cache = None
-                
-        except Exception as e:
-            logger.error(f"Error initializing QueryProcessor: {str(e)}", exc_info=True)
-            raise
+        """Initialize the query processor."""
+        self.embeddings = OpenAIEmbeddings()
+        self.vector_store = None
+        self.qa_chain = None
 
-    def _initialize_chain(self) -> ConversationalRetrievalChain:
-        """Initialize the conversational retrieval chain."""
+    def initialize_vector_store(self):
+        """Initialize the Chroma vector store."""
         try:
-            # Initialize language model
-            llm = ChatOpenAI(
-                model=settings.OPENAI_MODEL,
-                temperature=settings.OPENAI_TEMPERATURE,
-                max_tokens=settings.OPENAI_MAX_TOKENS
+            if not os.path.exists(settings.CHROMA_PATH):
+                logger.error(f"Chroma database not found at {settings.CHROMA_PATH}")
+                raise FileNotFoundError(f"Chroma database not found at {settings.CHROMA_PATH}")
+
+            self.vector_store = Chroma(
+                collection_name=settings.COLLECTION_NAME,
+                embedding_function=self.embeddings,
+                persist_directory=settings.CHROMA_PATH
             )
-            
-            # Create retrieval chain
-            chain = ConversationalRetrievalChain.from_llm(
-                llm=llm,
-                retriever=self.vector_store.get_retriever(),
-                memory=self.memory,
-                return_source_documents=True
-            )
-            
-            return chain
-            
+            logger.info("Successfully initialized Chroma vector store")
+            return True
         except Exception as e:
-            logger.error(f"Error initializing chain: {str(e)}", exc_info=True)
-            raise
+            logger.error(f"Error initializing vector store: {str(e)}")
+            raise Exception(f"Failed to initialize vector store: {str(e)}")
+
+    def initialize_qa_chain(self):
+        """Initialize the QA chain."""
+        try:
+            if not self.vector_store:
+                self.initialize_vector_store()
+            
+            self.qa_chain = RetrievalQA.from_chain_type(
+                llm=ChatOpenAI(temperature=0),
+                chain_type="stuff",
+                retriever=self.vector_store.as_retriever()
+            )
+            logger.info("Successfully initialized QA chain")
+            return True
+        except Exception as e:
+            logger.error(f"Error initializing QA chain: {str(e)}")
+            raise Exception(f"Failed to initialize QA chain: {str(e)}")
+
+    def query(self, query_text: str) -> str:
+        """Process a query and return the response."""
+        try:
+            if not self.qa_chain:
+                self.initialize_qa_chain()
+            
+            response = self.qa_chain.invoke({"query": query_text})
+            return response["result"]
+        except Exception as e:
+            logger.error(f"Error processing query: {str(e)}")
+            raise Exception(f"Failed to process query: {str(e)}")
 
     def _get_qa_prompt(self, query: str) -> str:
         """Get the formatted prompt for the QA chain."""
         return f"""
         Answer the following question based on the provided context. 
         If you cannot find the answer in the context, say "I don't have enough information to answer that question."
+        If the question is unclear or ambiguous, ask for clarification.
         
         Question: {query}
         """
 
-    def query(self, query: str, conversation_id: Optional[str] = None) -> Dict[str, Any]:
-        """
-        Process a query and return the response with source information.
-        
-        Args:
-            query (str): The user's query
-            conversation_id (Optional[str]): The ID of the conversation for context
-            
-        Returns:
-            Dict[str, Any]: Response containing answer and source information
-        """
+    def query(self, text: str, conversation_id: Optional[str] = None) -> Dict[str, Any]:
+        """Process a query and return the response."""
         try:
-            # Check cache first if enabled
-            if self.cache is not None:
-                cache_key = f"{conversation_id}:{query}" if conversation_id else query
-                if cache_key in self.cache:
-                    logger.info(f"Cache hit for query: {query}")
-                    return self.cache[cache_key]
-
-            # Format prompt
-            formatted_query = self._get_qa_prompt(query)
+            # Initialize chain if needed
+            chain = self._initialize_chain()
             
-            # Get response from chain
-            response = self.qa_chain({"question": formatted_query})
+            # Format the query
+            formatted_query = self._get_qa_prompt(text)
             
-            # Format source information
+            # Get response from QA chain
+            result = chain({"question": formatted_query})
+            
+            # Format source documents
             sources = []
-            if response.get("source_documents"):
-                for doc in response["source_documents"]:
-                    source = {
-                        "content": doc.page_content,
-                        "metadata": doc.metadata,
-                        "similarity": doc.metadata.get("similarity", None)
-                    }
-                    sources.append(source)
+            for doc in result.get("source_documents", []):
+                sources.append({
+                    "content": doc.page_content,
+                    "metadata": doc.metadata
+                })
             
-            # Format response with sources
-            answer = response["answer"]
-            if sources:
-                answer += "\n\nSources:\n"
-                for i, source in enumerate(sources, 1):
-                    answer += f"{i}. {source['content']}\n"
-            
-            # Prepare response
-            result = {
-                "response": answer,
+            logger.info(f"Successfully processed query: {text}")
+            return {
+                "answer": result["answer"],
                 "sources": sources,
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now(UTC).isoformat()
             }
-            
-            # Cache response if enabled
-            if self.cache is not None:
-                self.cache[cache_key] = result
-            
-            return result
-            
         except Exception as e:
             logger.error(f"Error processing query: {str(e)}", exc_info=True)
             return {
                 "error": str(e),
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now(UTC).isoformat()
             }
 
     def clear_conversation(self, conversation_id: str) -> None:
         """Clear the conversation history for a given conversation ID."""
         try:
-            if conversation_id in self.memory.chat_memory:
-                self.memory.chat_memory.pop(conversation_id)
-                logger.info(f"Cleared conversation history for ID: {conversation_id}")
+            self.memory.clear()
+            logger.info(f"Successfully cleared conversation: {conversation_id}")
         except Exception as e:
             logger.error(f"Error clearing conversation: {str(e)}", exc_info=True)
             raise
@@ -145,9 +123,14 @@ class QueryProcessor:
     def get_conversation_history(self, conversation_id: str) -> List[Dict[str, str]]:
         """Get the conversation history for a given conversation ID."""
         try:
-            if conversation_id in self.memory.chat_memory:
-                return self.memory.chat_memory[conversation_id]
-            return []
+            history = self.memory.chat_memory.messages
+            return [
+                {
+                    "role": "user" if i % 2 == 0 else "assistant",
+                    "content": msg.content
+                }
+                for i, msg in enumerate(history)
+            ]
         except Exception as e:
             logger.error(f"Error retrieving conversation history: {str(e)}", exc_info=True)
             raise 

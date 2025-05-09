@@ -1,0 +1,31 @@
+This is a test document.
+It contains some information about artificial intelligence.
+AI systems can process natural language and answer questions.
+This document is being used to test the RAG (Retrieval Augmented Generation) system.
+
+Artificial Intelligence (AI) is a branch of computer science that aims to create intelligent machines that can perform tasks that typically require human intelligence. These tasks include:
+
+1. Visual perception
+2. Speech recognition
+3. Decision-making
+4. Language translation
+5. Problem-solving
+
+AI systems can be trained using large amounts of data and can learn from experience to improve their performance over time. Machine learning, a subset of AI, focuses on developing algorithms that can learn patterns from data without being explicitly programmed.
+
+Key applications of AI include:
+- Natural Language Processing (NLP)
+- Computer Vision
+- Robotics
+- Expert Systems
+- Neural Networks
+
+This test document is used to verify the RAG (Retrieval-Augmented Generation) system's ability to process and retrieve information accurately.
+
+Machine Learning is a subset of AI that focuses on developing systems that can learn from and make decisions based on data. Deep Learning, a subset of Machine Learning, uses neural networks with many layers to analyze various factors of data.
+
+Natural Language Processing (NLP) is another important area of AI that deals with the interaction between computers and human language. It enables machines to read, understand, and derive meaning from human languages.
+
+Computer Vision is the field of AI that trains computers to interpret and understand the visual world. Using digital images from cameras and videos and deep learning models, machines can accurately identify and classify objects.
+
+These technologies are being applied across various industries, from healthcare and finance to transportation and entertainment, revolutionizing how we live and work. 

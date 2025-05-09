@@ -3,8 +3,8 @@ import logging
 from fastapi import FastAPI, HTTPException, Depends, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List, Optional
-from datetime import datetime
+from typing import List, Optional, Dict, Any
+from datetime import datetime, UTC, timezone
 from fastapi.responses import JSONResponse
 
 from src.config import Settings
@@ -12,12 +12,10 @@ from src.database import get_db_connection
 from src.document_processor import DocumentProcessor
 from src.vector_store import VectorStoreManager
 from src.query_processor import QueryProcessor
+from src.utils.logging_config import setup_logging
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# Setup logging
+setup_logging()
 logger = logging.getLogger(__name__)
 
 # Load settings
@@ -56,13 +54,24 @@ class DocumentUpload(BaseModel):
 class DocumentDelete(BaseModel):
     document_ids: List[str]
 
+@app.on_event("startup")
+async def startup_event():
+    """Initialize services during startup."""
+    try:
+        logger.info("Starting up services...")
+    except Exception as e:
+        logger.error(f"Error during startup: {e}")
+        # Log error but don't fail startup - services can initialize later
+        print(f"Warning: Error during startup: {e}")
+
 # Health check endpoint
 @app.get("/health")
-async def health_check():
+async def health_check() -> Dict[str, Any]:
+    """Health check endpoint."""
     return {
         "status": "healthy",
-        "version": settings.API_VERSION,
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "version": app.version
     }
 
 # Query endpoint
@@ -90,24 +99,27 @@ async def query_endpoint(query: Query):
 # Document management endpoints
 @app.post("/documents/upload")
 async def upload_document(file: UploadFile = File(...)):
+    """Upload a document to the vector store."""
     try:
-        # Save uploaded file
+        # Save file to upload directory
         file_path = os.path.join(settings.UPLOAD_DIR, file.filename)
-        os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
-        
         with open(file_path, "wb") as f:
             content = await file.read()
             f.write(content)
         
-        # Process document
+        # Process document and add to vector store
         documents = document_processor.process_document(file_path)
-        
-        # Add to vector store
         vector_store.add_documents(documents)
         
-        return {"message": "Document processed and added successfully"}
+        logger.info(f"Successfully uploaded document: {file.filename}")
+        return {
+            "message": "Document uploaded successfully",
+            "filename": file.filename,
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+        
     except Exception as e:
-        logger.error(f"Error uploading document: {str(e)}")
+        logger.error(f"Error uploading document: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.delete("/documents")
@@ -139,22 +151,24 @@ async def export_metadata():
         raise HTTPException(status_code=500, detail=str(e))
 
 # Conversation management endpoints
-@app.delete("/conversations/{conversation_id}")
+@app.post("/conversations/{conversation_id}/clear")
 async def clear_conversation(conversation_id: str):
+    """Clear conversation history."""
     try:
         query_processor.clear_conversation(conversation_id)
         return {"message": "Conversation cleared successfully"}
     except Exception as e:
-        logger.error(f"Error clearing conversation: {str(e)}")
+        logger.error(f"Error clearing conversation: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/conversations/{conversation_id}/history")
 async def get_conversation_history(conversation_id: str):
+    """Get conversation history."""
     try:
         history = query_processor.get_conversation_history(conversation_id)
-        return history
+        return {"history": history}
     except Exception as e:
-        logger.error(f"Error getting conversation history: {str(e)}")
+        logger.error(f"Error getting conversation history: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":

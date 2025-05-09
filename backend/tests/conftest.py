@@ -6,16 +6,34 @@ import time
 import requests
 import shutil
 from pathlib import Path
+from unittest.mock import MagicMock
 from dotenv import load_dotenv
 from src.config import Settings
 from src.utils.directory_manager import DirectoryManager
 from src.utils.logging_config import setup_logging
+from src.vector_store import VectorStoreManager
 
 # Load environment variables
 load_dotenv()
 
 # Add the backend directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+@pytest.fixture(scope="session", autouse=True)
+def mock_vector_store(monkeypatch):
+    """Create a mock vector store for testing."""
+    mock_store = MagicMock(spec=VectorStoreManager)
+    mock_store.vectorstore = MagicMock()
+    mock_store.add_documents.return_value = None
+    mock_store.similarity_search.return_value = []
+    
+    # Patch the VectorStoreManager
+    def mock_init(self):
+        self.vectorstore = mock_store.vectorstore
+        self.embedding_function = None
+    
+    monkeypatch.setattr(VectorStoreManager, "__init__", mock_init)
+    return mock_store
 
 @pytest.fixture(scope="session", autouse=True)
 def api_server():
@@ -34,7 +52,7 @@ def api_server():
         try:
             requests.get("http://localhost:8000/")
             break
-        except requests.exceptions.ConnectionError:
+        except requests.ConnectionError:
             time.sleep(1)
             retries += 1
     
@@ -49,40 +67,33 @@ def base_url():
     """Return the base URL for the API."""
     return "http://localhost:8000"
 
-@pytest.fixture(autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def setup_test_environment():
-    """Setup and teardown for each test"""
-    # Store original CHROMA_PATH
-    original_chroma_path = os.getenv("CHROMA_PATH")
+    """Setup test environment."""
+    # Set test environment variables
+    os.environ["OPENAI_API_KEY"] = "test-key"
+    os.environ["CHROMA_PATH"] = "test_chroma"
+    os.environ["COLLECTION_NAME"] = "test_collection"
     
-    # Set test CHROMA_PATH
-    test_chroma_path = "test_chroma"
-    os.environ["CHROMA_PATH"] = test_chroma_path
-    
-    # Create test directory if it doesn't exist
-    Path(test_chroma_path).mkdir(exist_ok=True)
+    # Create test directories
+    Path("test_chroma").mkdir(exist_ok=True)
     
     yield
     
-    # Cleanup after tests
-    if os.path.exists(test_chroma_path):
-        shutil.rmtree(test_chroma_path)
-    
-    # Restore original CHROMA_PATH
-    if original_chroma_path:
-        os.environ["CHROMA_PATH"] = original_chroma_path
-    else:
-        del os.environ["CHROMA_PATH"]
+    # Cleanup
+    try:
+        shutil.rmtree("test_chroma")
+    except Exception as e:
+        print(f"Warning: Could not clean up test_chroma: {e}")
 
-@pytest.fixture
-def test_dir(tmp_path):
+@pytest.fixture(scope="session")
+def test_dir(tmp_path_factory):
     """Create a temporary directory for tests."""
-    return tmp_path
+    return tmp_path_factory.mktemp("test_data")
 
 @pytest.fixture
 def settings():
     """Create test settings."""
-    os.environ["AZURE_ENVIRONMENT"] = "false"
     return Settings()
 
 @pytest.fixture
