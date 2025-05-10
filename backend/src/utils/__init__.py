@@ -1,5 +1,5 @@
 """
-Utility modules for the application.
+Utility functions and helpers for EuroRAG application.
 
 This package contains utility modules for:
 - Directory management
@@ -9,8 +9,10 @@ This package contains utility modules for:
 
 from .directory_manager import DirectoryManager
 from .logging_config import setup_logging
+from .excel_importer import import_excel_to_documents
 
 __all__ = [
     'DirectoryManager',
-    'setup_logging'
+    'setup_logging',
+    'import_excel_to_documents'
 ] 

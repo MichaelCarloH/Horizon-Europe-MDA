@@ -6447,3 +6447,54 @@ chromadb.errors.InvalidDimensionException: Embedding dimension 1536 does not mat
 2025-05-10 14:45:15,936 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
 2025-05-10 14:45:16,145 - src.vector_store - INFO - VectorStoreManager initialized successfully
 2025-05-10 14:45:16,708 - main - INFO - Starting up services...
+2025-05-10 14:51:53,045 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 14:51:53,087 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 14:51:53,594 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 14:51:54,745 - main - INFO - Starting up services...
+2025-05-10 14:52:56,555 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 14:52:56,557 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 14:52:58,167 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 14:52:58,329 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 14:52:58,330 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 14:53:01,191 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 14:53:01,284 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 14:53:01,545 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 14:53:01,549 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 5 is greater than number of elements in index 3, updating n_results = 3
+2025-05-10 14:53:04,722 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 14:53:04,743 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-10 14:53:04,744 - src.query_processor - INFO - Found 3 relevant documents
+2025-05-10 15:00:58,703 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 15:00:58,761 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 15:00:59,136 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 15:01:00,109 - main - INFO - Starting up services...
+2025-05-10 15:02:16,401 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 15:02:16,505 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 15:02:16,934 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 15:02:19,879 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 15:02:19,901 - src.query_processor - INFO - Successfully processed query: who is michael?
+2025-05-10 15:02:19,902 - src.query_processor - INFO - Found 5 relevant documents
+2025-05-10 15:04:53,084 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 15:04:53,127 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 15:04:53,420 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 15:04:54,185 - main - INFO - Starting up services...
+2025-05-10 15:05:08,387 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 15:05:08,496 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 15:05:08,772 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 15:05:12,074 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 15:05:12,096 - src.query_processor - INFO - Successfully processed query: How many volunteers participated in the NTP42 trial?
+2025-05-10 15:05:12,096 - src.query_processor - INFO - Found 5 relevant documents
+2025-05-10 15:09:03,090 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 15:09:03,191 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 15:09:03,594 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 15:09:04,516 - main - INFO - Starting up services...
+2025-05-10 15:09:46,375 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 15:09:46,376 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 15:09:47,501 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 15:09:47,687 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 15:09:47,689 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 15:09:50,213 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 15:09:50,326 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 15:09:50,741 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 15:09:54,223 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 15:09:54,251 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-10 15:09:54,252 - src.query_processor - INFO - Found 5 relevant documents

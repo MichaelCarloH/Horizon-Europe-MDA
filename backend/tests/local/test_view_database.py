@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from src.view_database import view_database
+from src.database.view_database import view_database
 import logging
 
 # Configure logging

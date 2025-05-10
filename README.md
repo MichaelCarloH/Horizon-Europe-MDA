@@ -1,75 +1,187 @@
-# Horizon-Europe-MDA
+# EuroRAG Project
 
-# Horizon Europe Analysis
+A Retrieval-Augmented Generation (RAG) system for document-based question answering, built with FastAPI and React.
 
 ## Project Structure
 
-```plaintext
-```plaintext 
-/horizon-europe-analysis
-│── /data                # Raw and processed datasets
-│── /notebooks           # Jupyter notebooks for exploration & testing
-│── /src                 # Main source code
-│   │── __init__.py
-│   │── data_processing.py    # Preprocessing (cleaning, formatting)
-│   │── topic_modeling.py     # LDA/BERT embeddings for themes
-│   │── retrieval.py          # FAISS/ChromaDB for document search
-│   │── rag_model.py          # Integration with OpenAI/LLM
-│   │── api.py                # Flask/FastAPI for querying the dataset
-│   │── dashboard.py          # Dash/Plotly app for visualization
-│── /models              # Saved models (LDA, embeddings, etc.)
-│── /config              # Configuration files (API keys, settings)
-│── /deployment          # Azure deployment scripts (Docker, Terraform)
-│── requirements.txt      # Dependencies
-│── .gitignore           # Ignore unnecessary files
-│── README.md            # Project documentation
+```
+├── backend/                 # FastAPI backend
+│   ├── src/                # Source code
+│   │   ├── config/        # Configuration settings
+│   │   ├── database/      # Database operations
+│   │   ├── processing/    # Document and query processing
+│   │   ├── utils/         # Utility functions
+│   │   └── vector_store/  # Vector store operations
+│   ├── tests/             # Test files
+│   └── main.py           # FastAPI application entry point
+│
+└── frontend/              # React frontend
+    ├── src/              # Source code
+    ├── public/           # Static files
+    └── package.json      # Dependencies
 ```
 
-## Step-by-Step Plan
+## Prerequisites
 
-### 1. Data Exploration (`notebooks/`)
-- Load dataset using `pandas`
-- Handle missing values and data inconsistencies
-- Analyze distributions and key variables
+- Python 3.11+
+- Node.js 18+
+- npm or yarn
+- OpenAI API key
 
-### 2. Data Preprocessing (`src/data_processing.py`)
-- Clean and structure the dataset
-- Normalize text descriptions
-- Standardize categorical variables
+## Setup
 
-### 3. Topic Modeling & NLP (`src/topic_modeling.py`)
-- Implement **LDA** for topic extraction
-- Use `sentence-transformers` to generate embeddings
-- Cluster projects based on research themes
+### Backend Setup
 
-### 4. Retrieval-Augmented Generation (RAG) (`src/retrieval.py` & `src/rag_model.py`)
-- Store embeddings in **FAISS/ChromaDB**
-- Develop a **retriever model** for document search
-- Integrate **GPT/LLM** for natural language responses
+1. Create and activate a virtual environment with Python 3.11:
+```bash
+cd backend
+python3.11 -m venv .venv-py311
+# On Windows:
+.venv-py311\Scripts\activate
+# On Unix/MacOS:
+source .venv-py311/bin/activate
+```
 
-### 5. API Development (`src/api.py`)
-- Build a **Flask/FastAPI** backend to handle queries
-- Expose endpoints for project search and summaries
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-$headers = @{"Content-Type"="application/json"}
-$body = '{"query_text": "What is the project about?", "k": 3}'
-Invoke-WebRequest -Uri http://127.0.0.1:8000/query/ -Method POST -Headers $headers -Body $body
+3. Create a `.env` file in the backend directory:
+```env
+OPENAI_API_KEY=your_api_key_here
+CHROMA_PATH=./data/chroma
+COLLECTION_NAME=documents
+UPLOAD_DIR=./data/uploads
+```
 
+4. Start the backend server:
+```bash
+# Development mode with auto-reload:
+python main.py
 
-### 6. Data Visualization & Dashboard (`src/dashboard.py`)
-- Develop an interactive dashboard with **Dash/Plotly**
-- Provide insights on funding distribution, research themes, and collaborations
+# Or using uvicorn directly:
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
 
-### 7. Deployment (`/deployment/`)
-- Deploy the API and dashboard on **Azure**
-- Use **Docker & Terraform** for cloud infrastructure setup
+The API will be available at `http://localhost:8000`
 
-## Goals & Impact
-- Provide an **interactive, data-driven platform** for exploring Horizon Europe projects
-- Enable **NLP-powered insights** into research themes and funding trends
-- Improve **stakeholder accessibility** to research data using **RAG-LLM**
+### Frontend Setup
 
----
+1. Install dependencies:
+```bash
+cd frontend
+npm install
+```
 
-This roadmap ensures that all team members can contribute effectively to the project. 🚀
+2. Start the development server:
+```bash
+npm run dev
+```
+
+The frontend will be available at `http://localhost:5173`
+
+## API Endpoints
+
+### Health Check
+```bash
+GET /health
+```
+
+### Query Processing
+```bash
+POST /query
+{
+    "text": "Your question here",
+    "conversation_id": "optional_conversation_id"
+}
+```
+
+### Document Management
+```bash
+# Upload document
+POST /documents/upload
+Content-Type: multipart/form-data
+file: <file>
+
+# Delete documents
+DELETE /documents
+{
+    "document_ids": ["id1", "id2"]
+}
+```
+
+### Vector Store Management
+```bash
+# Get vector store statistics
+GET /vector-store/stats
+
+# Export metadata
+GET /vector-store/export-metadata
+```
+
+### Conversation Management
+```bash
+# Clear conversation
+POST /conversations/{conversation_id}/clear
+
+# Get conversation history
+GET /conversations/{conversation_id}/history
+```
+
+## Making Queries
+
+1. Through the API:
+```bash
+curl -X POST http://localhost:8000/query \
+  -H "Content-Type: application/json" \
+  -d '{"text": "What is the main topic of the document?", "conversation_id": null}'
+```
+
+2. Through the Frontend:
+- Open `http://localhost:5173` in your browser
+- Enter your question in the chat interface
+- The system will process your query and return a response
+
+## Development
+
+### Running Tests
+```bash
+cd backend
+python -m pytest tests/
+```
+
+### Code Style
+The project uses:
+- Black for Python code formatting
+- ESLint for JavaScript/TypeScript formatting
+
+## Troubleshooting
+
+1. If you get import errors:
+   - Make sure you're in the correct directory
+   - Check that the virtual environment is activated
+   - Verify that all dependencies are installed
+
+2. If the frontend can't connect to the backend:
+   - Ensure the backend server is running
+   - Check that CORS is properly configured
+   - Verify the API URL in the frontend configuration
+
+3. If document processing fails:
+   - Check the upload directory permissions
+   - Verify the OpenAI API key is valid
+   - Check the logs for detailed error messages
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 

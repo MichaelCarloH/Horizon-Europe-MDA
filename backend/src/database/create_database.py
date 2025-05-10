@@ -1,17 +1,16 @@
-import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+import sys
+import logging
+from typing import List, Dict, Any
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
-import logging
-from typing import List, Dict, Any
 from langchain.schema import Document
 from dotenv import load_dotenv
 import PyPDF2
 import shutil
+
 from src.config import settings
 from src.utils.excel_importer import import_excel_to_documents
 

@@ -1,28 +1,29 @@
 import os
+import sys
 import logging
-from fastapi import FastAPI, HTTPException, Depends, UploadFile, File
+from pathlib import Path
+from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
-from datetime import datetime, UTC, timezone
+from datetime import datetime, timezone
 from fastapi.responses import JSONResponse
-import tempfile
-from pathlib import Path
 
-from src.config import Settings
-from src.database import get_db_connection
-from src.document_processor import DocumentProcessor
-from src.vector_store import VectorStoreManager
-from src.query_processor import QueryProcessor
+# Add the project root directory to Python path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+from src.config import settings
+from src.database.database import get_db_connection
+from src.processing.document_processor import DocumentProcessor
+from src.vector_store.vector_store import VectorStoreManager
+from src.processing.query_processor import QueryProcessor
 from src.utils.logging_config import setup_logging
 
 
 # Setup logging
 setup_logging()
 logger = logging.getLogger(__name__)
-
-# Load settings
-settings = Settings()
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -176,4 +177,12 @@ async def get_conversation_history(conversation_id: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Ensure upload directory exists
+    os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
+    # Run the server
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True  # Enable auto-reload during development
+    )

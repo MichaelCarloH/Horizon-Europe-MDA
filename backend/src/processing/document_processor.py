@@ -11,7 +11,7 @@ import logging
 from typing import List, Dict, Any, Optional, Union
 import hashlib
 from datetime import datetime
-from .config import settings
+from src.config import settings
 
 logger = logging.getLogger(__name__)
 
