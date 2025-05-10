@@ -6404,3 +6404,13 @@ chromadb.errors.InvalidDimensionException: Embedding dimension 1536 does not mat
 2025-05-10 12:26:49,234 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
 2025-05-10 12:26:49,447 - src.vector_store - INFO - VectorStoreManager initialized successfully
 2025-05-10 12:26:50,040 - main - INFO - Starting up services...
+2025-05-10 12:26:56,780 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:26:56,815 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:26:57,030 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:26:57,588 - main - INFO - Starting up services...
+2025-05-10 12:27:02,782 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:27:02,863 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 12:27:03,152 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:27:05,478 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 12:27:05,494 - src.query_processor - INFO - Successfully processed query: What is project 101116741 about?
+2025-05-10 12:27:05,494 - src.query_processor - INFO - Found 5 relevant documents
