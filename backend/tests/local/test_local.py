@@ -3,6 +3,7 @@ import sys
 import requests
 import logging
 from datetime import datetime
+import pandas
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -74,6 +75,8 @@ def test_query():
         logger.error(f"Error in query test: {str(e)}")
         logger.error("Traceback:", exc_info=True)
         return False
+    
+    
 
 if __name__ == "__main__":
     logger.info("Starting tests...")

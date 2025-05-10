@@ -5728,3 +5728,679 @@ chromadb.errors.InvalidDimensionException: Embedding dimension 1536 does not mat
 2025-05-09 18:23:01,033 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 4 is greater than number of elements in index 3, updating n_results = 3
 2025-05-09 18:23:01,826 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
 2025-05-09 18:23:01,835 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-09 18:28:50,442 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:28:50,529 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:28:50,961 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:28:51,849 - main - INFO - Starting up services...
+2025-05-09 18:29:18,827 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:29:18,848 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:29:19,248 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:29:20,091 - main - INFO - Starting up services...
+2025-05-09 18:29:35,577 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:29:35,601 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:29:35,923 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:29:36,613 - main - INFO - Starting up services...
+2025-05-09 18:29:41,950 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:29:41,973 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:29:42,279 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:29:42,957 - main - INFO - Starting up services...
+2025-05-09 18:29:57,211 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:29:57,233 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:29:57,596 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:29:58,409 - main - INFO - Starting up services...
+2025-05-09 18:30:46,686 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:30:46,707 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:30:47,049 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:30:47,826 - main - INFO - Starting up services...
+2025-05-09 18:30:53,338 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:30:53,360 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:30:53,660 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:30:54,461 - main - INFO - Starting up services...
+2025-05-09 18:31:57,057 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:31:57,076 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:31:57,386 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:31:58,106 - main - INFO - Starting up services...
+2025-05-09 18:32:03,938 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:32:03,958 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:32:04,268 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:32:05,154 - main - INFO - Starting up services...
+2025-05-09 18:32:20,644 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:32:20,665 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:32:20,986 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:32:21,763 - main - INFO - Starting up services...
+2025-05-09 18:32:33,495 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:32:33,516 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:32:33,834 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:32:34,556 - main - INFO - Starting up services...
+2025-05-09 18:32:41,189 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:32:41,215 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:32:41,583 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:32:42,493 - main - INFO - Starting up services...
+2025-05-09 18:33:15,469 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:33:15,489 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:33:15,806 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:33:16,473 - main - INFO - Starting up services...
+2025-05-09 18:33:37,664 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 18:33:37,664 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 18:33:38,546 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:33:38,724 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-09 18:33:38,724 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-09 18:33:42,178 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:33:42,328 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-09 18:33:43,008 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-09 18:33:43,757 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:33:44,715 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 18:33:44,723 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-09 18:33:50,752 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:33:50,775 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:33:51,096 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:33:51,781 - main - INFO - Starting up services...
+2025-05-09 18:34:53,888 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:34:53,909 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:34:54,207 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:34:54,883 - main - INFO - Starting up services...
+2025-05-09 18:35:07,311 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:35:07,332 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:35:07,649 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:35:08,380 - main - INFO - Starting up services...
+2025-05-09 18:35:38,427 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:35:38,447 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:35:38,748 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:35:39,422 - main - INFO - Starting up services...
+2025-05-09 18:35:57,450 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:35:57,472 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:35:57,792 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:35:58,491 - main - INFO - Starting up services...
+2025-05-09 18:36:04,981 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-09 18:36:04,982 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-09 18:36:05,709 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:36:05,855 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-09 18:36:05,856 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-09 18:36:08,558 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:36:08,620 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-09 18:36:09,315 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-09 18:36:09,575 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-09 18:36:10,370 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-09 18:36:10,379 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-09 18:38:46,085 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:38:46,109 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:38:46,455 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:38:47,151 - main - INFO - Starting up services...
+2025-05-09 18:38:54,410 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:38:54,440 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:38:54,829 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:38:55,687 - main - INFO - Starting up services...
+2025-05-09 18:39:03,067 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:39:03,105 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:39:03,594 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:39:04,338 - main - INFO - Starting up services...
+2025-05-09 18:39:10,453 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:39:10,475 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:39:10,810 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:39:11,572 - main - INFO - Starting up services...
+2025-05-09 18:39:18,359 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:39:18,384 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:39:18,762 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:39:19,711 - main - INFO - Starting up services...
+2025-05-09 18:39:25,705 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:39:25,726 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:39:26,059 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:39:26,840 - main - INFO - Starting up services...
+2025-05-09 18:39:32,510 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-09 18:39:32,542 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-09 18:39:32,999 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-09 18:39:33,938 - main - INFO - Starting up services...
+2025-05-10 10:09:45,533 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:09:45,616 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:09:46,254 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:09:47,008 - main - INFO - Starting up services...
+2025-05-10 10:10:55,266 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 10:10:55,267 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 10:10:56,648 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:10:56,854 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 10:10:56,854 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 10:10:59,760 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:10:59,815 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 10:11:00,481 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-10 10:11:01,231 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:11:02,202 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 10:11:02,210 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-10 10:13:14,462 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:13:14,481 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:13:14,839 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:13:15,519 - main - INFO - Starting up services...
+2025-05-10 10:14:24,774 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:14:24,799 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:14:25,129 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:14:25,943 - main - INFO - Starting up services...
+2025-05-10 10:14:31,648 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:14:31,676 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:14:32,096 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:14:32,786 - main - INFO - Starting up services...
+2025-05-10 10:14:39,608 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:14:39,628 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:14:39,962 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:14:40,697 - main - INFO - Starting up services...
+2025-05-10 10:14:47,188 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:14:47,223 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:14:47,597 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:14:48,616 - main - INFO - Starting up services...
+2025-05-10 10:16:03,768 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:16:03,790 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:16:04,122 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:16:04,886 - main - INFO - Starting up services...
+2025-05-10 10:17:55,501 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:17:55,521 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:17:55,830 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:17:56,615 - main - INFO - Starting up services...
+2025-05-10 10:18:55,714 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:18:55,744 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:18:56,099 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:18:56,784 - main - INFO - Starting up services...
+2025-05-10 10:19:11,190 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:19:11,214 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:19:11,595 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:19:12,360 - main - INFO - Starting up services...
+2025-05-10 10:19:17,670 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:19:17,692 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:19:18,004 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:19:18,766 - main - INFO - Starting up services...
+2025-05-10 10:20:45,151 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:20:45,171 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:20:45,495 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:20:46,207 - main - INFO - Starting up services...
+2025-05-10 10:21:02,415 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:21:02,439 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:21:02,750 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:21:03,491 - main - INFO - Starting up services...
+2025-05-10 10:23:02,751 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:23:02,778 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:23:03,151 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:23:03,938 - main - INFO - Starting up services...
+2025-05-10 10:23:09,570 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:23:09,590 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:23:09,895 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:23:10,661 - main - INFO - Starting up services...
+2025-05-10 10:23:17,407 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:23:17,428 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:23:17,860 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:23:18,907 - main - INFO - Starting up services...
+2025-05-10 10:23:24,971 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:23:24,993 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:23:25,303 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:23:25,986 - main - INFO - Starting up services...
+2025-05-10 10:23:31,398 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:23:31,418 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:23:31,709 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:23:32,338 - main - INFO - Starting up services...
+2025-05-10 10:23:38,467 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:23:38,492 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:23:38,805 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:23:39,467 - main - INFO - Starting up services...
+2025-05-10 10:23:46,672 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:23:46,911 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:23:47,541 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:23:48,348 - main - INFO - Starting up services...
+2025-05-10 10:28:41,736 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:28:41,756 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:28:42,110 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:28:42,901 - main - INFO - Starting up services...
+2025-05-10 10:28:49,987 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:28:50,007 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:28:50,328 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:28:51,041 - main - INFO - Starting up services...
+2025-05-10 10:28:56,226 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:28:56,250 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:28:56,589 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:28:57,426 - main - INFO - Starting up services...
+2025-05-10 10:29:39,873 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 10:29:39,874 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 10:29:40,904 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:29:41,102 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 10:29:41,103 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 10:29:43,880 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:29:44,022 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 10:29:44,797 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-10 10:29:45,205 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:29:46,721 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 10:29:46,731 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-10 10:30:57,981 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:30:58,005 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:30:58,337 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:30:59,085 - main - INFO - Starting up services...
+2025-05-10 10:31:08,892 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:31:08,915 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:31:09,227 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:31:09,947 - main - INFO - Starting up services...
+2025-05-10 10:31:15,904 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:31:15,925 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:31:16,238 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:31:16,887 - main - INFO - Starting up services...
+2025-05-10 10:31:55,703 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:31:55,730 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:31:56,133 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:31:56,814 - main - INFO - Starting up services...
+2025-05-10 10:32:04,906 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:32:04,928 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:32:05,237 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:32:05,927 - main - INFO - Starting up services...
+2025-05-10 10:33:09,134 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:33:09,158 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:33:09,503 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:33:10,288 - main - INFO - Starting up services...
+2025-05-10 10:33:16,245 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:33:16,268 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:33:16,596 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:33:17,293 - main - INFO - Starting up services...
+2025-05-10 10:34:33,843 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:34:33,865 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:34:34,324 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:34:35,108 - main - INFO - Starting up services...
+2025-05-10 10:34:41,439 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:34:41,465 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:34:41,803 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:34:42,687 - main - INFO - Starting up services...
+2025-05-10 10:34:52,860 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:34:52,880 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:34:53,200 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:34:54,074 - main - INFO - Starting up services...
+2025-05-10 10:35:39,248 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 10:35:39,249 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 10:35:40,006 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:35:40,224 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 10:35:40,226 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 10:35:42,628 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:35:42,684 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 10:35:43,343 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-10 10:35:43,612 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:35:44,394 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 10:35:44,403 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-10 10:37:22,336 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:37:22,359 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:37:22,706 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:37:23,522 - main - INFO - Starting up services...
+2025-05-10 10:37:28,881 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:37:28,911 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:37:29,256 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:37:29,957 - main - INFO - Starting up services...
+2025-05-10 10:38:21,244 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:38:21,268 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:38:21,649 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:38:22,471 - main - INFO - Starting up services...
+2025-05-10 10:38:27,856 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:38:27,875 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:38:28,188 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:38:29,014 - main - INFO - Starting up services...
+2025-05-10 10:39:17,160 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:39:17,181 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:39:17,483 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:39:18,184 - main - INFO - Starting up services...
+2025-05-10 10:39:26,749 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:39:26,770 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:39:27,081 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:39:27,789 - main - INFO - Starting up services...
+2025-05-10 10:40:18,009 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:40:18,032 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:40:18,363 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:40:19,060 - main - INFO - Starting up services...
+2025-05-10 10:40:33,832 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:40:33,856 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:40:34,181 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:40:34,840 - main - INFO - Starting up services...
+2025-05-10 10:41:04,863 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 10:41:04,864 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 10:41:06,048 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:41:06,239 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 10:41:06,240 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 10:41:09,035 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:41:09,090 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 10:41:09,797 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-10 10:41:10,590 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:41:11,762 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 10:41:11,769 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-10 10:41:49,630 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:41:49,650 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:41:49,955 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:41:50,690 - main - INFO - Starting up services...
+2025-05-10 10:42:30,753 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:42:30,776 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:42:31,084 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:42:31,815 - main - INFO - Starting up services...
+2025-05-10 10:42:41,751 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:42:41,771 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:42:42,102 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:42:42,806 - main - INFO - Starting up services...
+2025-05-10 10:44:33,306 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:44:33,323 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:44:33,600 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:44:34,266 - main - INFO - Starting up services...
+2025-05-10 10:48:20,751 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:48:20,770 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:48:21,065 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:48:21,704 - main - INFO - Starting up services...
+2025-05-10 10:48:38,287 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:48:38,304 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:48:38,584 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:48:39,284 - main - INFO - Starting up services...
+2025-05-10 10:48:56,852 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:48:56,871 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:48:57,158 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:48:57,777 - main - INFO - Starting up services...
+2025-05-10 10:49:51,499 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:49:51,519 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:49:51,808 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:49:52,477 - main - INFO - Starting up services...
+2025-05-10 10:50:26,204 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 10:50:26,205 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 10:50:27,041 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:50:27,182 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 10:50:27,183 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 10:50:29,743 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:50:29,799 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 10:50:30,456 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-10 10:50:30,785 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:50:31,604 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 10:50:31,612 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-10 10:51:04,650 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:51:04,669 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:51:04,951 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:51:05,595 - main - INFO - Starting up services...
+2025-05-10 10:51:26,668 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:51:26,687 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:51:26,982 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:51:27,649 - main - INFO - Starting up services...
+2025-05-10 10:53:08,391 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:53:08,414 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:53:08,759 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:53:09,625 - main - INFO - Starting up services...
+2025-05-10 10:53:18,577 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:53:18,597 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:53:18,881 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:53:19,583 - main - INFO - Starting up services...
+2025-05-10 10:53:31,038 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:53:31,057 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:53:31,346 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:53:31,977 - main - INFO - Starting up services...
+2025-05-10 10:55:08,471 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 10:55:08,472 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 10:55:09,150 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:55:09,302 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 10:55:09,302 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 10:55:11,804 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:55:11,857 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 10:55:12,497 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-10 10:55:13,133 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 10:55:13,912 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 10:55:13,920 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-10 10:55:22,594 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:55:22,614 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:55:22,900 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:55:23,652 - main - INFO - Starting up services...
+2025-05-10 10:56:07,057 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:56:07,078 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:56:07,428 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:56:08,065 - main - INFO - Starting up services...
+2025-05-10 10:56:43,150 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:56:43,169 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:56:43,485 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:56:44,133 - main - INFO - Starting up services...
+2025-05-10 10:57:01,277 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:57:01,293 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:57:01,586 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:57:02,312 - main - INFO - Starting up services...
+2025-05-10 10:57:12,638 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 10:57:12,663 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 10:57:12,950 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 10:57:13,570 - main - INFO - Starting up services...
+2025-05-10 11:03:42,526 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:03:42,546 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:03:42,848 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:03:43,513 - main - INFO - Starting up services...
+2025-05-10 11:11:10,990 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:11:11,015 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:11:11,366 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:11:12,086 - main - INFO - Starting up services...
+2025-05-10 11:11:18,045 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:11:18,064 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:11:18,366 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:11:19,064 - main - INFO - Starting up services...
+2025-05-10 11:20:06,641 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:20:06,664 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:20:07,027 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:20:07,868 - main - INFO - Starting up services...
+2025-05-10 11:20:14,584 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:20:14,609 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:20:15,016 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:20:15,882 - main - INFO - Starting up services...
+2025-05-10 11:20:22,665 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:20:22,692 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:20:23,080 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:20:23,998 - main - INFO - Starting up services...
+2025-05-10 11:20:31,617 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:20:31,643 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:20:32,027 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:20:32,862 - main - INFO - Starting up services...
+2025-05-10 11:20:40,138 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:20:40,181 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:20:40,618 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:20:41,790 - main - INFO - Starting up services...
+2025-05-10 11:20:50,398 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:20:50,425 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:20:50,859 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:20:51,888 - main - INFO - Starting up services...
+2025-05-10 11:20:59,730 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:20:59,763 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:21:00,457 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:21:01,391 - main - INFO - Starting up services...
+2025-05-10 11:21:10,104 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:21:10,133 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:21:10,621 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:21:11,640 - main - INFO - Starting up services...
+2025-05-10 11:21:19,257 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:21:19,289 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:21:19,715 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:21:20,771 - main - INFO - Starting up services...
+2025-05-10 11:21:29,078 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:21:29,108 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:21:29,621 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:21:30,658 - main - INFO - Starting up services...
+2025-05-10 11:21:37,698 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:21:37,724 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:21:38,094 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:21:38,941 - main - INFO - Starting up services...
+2025-05-10 11:21:45,269 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:21:45,293 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:21:45,696 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:21:46,471 - main - INFO - Starting up services...
+2025-05-10 11:21:52,730 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:21:52,755 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:21:53,164 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:21:54,069 - main - INFO - Starting up services...
+2025-05-10 11:22:13,333 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:22:13,355 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:22:13,541 - src.vector_store - ERROR - Error in VectorStoreManager initialization: no such column: collections.topic
+2025-05-10 11:23:50,697 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:23:50,725 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:23:51,082 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:23:51,695 - main - INFO - Starting up services...
+2025-05-10 11:26:52,037 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:26:52,058 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:26:52,272 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:26:52,866 - main - INFO - Starting up services...
+2025-05-10 11:27:32,343 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 11:27:32,343 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 11:27:33,261 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 11:27:33,422 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 11:27:33,422 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 11:29:15,302 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:29:15,325 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:29:15,546 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:29:16,157 - main - INFO - Starting up services...
+2025-05-10 11:29:21,064 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:29:21,086 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:29:21,295 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:29:21,910 - main - INFO - Starting up services...
+2025-05-10 11:29:46,812 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:29:46,835 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:29:47,181 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:29:47,956 - main - INFO - Starting up services...
+2025-05-10 11:29:55,161 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 11:29:55,162 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 11:29:56,099 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 11:29:56,237 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 11:29:56,237 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 11:31:58,066 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:31:58,090 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:31:58,325 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:31:58,927 - main - INFO - Starting up services...
+2025-05-10 11:32:16,456 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 11:32:16,457 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 11:32:17,464 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 11:32:17,648 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 11:32:17,648 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 11:32:20,493 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 11:32:20,574 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 11:32:21,697 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-10 11:32:22,482 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 11:32:23,327 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 11:32:23,344 - src.query_processor - INFO - Successfully processed query: What is artificial intelligence?
+2025-05-10 11:35:04,211 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:35:04,231 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:35:04,441 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:35:05,012 - main - INFO - Starting up services...
+2025-05-10 11:38:06,073 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:38:06,092 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:38:06,291 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:38:06,884 - main - INFO - Starting up services...
+2025-05-10 11:38:11,315 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:38:11,333 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:38:11,527 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:38:12,101 - main - INFO - Starting up services...
+2025-05-10 11:42:08,545 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:42:08,581 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:42:08,797 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:42:09,363 - main - INFO - Starting up services...
+2025-05-10 11:43:58,168 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:43:58,202 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:43:58,417 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:43:59,072 - main - INFO - Starting up services...
+2025-05-10 11:44:03,425 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:44:03,461 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:44:03,678 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:44:04,230 - main - INFO - Starting up services...
+2025-05-10 11:44:24,740 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:44:24,775 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:44:25,109 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:44:25,713 - main - INFO - Starting up services...
+2025-05-10 11:46:03,705 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:46:03,738 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:46:04,049 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:46:04,706 - main - INFO - Starting up services...
+2025-05-10 11:46:09,210 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:46:09,249 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:46:09,477 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:46:10,106 - main - INFO - Starting up services...
+2025-05-10 11:46:41,448 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:46:41,482 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:46:41,709 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:46:42,318 - main - INFO - Starting up services...
+2025-05-10 11:47:02,400 - backoff - INFO - Backing off send_request(...) for 0.1s (requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Read timed out. (read timeout=15))
+2025-05-10 11:50:14,198 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:50:14,228 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:50:14,441 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:50:15,013 - main - INFO - Starting up services...
+2025-05-10 11:50:21,771 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:50:21,801 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:50:22,013 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:50:22,604 - main - INFO - Starting up services...
+2025-05-10 11:58:34,550 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:58:34,582 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:58:34,922 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:58:35,527 - main - INFO - Starting up services...
+2025-05-10 11:59:09,860 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 11:59:09,896 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 11:59:10,124 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 11:59:10,689 - main - INFO - Starting up services...
+2025-05-10 12:01:45,882 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:01:45,913 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:01:46,123 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:01:46,689 - main - INFO - Starting up services...
+2025-05-10 12:06:06,870 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:06:06,908 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:06:07,150 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:06:07,818 - main - INFO - Starting up services...
+2025-05-10 12:06:16,278 - src.document_processor - INFO - Processed document into 3 chunks
+2025-05-10 12:06:16,279 - src.vector_store - INFO - Split 3 documents into 3 chunks
+2025-05-10 12:06:17,456 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:06:17,654 - src.vector_store - INFO - Successfully added 3 chunks to vector store
+2025-05-10 12:06:17,654 - main - INFO - Successfully uploaded document: test_doc.txt
+2025-05-10 12:09:09,461 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:09:09,494 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:09:09,715 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:09:10,358 - main - INFO - Starting up services...
+2025-05-10 12:09:15,238 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:09:15,269 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:09:15,486 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:09:16,089 - main - INFO - Starting up services...
+2025-05-10 12:11:06,714 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:11:06,743 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:11:06,958 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:11:07,542 - main - INFO - Starting up services...
+2025-05-10 12:11:11,934 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:11:11,962 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:11:12,173 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:11:12,779 - main - INFO - Starting up services...
+2025-05-10 12:11:47,779 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:11:47,814 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:11:48,063 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:11:48,873 - main - INFO - Starting up services...
+2025-05-10 12:11:53,662 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:11:53,700 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:11:53,949 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:11:54,555 - main - INFO - Starting up services...
+2025-05-10 12:20:35,671 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:20:35,752 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 12:20:36,715 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-10 12:20:37,277 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:20:37,869 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 12:20:37,887 - src.query_processor - INFO - Successfully processed query: who am i
+2025-05-10 12:21:04,835 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:21:05,875 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 12:21:05,877 - src.query_processor - INFO - Successfully processed query: what is:  project ID 101116741
+2025-05-10 12:21:59,284 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:22:00,897 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 12:22:00,898 - src.query_processor - INFO - Successfully processed query: what is: project ID 101116741
+2025-05-10 12:22:07,080 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:22:07,626 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 12:22:07,627 - src.query_processor - INFO - Successfully processed query: who is michael
+2025-05-10 12:25:02,611 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:25:02,643 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:25:02,880 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:25:03,505 - main - INFO - Starting up services...
+2025-05-10 12:25:08,096 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:25:08,127 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:25:08,333 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:25:08,846 - main - INFO - Starting up services...
+2025-05-10 12:25:14,832 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:25:14,865 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:25:15,075 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:25:15,670 - main - INFO - Starting up services...
+2025-05-10 12:25:21,432 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:25:21,514 - src.query_processor - INFO - Successfully initialized Chroma vector store
+2025-05-10 12:25:22,556 - src.query_processor - INFO - Successfully initialized QA chain
+2025-05-10 12:25:23,255 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:25:24,040 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 12:25:24,059 - src.query_processor - INFO - Successfully processed query: What is project 101116741 about?
+2025-05-10 12:25:24,059 - src.query_processor - INFO - Found 4 relevant documents
+2025-05-10 12:25:44,050 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-05-10 12:25:44,595 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-10 12:25:44,596 - src.query_processor - INFO - Successfully processed query: can you give me a really long description of project 101116741
+2025-05-10 12:25:44,597 - src.query_processor - INFO - Found 4 relevant documents
+2025-05-10 12:26:43,880 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:26:43,912 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:26:44,123 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:26:44,703 - main - INFO - Starting up services...
+2025-05-10 12:26:49,202 - src.vector_store - INFO - Using Chroma directory: chroma
+2025-05-10 12:26:49,234 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-05-10 12:26:49,447 - src.vector_store - INFO - VectorStoreManager initialized successfully
+2025-05-10 12:26:50,040 - main - INFO - Starting up services...

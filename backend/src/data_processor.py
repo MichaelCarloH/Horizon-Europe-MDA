@@ -3,6 +3,7 @@ from typing import List, Dict, Any
 from datetime import datetime
 from .utils.logging_config import setup_logging
 from .utils.directory_manager import DirectoryManager
+from .utils.excel_importer import import_excel_to_documents
 
 logger = setup_logging()
 
@@ -17,58 +18,48 @@ class DataProcessor:
         self.dir_manager = DirectoryManager(data_dir)
         self.dir_manager.create_directories(["data/raw", "data/processed"])
         
-    def process_excel_file(self, file_path: str, limit: int = 5) -> List[Dict[str, Any]]:
+    def process_excel_file(self, file_path: str, limit: int = None) -> List[Dict[str, Any]]:
         """
         Process an Excel file and convert it to a list of documents.
+        Each row becomes a document with all columns as metadata.
         
         Args:
             file_path: Path to the Excel file
-            limit: Maximum number of entries to process
+            limit: Maximum number of entries to process (None for all)
             
         Returns:
             List of dictionaries containing processed data
         """
         try:
-            # Read Excel file
-            df = pd.read_excel(file_path)
+            # Import Excel file to documents
+            documents = import_excel_to_documents(file_path)
             
-            # Get file name without extension
-            file_name = file_path.stem
+            # Apply limit if specified
+            if limit is not None:
+                documents = documents[:limit]
             
-            # Process each row
-            documents = []
-            for _, row in df.head(limit).iterrows():
-                # Convert row to dictionary
-                doc = row.to_dict()
-                
-                # Add metadata
-                doc['source_file'] = file_name
-                doc['processed_date'] = datetime.now().isoformat()
-                doc['document_type'] = 'excel_data'
-                
-                # Create content from all fields
-                content = []
-                for key, value in doc.items():
-                    if key not in ['source_file', 'processed_date', 'document_type']:
-                        if pd.notna(value):  # Skip NaN values
-                            content.append(f"{key}: {value}")
-                
-                doc['content'] = "\n".join(content)
-                documents.append(doc)
-                
-            logger.info(f"Processed {len(documents)} entries from {file_name}")
-            return documents
+            # Convert documents to dictionaries
+            processed_docs = []
+            for doc in documents:
+                processed_doc = {
+                    'content': doc.page_content,
+                    'metadata': doc.metadata
+                }
+                processed_docs.append(processed_doc)
+            
+            logger.info(f"Processed {len(processed_docs)} entries from {file_path}")
+            return processed_docs
             
         except Exception as e:
             logger.error(f"Error processing {file_path}: {str(e)}")
             raise
             
-    def process_all_files(self, limit: int = 5) -> List[Dict[str, Any]]:
+    def process_all_files(self, limit: int = None) -> List[Dict[str, Any]]:
         """
         Process all Excel files in the raw directory.
         
         Args:
-            limit: Maximum number of entries to process per file
+            limit: Maximum number of entries to process per file (None for all)
             
         Returns:
             List of all processed documents
@@ -107,8 +98,8 @@ def main():
     # Initialize processor
     processor = DataProcessor()
     
-    # Process all files with 5 entries each
-    documents = processor.process_all_files(limit=5)
+    # Process all files
+    documents = processor.process_all_files()
     
     # Save processed data
     processor.save_processed_data(documents)

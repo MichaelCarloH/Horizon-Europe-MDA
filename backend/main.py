@@ -15,7 +15,7 @@ from src.document_processor import DocumentProcessor
 from src.vector_store import VectorStoreManager
 from src.query_processor import QueryProcessor
 from src.utils.logging_config import setup_logging
-from src.utils.excel_importer import import_excel_to_documents, validate_excel_structure
+
 
 # Setup logging
 setup_logging()
@@ -123,61 +123,6 @@ async def upload_document(file: UploadFile = File(...)):
         
     except Exception as e:
         logger.error(f"Error uploading document: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.post("/documents/upload/excel")
-async def upload_excel(file: UploadFile = File(...)):
-    """
-    Upload an Excel file and import its contents into the vector store.
-    The Excel file should have at least 'Question' and 'Answer' columns.
-    Optional columns: 'Source', 'Category'
-    """
-    try:
-        # Validate file extension
-        if not file.filename.endswith(('.xlsx', '.xls')):
-            raise HTTPException(status_code=400, detail="File must be an Excel file (.xlsx or .xls)")
-        
-        # Save uploaded file temporarily
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.xlsx') as temp_file:
-            content = await file.read()
-            temp_file.write(content)
-            temp_path = temp_file.name
-        
-        try:
-            # Validate Excel structure
-            validation = validate_excel_structure(temp_path)
-            if validation['missing_columns']:
-                raise HTTPException(
-                    status_code=400,
-                    detail=f"Excel file is missing required columns: {validation['missing_columns']}"
-                )
-            
-            if validation['empty_rows']:
-                raise HTTPException(
-                    status_code=400,
-                    detail=f"Excel file has empty rows at indices: {validation['empty_rows']}"
-                )
-            
-            # Import documents
-            documents = import_excel_to_documents(temp_path)
-            
-            # Add to vector store
-            vector_store.add_documents(documents)
-            
-            return {
-                "message": "Excel file imported successfully",
-                "stats": {
-                    "total_documents": len(documents),
-                    "has_source": validation['has_source'],
-                    "has_category": validation['has_category']
-                }
-            }
-            
-        finally:
-            # Clean up temporary file
-            os.unlink(temp_path)
-            
-    except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.delete("/documents")

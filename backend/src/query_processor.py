@@ -17,19 +17,24 @@ setup_logging()
 logger = logging.getLogger(__name__)
 
 PROMPT_TEMPLATE = """
-Answer the following question based on the provided context. 
-If you cannot find the answer in the context, say "I don't have enough information to answer that question."
-If the question is unclear or ambiguous, ask for clarification.
+You are a helpful assistant that answers questions about Horizon Europe projects. Use the following context to answer the question. If you cannot find the answer in the context, say "I don't have enough information to answer that question."
 
 Context: {context}
 
 Question: {question}
+
+Answer the question based on the above context. If the question is about a specific project ID, make sure to mention that ID in your response. Include relevant details like:
+- Project title
+- Project acronym
+- Start and end dates
+- Total cost
+- Project objective
+- Any other relevant information from the context
 """
 
 class QueryProcessor:
     def __init__(self):
         """Initialize the query processor."""
-        # Explicitly use text-embedding-ada-002 which has 1536 dimensions
         self.embeddings = OpenAIEmbeddings(
             model="text-embedding-ada-002",
             openai_api_key=settings.OPENAI_API_KEY
@@ -93,24 +98,55 @@ class QueryProcessor:
     def query(self, text: str, conversation_id: Optional[str] = None) -> Dict[str, Any]:
         """Process a query and return the response."""
         try:
-            # Initialize chain if needed
-            if not self.qa_chain:
-                self.initialize_qa_chain()
+            # Initialize vector store if needed
+            if not self.vector_store:
+                self.initialize_vector_store()
             
-            # Get response from QA chain
-            result = self.qa_chain.invoke({"query": text})
+            # Search for relevant documents
+            results = self.vector_store.similarity_search_with_relevance_scores(text, k=5)
             
-            # Format source documents
+            if not results:
+                return {
+                    "answer": "I don't have enough information to answer that question.",
+                    "sources": [],
+                    "timestamp": datetime.now(UTC).isoformat()
+                }
+
+            # Filter results by relevance score
+            relevant_results = [(doc, score) for doc, score in results if score > 0.1]
+            if not relevant_results:
+                return {
+                    "answer": "I don't have enough information to answer that question.",
+                    "sources": [],
+                    "timestamp": datetime.now(UTC).isoformat()
+                }
+
+            # Prepare context
+            context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in relevant_results])
+            
+            # Format the prompt
+            prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
+            formatted_prompt = prompt.format(context=context_text, question=text)
+            
+            # Generate response
+            model = ChatOpenAI(temperature=0)
+            response = model.predict(formatted_prompt)
+            
+            # Format sources
             sources = []
-            for doc in result.get("source_documents", []):
-                sources.append({
+            for doc, score in relevant_results:
+                source_info = {
                     "content": doc.page_content,
-                    "metadata": doc.metadata
-                })
+                    "metadata": doc.metadata,
+                    "relevance_score": score
+                }
+                sources.append(source_info)
             
             logger.info(f"Successfully processed query: {text}")
+            logger.info(f"Found {len(sources)} relevant documents")
+            
             return {
-                "answer": result["result"],
+                "answer": response,
                 "sources": sources,
                 "timestamp": datetime.now(UTC).isoformat()
             }

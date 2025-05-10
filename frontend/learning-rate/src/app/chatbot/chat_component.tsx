@@ -22,8 +22,9 @@ const ChatComponent = () => {
     setLoading(true);
     setError(null);
     try {
-      const url = "https://mda-horizon-backend-2025.azurewebsites.net/query";
-      const payload = { query_text: query };
+      //const url = "https://mda-horizon-backend-2025.azurewebsites.net/query";
+      const url = "http://localhost:8000/query";
+      const payload = { text: query };
       const headers = {
         'Content-Type': 'application/json',
         'Origin': 'https://horizon-europe-mda.vercel.app',
@@ -48,10 +49,26 @@ const ChatComponent = () => {
         data: res.data
       });
 
-      const botResponse = res.data.response;
+      const botResponse = res.data.answer;
+      const sources = res.data.sources;
+      
+      // Format the response with sources
+      let formattedResponse = botResponse;
+      if (sources && sources.length > 0) {
+        formattedResponse += "\n\nSources:\n";
+        sources.forEach((source: any, index: number) => {
+          const metadata = source.metadata;
+          formattedResponse += `\n${index + 1}. `;
+          if (metadata.title) formattedResponse += `Title: ${metadata.title}\n`;
+          if (metadata.projectID) formattedResponse += `Project ID: ${metadata.projectID}\n`;
+          if (metadata.projectAcronym) formattedResponse += `Acronym: ${metadata.projectAcronym}\n`;
+          formattedResponse += `Relevance: ${(source.relevance_score * 100).toFixed(1)}%\n`;
+        });
+      }
+
       setMessages((prevMessages) => [
         ...prevMessages,
-        { sender: "bot", text: botResponse },
+        { sender: "bot", text: formattedResponse },
       ]);
     } catch (err) {
       console.error('Full error:', err);

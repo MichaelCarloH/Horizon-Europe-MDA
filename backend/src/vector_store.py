@@ -197,7 +197,7 @@ class VectorStoreManager:
                 "error": str(e)
             }
 
-    def query(self, query_text: str, k: int = 3):
+    def query(self, query_text: str, k: int = 5):
         """
         Query the Chroma vector store for similar documents based on the query text.
         Returns the response text with detailed source information.
@@ -212,13 +212,19 @@ class VectorStoreManager:
             logger.info(f"Found {len(results)} results")
 
             # Handle case where no relevant results are found
-            if len(results) == 0 or results[0][1] < 0.1:
-                logger.warning("No relevant results found")
-                return "Unable to find matching results."
+            if len(results) == 0:
+                logger.warning("No results found")
+                return "I don't have enough information to answer that question."
+
+            # Filter results by relevance score
+            relevant_results = [(doc, score) for doc, score in results if score > 0.1]
+            if not relevant_results:
+                logger.warning("No relevant results found (all scores below threshold)")
+                return "I don't have enough information to answer that question."
 
             # Prepare context for the prompt by combining the results
-            context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
-            logger.info(f"Prepared context with {len(results)} documents")
+            context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in relevant_results])
+            logger.info(f"Prepared context with {len(relevant_results)} documents")
 
             # Format the prompt
             prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
@@ -226,16 +232,14 @@ class VectorStoreManager:
 
             # Generate the response using OpenAI model
             logger.info("Generating response with OpenAI model...")
-            model = ChatOpenAI()
+            model = ChatOpenAI(temperature=0)
             response_text = model.predict(prompt)
 
             # Format sources with detailed information
-            sources = [format_source_info(doc) for doc, _score in results]
+            sources = [format_source_info(doc) for doc, _score in relevant_results]
             logger.info(f"Response generated with {len(sources)} sources")
             
-            # Return the formatted response with detailed sources
-            formatted_response = f"Response: {response_text}\n\nSources:\n" + "\n".join([f"- {source}" for source in sources])
-            return formatted_response
+            return response_text
 
         except Exception as e:
             logger.error(f"Error in query: {str(e)}")

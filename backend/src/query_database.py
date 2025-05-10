@@ -6,6 +6,7 @@ from langchain.prompts import ChatPromptTemplate
 import os
 import logging
 from dotenv import load_dotenv
+from src.config import settings
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -56,7 +57,7 @@ def query_database(query_text: str, k: int = 3):
         logger.info(f"Initializing embeddings and database connection from {CHROMA_PATH}")
         embedding_function = OpenAIEmbeddings()
         db = Chroma(
-            collection_name="horizon_europe",
+            collection_name=settings.COLLECTION_NAME,
             embedding_function=embedding_function,
             persist_directory=CHROMA_PATH
         )
@@ -111,7 +112,7 @@ class QueryProcessor:
                 raise FileNotFoundError(f"Chroma database not found at {CHROMA_PATH}")
 
             self.vector_store = Chroma(
-                collection_name="horizon_europe",
+                collection_name=settings.COLLECTION_NAME,
                 embedding_function=self.embeddings,
                 persist_directory=CHROMA_PATH
             )
