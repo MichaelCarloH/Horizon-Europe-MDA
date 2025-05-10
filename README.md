@@ -139,7 +139,7 @@ curl -X POST http://localhost:8000/query \
 ```
 
 2. Through the Frontend:
-- Open `http://localhost:5173` in your browser
+- Open `http://localhost:8000` in your browser
 - Enter your question in the chat interface
 - The system will process your query and return a response
 
