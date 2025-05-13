@@ -92,8 +92,30 @@ class DocumentProcessor:
             "file_size": os.path.getsize(file_path),
         }
         
+        filename = os.path.basename(file_path)
+        
+        # Check for XML text files (format: id_type.txt)
+        xml_match = re.match(r'(\d+)_(factsheet|reporting)\.txt', filename)
+        if xml_match:
+            project_id = xml_match.group(1)
+            data_type = xml_match.group(2)
+            
+            # Add XML-specific metadata
+            metadata.update({
+                "project_id": project_id,
+                "data_type": data_type,
+                "source_type": "xml",
+            })
+            
+            # Add project metadata if available
+            if project_id in self.project_metadata:
+                metadata.update(self.project_metadata[project_id])
+                logger.info(f"Added project metadata for XML file {filename}")
+            else:
+                logger.warning(f"No project metadata found for project ID: {project_id}")
+        
         # If it's a CORDIS PDF, get project metadata
-        if "CORDIS_project" in os.path.basename(file_path):
+        elif "CORDIS_project" in filename:
             cordis_metadata = self._extract_cordis_metadata(file_path)
             metadata.update(cordis_metadata)
         

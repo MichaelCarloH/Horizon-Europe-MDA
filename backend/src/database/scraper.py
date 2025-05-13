@@ -6,8 +6,8 @@ import os
 import re
 from langchain.schema import Document
 
-from src.xml_scraper import CordisXmlScraper, OUTPUT_DIR
-from src.utils.logging_config import setup_logging
+from ..xml_scraper import CordisXmlScraper, OUTPUT_DIR
+from ..utils.logging_config import setup_logging
 
 # Configure logging
 setup_logging()

@@ -14,8 +14,10 @@ import re  # Added for extracting project ID
 import json # Import json
 import glob # For finding saved text files
 
-from src.xml_scraper import CordisXmlScraper, OUTPUT_DIR # Added XML Scraper and output directory
-from src.database.scraper import CordisWebScraper, extract_project_id_from_url
+from ..xml_scraper import CordisXmlScraper, OUTPUT_DIR # Added XML Scraper and output directory
+from .scraper import CordisWebScraper, extract_project_id_from_url
+from ..processing.document_processor import DocumentProcessor
+from src.config import settings
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -34,7 +36,7 @@ CORDIS_URLS = os.getenv("CORDIS_URLS", "").split(',') # Example: Get URLs from e
 PDF_PATH = os.getenv("PDF_PATH", "data/pdf")
 # CORDIS_URLS = os.getenv("CORDIS_URLS", "").split(',') # Example: Get URLs from env var, comma-separated
 CORDIS_BASE_URL = "https://cordis.europa.eu/project/id"
-PROJECT_DATA_PATH = "data/processed/project_data.json"  # Relative to backend directory
+PROJECT_DATA_PATH = "data/processed/project_data_v2.json"  # Relative to backend directory
 XML_DATA_PATH = OUTPUT_DIR  # Path where XML data text files are stored
 
 # Helper function to extract Project ID from URL
@@ -65,8 +67,9 @@ class DatabaseCreator:
         self._load_project_json_data()
         self._initialize_cordis_urls()
 
-        # Initialize scrapers
+        # Initialize scrapers and processors
         self.web_scraper = CordisWebScraper(self.project_metadata_store)
+        self.document_processor = DocumentProcessor()
 
         self.embeddings = OpenAIEmbeddings()
         self.text_splitter = RecursiveCharacterTextSplitter(
@@ -125,6 +128,15 @@ class DatabaseCreator:
         if not self.cordis_urls:
             logger.warning("No CORDIS URLs were generated from project_data.json.")
 
+    def load_txt_file(self, file_path: str) -> List[Document]:
+        """Load a single TXT file and return its content as a document."""
+        try:
+            logger.info(f"Loading TXT file: {file_path}")
+            return self.document_processor.process_document(file_path)
+        except Exception as e:
+            logger.error(f"Error loading TXT file {file_path}: {str(e)}")
+            raise
+
     def load_data_from_urls(self) -> List[Document]:
         """
         Load data from CORDIS URLs and create Document objects.
@@ -139,36 +151,16 @@ class DatabaseCreator:
         
         for xml_file in xml_text_files:
             try:
-                # Extract project ID from filename (format: project_id_type.txt)
-                filename = os.path.basename(xml_file)
-                match = re.match(r"(\d+)_(factsheet|reporting)\.txt", filename)
+                # Use DocumentProcessor to process the file
+                processed_docs = self.document_processor.process_document(xml_file)
+                documents.extend(processed_docs)
                 
-                if match:
-                    project_id = match.group(1)
-                    data_type = match.group(2)
-                    
-                    # Read the file content
-                    with open(xml_file, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                    
-                    # Create metadata
-                    metadata = {
-                        "source": f"{CORDIS_BASE_URL}/{project_id}",
-                        "project_id": project_id,
-                        "data_type": data_type,
-                        "file_source": xml_file
-                    }
-                    
-                    # Add project metadata if available
-                    if project_id in self.project_metadata_store:
-                        metadata.update(self.project_metadata_store[project_id])
-                    
-                    # Create document
-                    document = Document(page_content=content, metadata=metadata)
-                    documents.append(document)
-                    processed_project_ids.add(project_id)
-                    logger.info(f"Added XML data from text file for project {project_id} ({data_type})")
-            
+                # Extract project ID from the processed document's metadata
+                if processed_docs:
+                    project_id = processed_docs[0].metadata.get("project_id")
+                    if project_id:
+                        processed_project_ids.add(project_id)
+                        logger.info(f"Added XML data from text file for project {project_id}")
             except Exception as e:
                 logger.error(f"Error processing XML text file {xml_file}: {e}")
 
@@ -192,26 +184,6 @@ class DatabaseCreator:
 
         logger.info(f"Created {len(documents)} documents from XML files and web scraping")
         return documents
-
-    def load_txt_file(self, file_path: str) -> List[Document]:
-        """Load a single TXT file and return its content as a document."""
-        try:
-            logger.info(f"Loading TXT file: {file_path}")
-            loader = TextLoader(file_path)
-            document = loader.load()
-            
-            # Add metadata
-            for doc in document:
-                doc.metadata.update({
-                    "source": os.path.basename(file_path),
-                    "file_type": "txt",
-                })
-            
-            logger.info(f"Successfully loaded TXT file: {file_path}")
-            return document
-        except Exception as e:
-            logger.error(f"Error loading TXT file {file_path}: {str(e)}")
-            raise
 
     def load_txt_files(self) -> List[Document]:
         """Load all TXT files from the TXT_PATH directory."""
@@ -279,7 +251,7 @@ class DatabaseCreator:
             self.vector_store = Chroma.from_documents(
                 documents=chunks,
                 embedding=self.embeddings,
-                collection_name="cordis_summaries",
+                collection_name=settings.COLLECTION_NAME,
                 persist_directory=CHROMA_PATH
             )
             logger.info("Successfully created new Chroma database with CORDIS summaries")
@@ -305,8 +277,8 @@ class DatabaseCreator:
                     shutil.rmtree(backup_folder)
                 shutil.copytree(CHROMA_PATH, backup_folder)
             
-            # Run the pipeline
-            self.documents = self.load_data_from_urls()
+            # Run the pipeline - only process XML and scraped data
+            self.documents = self.load_data_from_urls()  # This handles XML files and web scraping
             self.chunks = self.split_documents(self.documents)
             self.save_to_chroma(self.chunks)
             logger.info("Database creation completed successfully")
@@ -338,13 +310,41 @@ def create_database_without_scraping():
 # But our new script with the command line argument will use the new functionality
 
 def add_txt_file(file_path: str):
-    """Add a single TXT file to the database."""
+    """Add a single TXT file or directory of TXT files to the database."""
     try:
         creator = DatabaseCreator()
-        documents = creator.load_txt_file(file_path)
-        chunks = creator.split_documents(documents)
-        creator.save_to_chroma(chunks)
-        return {"status": "success", "message": f"TXT file {file_path} added successfully"}
+        documents = []
+
+        # Check if path exists
+        if not os.path.exists(file_path):
+            raise ValueError(f"Path does not exist: {file_path}")
+
+        # Check if it's a directory
+        if os.path.isdir(file_path):
+            logger.info(f"Processing directory: {file_path}")
+            for root, _, files in os.walk(file_path):
+                for file in files:
+                    if file.endswith('.txt'):
+                        full_path = os.path.join(root, file)
+                        try:
+                            file_docs = creator.load_txt_file(full_path)
+                            documents.extend(file_docs)
+                            logger.info(f"Successfully processed {full_path}")
+                        except Exception as e:
+                            logger.error(f"Failed to process {full_path}: {str(e)}")
+        else:
+            # Single file processing
+            if not file_path.endswith('.txt'):
+                raise ValueError("File must be a .txt file")
+            documents = creator.load_txt_file(file_path)
+            logger.info(f"Successfully processed {file_path}")
+
+        if documents:
+            chunks = creator.split_documents(documents)
+            creator.save_to_chroma(chunks)
+            return {"status": "success", "message": f"Added {len(documents)} documents successfully"}
+        else:
+            return {"status": "warning", "message": "No documents were processed"}
     except Exception as e:
         logger.error(f"Error adding TXT file: {str(e)}")
         return {"status": "error", "message": str(e)}
@@ -355,6 +355,13 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         if sys.argv[1] == "--scrape":
             result = create_database(do_scraping=True)
+        elif sys.argv[1] == "--addtxt":
+            if len(sys.argv) > 2:
+                txt_path = sys.argv[2]
+                result = add_txt_file(txt_path)
+            else:
+                print("Error: Please provide the path to the TXT file")
+                sys.exit(1)
         else:
             result = create_database(do_scraping=False)
     else:

@@ -6,6 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { FiSend, FiCopy, FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
+import { API_CONFIG, QueryResponse, formatResponse } from '../config/api';
 import './chat.css';
 
 interface Message {
@@ -54,7 +55,6 @@ const ChatComponent = () => {
   const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      // You could add a toast notification here
     } catch (err) {
       console.error('Failed to copy text: ', err);
     }
@@ -82,38 +82,19 @@ const ChatComponent = () => {
     setError(null);
 
     try {
-      const url = "http://localhost:8000/query";
-      const payload = { text: query };
+      const { BASE_URL, ENDPOINTS, TIMEOUT, HEADERS } = API_CONFIG.CHAT;
+      const url = `${BASE_URL}${ENDPOINTS.QUERY}`;
       
-      const res = await axios.post(url, payload, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        timeout: 30000,
+      const res = await axios.post<QueryResponse>(url, { text: query }, {
+        headers: HEADERS,
+        timeout: TIMEOUT,
         withCredentials: false
       });
-
-      const botResponse = res.data.answer;
-      const sources = res.data.sources;
-      
-      let formattedResponse = botResponse;
-      if (sources?.length > 0) {
-        formattedResponse += "\n\n**Sources:**\n";
-        sources.forEach((source: any, index: number) => {
-          const metadata = source.metadata;
-          formattedResponse += `\n${index + 1}. `;
-          if (metadata.title) formattedResponse += `**Title:** ${metadata.title}\n`;
-          if (metadata.projectID) formattedResponse += `**Project ID:** ${metadata.projectID}\n`;
-          if (metadata.projectAcronym) formattedResponse += `**Acronym:** ${metadata.projectAcronym}\n`;
-          formattedResponse += `**Relevance:** ${(source.relevance_score * 100).toFixed(1)}%\n`;
-        });
-      }
 
       setMessages(prev => [...prev, {
         id: Date.now().toString(),
         sender: "bot",
-        text: formattedResponse,
+        text: formatResponse(res.data),
         timestamp: new Date()
       }]);
     } catch (err) {
