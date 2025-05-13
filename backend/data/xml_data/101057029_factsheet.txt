@@ -1,0 +1,18 @@
+Project ID: 101057029
+Data Type: factsheet
+==================================================
+
+## title
+
+Automated Maskless Laser Lithography Platform for First Time Right Mixed Scale Patterning
+
+----------------------------------------
+
+## objective
+
+Laser-based technologies for creating structures in the range from nanometer up to millimeter size find many applications such as free form optics, photonics, multifunctional surfaces, lab-on-chip, etc. with a global market volume of > 200 billion euros. The original structures know as masters are the first step in the making of tools for key-enabling technologies like injection molding or nanoimprinting. Some of the current limitations in the laser lithography processes are the limited depth of the structures, small area and low speed at process level, high-power consumption in the laser interference lithography, and multiple and expensive processes required for the development of hierarchical multifunctional structures at industrial level.
+The OPTIMAL project will integrate for the first-time different laser lithography technologies, quality monitoring systems and processes in one platform for the development of structures with (i) high depth (150 micrometer), ii) dimensions in the range from 100 nm to sub-mm in XYZ, iii) 2D&3D shape on flat surface, (iv) combining parallel & serial patterning, (v) no need for external treatments on samples; vi) increased speed (1 cm2/min) and large area (up to 2000 cm2), vii) > 40% of reduction in the consumption of resources for the whole manufacturing process. The OPTIMAL project uses self-learning algorithms to optimize the virtual photomask as well as integrates methods for an inline control of the laser patterning. 
+By accelerating and upscaling the structuring process, the OPTIMAL project will increase the process efficiency and yield, which will reduce the energy consumption, avoid material waste, decrease costs, and lead time in many applications. The platform will potentiate the possibilities in the sustainable making of high quality, versatile, less costly masters for industrial manufacturing, as demonstrated in 4 use cases (optical lenses, multifunctional riblet structures, virtual reality lens, microfluidic chips).
+
+----------------------------------------
+

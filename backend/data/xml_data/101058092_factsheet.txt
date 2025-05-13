@@ -1,0 +1,18 @@
+Project ID: 101058092
+Data Type: factsheet
+==================================================
+
+## title
+
+Support to Reinforce the European Strategy Forum on Research Infrastructures 3
+
+----------------------------------------
+
+## objective
+
+"The key objective of StR-ESFRI3 is to provide high-quality and flexible support to ESFRI, in achieving its goals based on the White Paper 2020 strategy, increasing its visibility, operational and analytical capacity, along with its impact on developing a consistent and dynamic European Research Area (ERA) policy for Research Infrastructures.
+The project builds on the experience of the previous ESFRI support projects, having successfully supported ESFRI in the realisation of a series of ESFRI Roadmaps (2016, 2018, 2021) and corresponding Landscape analyses, of the ESFRI White Paper 2020 ""Making Science Happen"", and of a series of related communication actions and events, including workshops for the Exchange of Experiences (EoE) among RIs and for the interconnection of RIs in EOSC. StR-ESFRI3 aims at reviewing and enhancing its current support activities in the areas of the ESFRI Roadmap process and the Landscape Analysis, the RI monitoring and the MoS platform, and in the area of EOSC, liaising with the EOSC Association with emphasis on researcher engagement and RI federation in EOSC. Furthermore, StR-ESFRI3 aims at expanding its activities to new areas, in particular to support ESFRI in its European Research Area (ERA)-related activities including the upcoming ERA Policy Agenda, where RIs is one of its key actions. This is also linked with the development of a sustainable support structure (ESFRI Office), for which an analysis of possible scenarios for related support structures (including the creation of a legal entity) will be performed, with the support of external contractors.
+The project will support ESFRI during a 4 year period (2022-2025). The consortium builds on the experience and expertise of the partners in previous StR-ESFRI projects (ATHENA, HIPC and UMIL), incorporating the support institutes of the elected Chairs for 2022-2023 (UL) and 2024-2025 (CSIC). For the latter dedicated budget was planned under the coordinator's budget transferred to CSIC as part of the amendment."
+
+----------------------------------------
+

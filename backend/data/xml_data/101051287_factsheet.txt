@@ -1,0 +1,27 @@
+Project ID: 101051287
+Data Type: factsheet
+==================================================
+
+## title
+
+International Conference on Research Infrastructures (ICRI) 2022 in Brno
+
+----------------------------------------
+
+## objective
+
+International Conference on Research Infrastructures (ICRI) is a major event bringing together policy experts, facility managers, leading researchers and a variety of other stakeholders to discuss challenges and emerging trends for research infrastructures (RIs) in the global context. The aim of the project is to facilitate the organization of ICRI 2022 conference in Brno, Czech Republic, in October 2022.
+
+The conference will be co-organized by Masaryk University (MU), the second largest Czech university, Central European Institute of Technology (CEITEC), interdisciplinary centre of excellence co-hosted by MU and 5 more Brno universities and research institutes, the Czech Ministry of Education, Youth and Sport (MEYS) and the European Commission.
+
+The objectives of the conference are:
+1.	To explore the role of research infrastructures in tackling current and future societal challenges, e.g. that of post-COVID recovery and international collaboration.
+2.	To explore organizational models and operational systems of research infrastructures, e.g. concerning data management, integration of smaller sized facilities, promotion or impact assessment.
+3.	To allow community building in the area of research infrastructure policies and management.
+4.	To promote the stories of host country, region, city and institution as dynamically developing areas fuelled by research infrastructures.
+5.	To promote science and technology as the driver of societal and economic progress among general public, highlighting the role of research infrastructures.
+
+Improved policy and management in the area of research infrastructures may have widespread impact across regional economies and may significantly contribute to tackling global challenges. ICRI 2022 will facilitate sharing of knowledge and spreading of best practice on how to efficiently organize RIs.
+
+----------------------------------------
+

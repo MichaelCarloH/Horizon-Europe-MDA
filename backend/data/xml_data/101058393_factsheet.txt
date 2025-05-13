@@ -1,0 +1,16 @@
+Project ID: 101058393
+Data Type: factsheet
+==================================================
+
+## title
+
+Global cooperation on FAIR data policy and practice
+
+----------------------------------------
+
+## objective
+
+CODATA and RDA will work with a set of domain and cross-domain case studies to implement and test FAIR recommendations, including those for core interoperability, to develop a set of recommendations and a framework for FAIR assessment in each discipline or cross-disciplinary research areas involved. CODATA and RDA are uniquely positioned to lead and coordinate this activity, as the two preeminent  international, interdisciplinary data organisations.  The Case Studies have been carefully chosen to provide maximum impact. They are clustered in cognate groups in order to maximise scope while retaining a critical mass of activity and allowing learning and cross-fertilisation of ideas among them. Drawn from CODATA and RDA activities and partnerships, the Case Studies include leading organisations in a range of disciplines and cross-disciplinary research areas, such that the outputs will have global influence and impact.  The methodology is designed to maximise coordination, while being sensitive to the status and requirements of each Case Studies discipline or cross-disciplinary research area. Each Case Study will perform a lightweight benchmarking and information gathering exercise through preparing a FAIR Implementation Profile, appropriately adapted to their discipline. This will lead into, and help inform, a fuller mapping of current best practices and emerging solutions and initiatives in their discipline. Taking into account good practices in their disciplines as well as the draft framework for core interoperability, and pertinent RDA recommendations, each case study will develop, pilot and possibly deploy interoperability standards and guidelines. Finally, the reports and recommendations from each Case Study will be synthesized and used to develop discipline specific frameworks for FAIR assessment and benchmarks.
+
+----------------------------------------
+

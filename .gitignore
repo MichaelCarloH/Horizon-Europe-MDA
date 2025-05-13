@@ -40,10 +40,7 @@ yarn-error.log*
 Thumbs.db
 
 # Project specific
-backend/data/
 backend/logs/
-*.db
-*.sqlite3
 .env
 .env.*
 !.env.example

@@ -1,0 +1,20 @@
+Project ID: 101057988
+Data Type: factsheet
+==================================================
+
+## title
+
+SUStainable Antimicrobial and Antiviral Nanocoating
+
+----------------------------------------
+
+## objective
+
+Infectious diseases pose a significant threat to both human health and the global economy, they account for more than 20% of global mortality and viruses are responsible for about one-third of these deaths. To date, we know of about 200 infectious diseases and about 80% of infectious diseases are transmitted by unclean hands touching contaminated surfaces.
+SUSAAN project is focussed on development of new sustainable antiviral and antimicrobial coatings for textiles and high traffic objects made of plastics and metal, involving textile, bathrooms and switches manufacture industries. In this context, it can be stated that most of the common hand-touch sites and/or objects are covered by the project so final impact would be extensive after the successful project execution, being the results of the project validated in three main market sectors through end users. 
+Consortium Partners and core business are one of the strongest points of SUSAAN. Technological and scientific partners (LUREDERRA, NCSRD, IVW, CEIT and ITENE) are experts on main areas of nanoparticles, coatings, pretreatment, biobased nanocapsules and toxicity assessment. Companies involved cover the whole value change based on their core business including coatings production (TECNAN), biobased products (CELABOR), bathrooms manufacturing (ECZACIBASI), home appliances (PANASONIC) and textiles (ALMAXTEX). 
+Last but not least, INTER IT will cover the activities on BPR assessment being VIRHEALTH (the expert on virology) on charge of standardized testing to determine virucidal and antimicrobial activity of the coatings and ARDITEC on charge of sustainability assessment.
+The final outcome of SUSAAN project is the validation of the new sustainable antimicrobial/antiviral nanocoating in different final products: high traffic objects (plastic and metallic) and textiles. Technical advantages and comparative results to current solutions will be used to present SUSAAN solutions to potential clients.
+
+----------------------------------------
+

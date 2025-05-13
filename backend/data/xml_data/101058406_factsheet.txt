@@ -1,0 +1,18 @@
+Project ID: 101058406
+Data Type: factsheet
+==================================================
+
+## title
+
+Advanced Manufacturing of Bio-Based Products for Urban outdoor applications through Innovative characterization, digital technologies and circular approach
+
+----------------------------------------
+
+## objective
+
+By applying a circularity-by-design approach, the AMBIANCE project aims to develop new and advanced bio-based products, characterized by a high or total bio-based material content and taking into account the different alternatives for recirculation such as the different types of reuses, remanufacturing, recycling, biodegradation or energy recovery to enhance sustainable models. Such approach will be coupled to the optimization of the mechanical properties for particular applications, e.g. durability for outdoors urban furniture or sports and leisure products, taking into consideration the whole lifecycle.
+Special attention will be paid to the optimization of product manufacturing of bio-based materials, which will require tuning of material composition and processes (extrusion, large-scale additive manufacturing, compression moulding) for different bio-based materials. Besides, the use of Digital Twin technologies will enhance the development of materials and products and the remanufacturing of such bio-based goods, and it will optimize manufacturing processes and enhance production quality of such novel applications by leveraging IoT and Artificial Intelligence technologies. 
+AMBIANCE's impact will be two-fold: firstly we will showcase disruptively innovative bio-based products in different sectors and manufacturing processes, while we will demonstrate applicability in daily-life products, starring green urban areas that will lead the transition to sustainability. The setting proposed by AMBIANCE will directly result in the creation of new jobs, based on new technical competences that will require specific training and upskilling, while the technical developments and findings will be used to contributing to the standardization of bio-based products and materials, which will guarantee an effective and wide adoption for making such products the new baseline of our lives.
+
+----------------------------------------
+

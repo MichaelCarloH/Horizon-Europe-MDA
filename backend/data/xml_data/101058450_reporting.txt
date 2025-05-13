@@ -1,0 +1,43 @@
+Project ID: 101058450
+Data Type: reporting
+==================================================
+
+## summary
+
+In an era increasingly attuned to environmental considerations, MOZART project emerges as a pivotal initiative poised to revolutionize the domain of ultra-hard surfaces. Chromium (Cr6+), historically acclaimed for its unparalleled hardness, now faces heightened scrutiny owing to its environmental toxicity. MOZART project, boldly endeavors to introduce a sustainable alternative to Cr6+ through the application of nanocomposite coatings. Cr6+, despite its hardness, is not immune to inherent drawbacks. Acknowledging the imperative to address environmental concerns associated with chromium, MOZART project is dedicated to formulating an ecologically sound substitute via the development of nanocomposite coatings. These coatings, distinguished by properties such as corrosion resistance and high hardness attributed to a layer of nanoparticles, possess the unique advantage of seamless integration into existing manufacturing infrastructure, thereby ensuring a cost-effective solution. The project endeavors to showcase the viability of these coatings on a pilot scale through the implementation of AI-driven simulations and advanced electroplating techniques.
+
+The principal aim of MOZART project is to propose sustainable coating solutions that supplant Cr6+ in specific applications, particularly those necessitating high wear and corrosion resistance. Noteworthy is the adaptability of nanocomposite coatings to existing plating shops, requiring only minimal modifications for the safe integration of nanoparticles. The project's multidisciplinary approach, validated through prior endeavors at the laboratory scale, is strategically designed to elevate the technology readiness level (TRL) to 5. This involves demonstrating the technology in pilot-scale applications and real-world demonstrators across manufacturing, automotive, and machinery industries.
+
+MOZART project meticulously delineates a pathway to impact through the incorporation of a Safe & Sustainable by Design strategy. Drawing on in-silico methods, including Artificial Intelligence and Simulations, in tandem with online monitoring technologies, chemical functionalization of nanoparticles, and advanced electroplating techniques, the project aspires to attain high-quality, durable composite coatings. The convergence of these technologies is anticipated to propel the nano-composite coatings to the desired level of technological maturity.
+
+Foreseen impacts of MOZART project are expansive, offering a sustainable substitute to Cr6+ in critical applications. The introduction of novel nano-composite coatings is poised not only to alleviate environmental concerns but also to instigate a paradigm shift in industries reliant on ultra-hard surfaces. Anticipated impacts encompass a significant reduction in environmental toxicity, cost-effective adoption by manufacturers leveraging existing infrastructure, and a fundamental shift toward sustainable practices within manufacturing, automotive, and machinery sectors.
+
+As MOZART project unfolds, it lays the foundation for a narrative of transformative significance in the realm of coating technologies. With a steadfast commitment to sustainability, cutting-edge methodologies, and a meticulously outlined pathway to impact, MOZART endeavors to leave an enduring imprint, contributing to a future where ultra-hard surfaces coexist harmoniously with the environment.
+
+----------------------------------------
+
+## workPerformed
+
+From the administrative point of view, the first 18M (June 2022 - November 2023), 10 deliverables have been submitted and 5 Milestones have been achieved. Three Consortium meetings, one pre-Review meeting and numerous group meetings have been succesfully organised, along with the 1st Review Meeting. Regular interaction and calls between partners were held between partners in order to discuss the progress of the tasks and preparation of deliverables.
+The main achievements and implemented activities of MOZART can be summarised to the following:
+- Specification & Requirements for all the chemicals, methods and end user’s requirements and specifications that have been, and will be used throughout the progress of the MOZART project. This information presented in Deliverable 2.1 and serve as starting point for the MOZART project and will be updated as the project evolves.
+- Development of MOZART SSbD strategy. All project partners are fully versed in this strategy, actively integrating its principles into their individual teams. 
+- Simulation activities related to tasks 3.2, 3.3, and 3.4. Specifically, hydrodynamic conditions in composite electrolyte, Computer-Aided Design (CAD) of the jig and tooling system, and the determination of Bill of Materials (BoM) optimal plating parameters through virtual twin simulation. Further updates will be presented on M36.
+- Successful execution of simulations which validated the incorporation of the gravitational impact of SiC NPs in Elsyca's simulations (MS4).
+- integration of SSbD principles in the upgrade of the plating lines at Cnano and PoliMi and the pre-functionalization of the NPs-liquid batches prepared at MBN. Modification of the plating lines has also been provided to demonstrate the application of U/S and pilot line design-adjustments as per assigned end-user object in alignment with SSbD guidelines. Preliminary results for the on-line measurement of the NPs were introduced via OF2i system developed by BRAVE. Additionally, Ni-release tests were performed by UoB on the Ni coatings produced by Cnano from boric acid free Nickel electrolytes. Results have been presented to demonstrate the feasibility of the safety measurements.
+- Definition and selection of formulations of nickel electrolyte without the use of boric acid. The formulations defined and selected by Tecnochimica and CNano, demonstrating the possibility to deposit nickel coatings from boric acid free electrolytes with mechanical and morphological properties similar or even better with respect to those from traditional baths.
+- Tribological characterization performed by FALEX in the samples received from Polimi and CNano. It is worth to note that nickel coatings produced with electrolytes without boric acid are characterized by similar behavior of those produced from traditional electrolyte with boric acid. 
+- An electolyte boric acid free and REACH compliant has been developed by Tecnochimica and tested at POLIMI. Electrolyte will be available to all partners. (MS3)
+- MS5 was achieved in M12 via the lab-scale production of a Ni/SiC nanocomposite coating with a microhardness of 1006 ± 105 HV applying the pulse current plating method on a REACH compliant electrolytic bath containing an organic acid instead of boric acid (the latter is part of the SVHC candidate list) and using functionalized SiC NPs, developed and delivered to CNano by MBN.
+- Initial sustainability assessment report of LCA and LCC analysis. (description of the project technologies and use cases, methodology and framework, Goal and scope definition, LCI).
+
+----------------------------------------
+
+## finalResults
+
+At these first 18M, it is imperative to highlight the significant strides of MOZART project:
+- Remarkable progress in developing sustainable alternatives to hard chromium through nanocomposite coatings. 
+- Sustainable coating solutions not only address the environmental hazards posed by hard chromium but also offer a safer alternative for both industrial workers and end-users.
+
+----------------------------------------
+

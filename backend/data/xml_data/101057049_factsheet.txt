@@ -1,0 +1,16 @@
+Project ID: 101057049
+Data Type: factsheet
+==================================================
+
+## title
+
+BIOcomposites in smart plastic transformation processes to pave the way for the large-scale UPTAKE of sustainable bio-based products
+
+----------------------------------------
+
+## objective
+
+The general objective of Bio-Uptake project is to ensure a sustainable uptake (increase the use in a 39%) of bioplastic composites through boosting a twin green and digital transformation in the European manufacturing industry. In particular, Bio-Uptake solution will focus scientific and technology efforts on developing flexible manufacturing processes to produce biobased end-products for the construction, medical and packaging sectors based on the combination of intermediate formats made of natural and/or biobased synthetic fibres reinforced with biopolymers, which are easily adaptable to new market demands. The novel approach on which Bio-Uptake project relies is based on modularity or pre-fabrication: a smart combination of intermediate formats (organosheets, tapes and pellets) into a final end-product which allows to overcome the current technical and environmental limitations to meet the demanding requirements of a specific sector/application where a single biobased material doesn?t. Thus, the synergistic potential of composite materials will pave the way for the integration and uptake of bio-based materials in mass customised manufacturing (manufacturing as a service). Three disruptive manufacturing processes (based on conformal technologies) will be developed within Bio-Uptake focused on the plastics manufacturing sector, which is on the centrality of a variety of value chains, and being demonstrated in 3 demo cases (bathroom ceiling cabinet, feet orthosis and garbage container lid). Sustainability criteria will be applied since the design phase to reach circularity by design, obtaining products with more than 75% biobased content and decreasing GHG up to 33%. Bio-Uptake solution does not request large investment in complex equipment too. Bio-Uptake consortium is formed by 13 interdisciplinar and complementary partners (6 industries, 4 RTOs, 1 academia and 2 Other organizations). The overall budget is 5,994,886 Euros.
+
+----------------------------------------
+

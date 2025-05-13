@@ -1,0 +1,46 @@
+Project ID: 101058409
+Data Type: reporting
+==================================================
+
+## summary
+
+Laser technology is a recognized enabler for efficient and environmentally friendly manufacturing, allowing to produce eco-friendly products and substitute harmful processes. In particular, ultrafast laser surface modification substitutes acid etching, coatings, chemical processing or energy intensive processes, being attractive, but limited typically to small flat parts due to the limitation of the systems and the optics.
+OPeraTIC aims to develop a modular manufacturing platform to boost the uptaking of advanced ultrafast lasers in industrial applications where ultrafast lasers can make a significant difference for clean, efficient and precise surface treatment of large and complex surfaces. The consortium identified the System concept and design itself as one of the main barriers for current industrial ultrafast applications.
+The project has a very reduced and straightforward set of four objectives, which are deeply intertwined, but also easily mapped into the different project tasks and activities.
+
+OBJECTIVE O1: MODULAR ARCHITECTURE FOR HIGH POWER LASER MICROSTRUCTURING WITH LARGE ENVELOPE AND AGILE MANIPULATION
+High precision and high dexterity manipulator for efficient laser processing, complete optical chain, compatible with a robotic system, concepts for high power routing of laser beams for complex 3D paths, polarisation maintaining/high coherence length/low dispersion optical fibre for ultrashort pulses of high energy.
+
+OBJECTIVE O2: CLOSED-LOOP DATA DRIVEN PIPELINE AND DIGITAL ARCHITECTURE FOR MODULAR, RECONFIGURABLE, FLEXIBLE AND INTEGRABLE USPL PRODUCTION LINE FOR LARGE AND COMPLEX COMPONENTS
+Control strategies for high accuracy laser processing through combination of process, optics and motion control with quality sensors, and real time monitoring of the system and the process. End to end digital infrastructure to integrate product and process data, enabling multidirectional data flow. RAMI4.0 compatible distributed controller with multiple layers: physical, signal and digital abstraction layers.
+
+OBJECTIVE O3: MACHINE INTELLIGENCE FRAMEWORK FOR THE DEFINITION OF ZDM EMPOWERED BY AI AND REAL-TIME MONITORING & CONTROL AT EDGE LEVEL
+AI based machine learning capabilities for advanced control (correction loops for mechanics and optics) through the deployment of edge devices operating close to the data sources, attaining 10 micron resolution in fully 3D envelops of over a cubic meter with a robotic manipulator. Increase the processing speeds for large 3D paths through pathplanning which considers dynamics in advance. Reduced setup time and first-time-right processes considering sustainability and energy efficiency. AI based analysis for the identification of correlations between beam parameters, machine behaviour, material behaviour and quality measurement.
+
+OBJECTIVE O4: DEMONSTRATE OPeraTIC APPROACH IN REAL-SCALE FOR THE MANUFACTURING OF LARGE, HIGH PRECISION COMPLEX COMPONENTS, BOOSTING RESULTS EXPLOITATION AND ENABLING EU INDUSTRY ADOPTION
+Validation of the developments in high impact components from four different industry sectors: lighting, industrial tooling (automotive), aerospace and home appliances. System integration, process development and benchmarking of the industrial use cases. Deployment of Testing and Experimentation Facilities within the project partners. Evaluate specific economic, technical and sustainability advantages or limitations of the proposed manufacturing routes using USPL for the four demonstrators. Define and initiate exploitation strategy towards the successful market uptake of the developed solutions.
+
+----------------------------------------
+
+## workPerformed
+
+The first period of the project was directed towards the definition of the OPeraTIC system architecture and defining the lines for the development of the OPeraTIC solution. A key milestone in this first period is the overall design of the OPeraTIC architecture: analysis of the target applications, and the specification of a complete platform including laser optical path, motion system and motion control.
+This milestone is considered fulfilled, leading to the definition of the system architecture and the minimum specifications of all its constituent modules, as well as a general model for the data and the framework on which the control architecture will be built. The consortium delivered the first versions of the different components and modules involved, encapsulated in a number of results:
+-	Laser Source: first prototype of high energy picosecond laser fit to test the OPeraTIC principles on a prototype system.
+-	Optical Fibre: prototype for the fibre and beam launching system, demonstrated to be able to transmit femtosecond pulses with high energy (up to 1 mJ), maintaining linear polarization along the fibre length.
+-	Robotic manipulator: design down to the level of kinematic and dynamic analysis, selection of the components of the mechanical unit and electronics, and first drawings and schematics for the selected configuration.
+-	Beam and process monitoring system: prototype built and tested for both DLIP and DLW setups effective in detecting beam quality issues, misalignments and other optical path deviations.
+-	Asset Administration Shell, together with a proposal for the data handling and storage platform.
+Besides this technical work, the consortium has covered the Dissemination and Communication objectives for the first period. D&C strategies and tools were designed and put to place, including the website (http://operatic.eu), newsletters and a complete communication kit; clustering actions were started and OPeraTIC is part of the LIMES Cluster.
+
+----------------------------------------
+
+## finalResults
+
+A first version of a middleware for laser micromachining tools and the Asset Administration Shell for the prototype machine have been delivered, posing one of the very first RAMI4.0 compatible digital architectures for laser micromachining systems.
+A complete beam coupling, transmission and outcoupling system, based on a polarization maintaining optical fibre, specially designed for ultrashort pulses with high energy per pulse, has been demonstrated for the very first time within this project, being the basis of the system design for robotic laser structuring of 3D surfaces with femtosecond and picosecond pulses.
+A large depth of focus DLIP optical design has been delivered able to provide a robust processing with reduced requirements on the motion system and better adaptability to curved surfaces, based on a novel combination of refractive and diffractive optics.
+A combination of linear actuators, angular positioners and optical axis (scanners), together with high energy bearing SLM modules, have been assembled to produce a powerful test bed with automated adjustment of positions and parameters, as an automatic test bench for large data set generation for the AI database.
+
+----------------------------------------
+

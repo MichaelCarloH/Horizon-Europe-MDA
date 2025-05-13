@@ -1,0 +1,20 @@
+Project ID: 101058458
+Data Type: factsheet
+==================================================
+
+## title
+
+Flawless and sustainable production of composite parts through a human centred digital approach
+
+----------------------------------------
+
+## objective
+
+The reduction of manufacturing waste is a key challenge to achieve a EuropThe reduction of manufacturing waste is a key challenge to achieve a European transition towards climate neutrality and the goals of the Green Deal. In this context, to achieve the zero-defect manufacturing paradigm has becomes a must for those European productive companies that wants to take the step towards sustainable production.
+Composites play an important role in strategic European manufacturing sectors like energy, aerospace, naval or automotive, with a growing forecast. So, FLASH-COMP project will develop a human-oriented solution, capable of identifying in an early-manner feasible defectiveness in composite parts manufacturing and to determine if corrective actions should be adopted. All with the ultimate goal of optimizing the composite manufacturing process, reaching zero-defects and consequently, reducing the generation of waste ?process and product associated.
+FLASH-COMP will develop non-destructive inspection and monitoring instruments to retrieve key process parameters. Will develop an on-line Defect Severity Estimation Tool that will predict the appearance of defects and will estimate their severity to suggest the optimum Feedback and Feedforward control strategies. And will develop a decision support system. In addition, an interoperable software platform for data-sharing will be created.
+The full FLASH-COMP solution will be demonstrated in a test bed, enabling the experimental validation of the FLASH-COMP concept, and 2 industrial use cases, assuring its future replicability, and paving the way for a future exploitation of results.
+FLASH-COMP will include a complete skills development training program since the FLASH-COMP solution has been conceived to assist the operator in controlling and making decisions about the manufacturing process. Finally, the project will deal with the development of a standardization roadmap, to ensure the widest possible impact of project results
+
+----------------------------------------
+
