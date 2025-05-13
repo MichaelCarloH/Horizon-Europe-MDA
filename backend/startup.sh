@@ -10,23 +10,22 @@ mkdir -p data/raw data/processed data/pdf logs
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 export AZURE_ENVIRONMENT=${AZURE_ENVIRONMENT:-"false"}
 
-# Create and activate virtual environment if it doesn't exist
-if [ ! -d ".venv" ]; then
-    echo "Creating virtual environment..."
-    python -m venv .venv
-    source .venv/bin/activate
-    
-    # Install base requirements
-    echo "Installing base requirements..."
-    pip install -r requirements.txt
-    
-    # Install Azure-specific requirements if in Azure environment
-    if [ "$AZURE_ENVIRONMENT" = "true" ]; then
-        echo "Installing Azure-specific requirements..."
-        pip install -r requirements-azure.txt
-    fi
-else
-    source .venv/bin/activate
+# Create and activate virtual environment
+echo "Creating virtual environment..."
+python -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+echo "Installing requirements..."
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# Install Azure-specific requirements if in Azure environment
+if [ "$AZURE_ENVIRONMENT" = "true" ]; then
+    echo "Installing Azure-specific requirements..."
+    pip install -r requirements-azure.txt
+    echo "Installing gunicorn and uvicorn..."
+    pip install gunicorn uvicorn
 fi
 
 # Start the application
