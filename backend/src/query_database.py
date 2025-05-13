@@ -29,20 +29,68 @@ Answer the question based on the above context: {question}
 """
 
 def format_source_info(doc):
-    """Format source information from document metadata."""
+    """Format source information from document metadata, utilizing richer data from project_data.json."""
     metadata = doc.metadata
     source_info = []
-    
-    if metadata.get("source"):
-        source_info.append(f"Document: {metadata['source']}")
-    if metadata.get("author"):
-        source_info.append(f"Author: {metadata['author']}")
-    if metadata.get("page"):
-        source_info.append(f"Page: {metadata['page']}")
+
+    # Core identifiers
     if metadata.get("title"):
         source_info.append(f"Title: {metadata['title']}")
+    if metadata.get("project_id"):
+        source_info.append(f"Project ID: {metadata['project_id']}")
+    if metadata.get("acronym"):
+        source_info.append(f"Acronym: {metadata.get('acronym')}")
+    if metadata.get("source"):
+        source_info.append(f"Source URL: {metadata['source']}")
+
+    # Status and Dates
+    if metadata.get("status"):
+        source_info.append(f"Status: {metadata.get('status')}")
+    if metadata.get("startDate"):
+        source_info.append(f"Start Date: {metadata.get('startDate')}")
+    if metadata.get("endDate"):
+        source_info.append(f"End Date: {metadata.get('endDate')}")
+
+    # Coordinator and Funding
+    if metadata.get("coordinatorName"):
+        source_info.append(f"Coordinator: {metadata.get('coordinatorName')}")
+    elif metadata.get("coordinator"): # Fallback if coordinatorName is not present but 'coordinator' is
+        source_info.append(f"Coordinator: {metadata.get('coordinator')}")
     
-    return " | ".join(source_info) if source_info else "Unknown source"
+    if metadata.get("ecMaxContribution"):
+        try:
+            contribution = float(metadata["ecMaxContribution"])
+            source_info.append(f"EU Max Contribution: €{contribution:,.2f}") #Formatted as Euro currency
+        except ValueError:
+            source_info.append(f"EU Max Contribution: {metadata["ecMaxContribution"]}") # Append as string if not a number
+
+    # Topic and Legal Basis
+    if metadata.get("topic"):
+        source_info.append(f"Topic: {metadata.get('topic')}")
+    if metadata.get("legalBasis"):
+        source_info.append(f"Legal Basis: {metadata.get('legalBasis')}")
+
+    # Grant Agreement ID from various potential keys
+    ga_id = metadata.get("grantAgreement") or metadata.get("grantAgreementId") or metadata.get("grant_agreement_id")
+    if ga_id:
+        source_info.append(f"Grant Agreement ID: {ga_id}")
+
+    # Display specific XML-derived content if available and concise
+    # These might be too verbose for source summary, but can be useful.
+    # Consider if these should be displayed or just used for ranking/context.
+    # For example:
+    # if metadata.get("xml_factsheet_objective"):
+    #     source_info.append(f"Factsheet Objective: {metadata['xml_factsheet_objective'][:150]}...") # Show a snippet
+    # if metadata.get("xml_reporting_summary"):
+    #     source_info.append(f"Reporting Summary: {metadata['xml_reporting_summary'][:150]}...")
+
+    # Fallbacks for older metadata fields (previously used in format_source_info)
+    if metadata.get("author") and not (metadata.get("coordinatorName") or metadata.get("coordinator")):
+        source_info.append(f"Author: {metadata['author']}") # If no coordinator, show author
+    if metadata.get("page"):
+        source_info.append(f"Page: {metadata['page']}") # Though less relevant for CORDIS data
+    
+    return " | ".join(info for info in source_info if info) if source_info else "Unknown source"
 
 def query_database(query_text: str, k: int = 3, metadata_filter: Optional[Dict[str, str]] = None):
     """
