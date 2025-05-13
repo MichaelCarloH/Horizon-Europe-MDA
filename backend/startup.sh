@@ -37,6 +37,17 @@ import sys
 import pysqlite3
 sys.modules['sqlite3'] = pysqlite3
 "
+    
+    # Create a Python file to ensure SQLite configuration is loaded
+    echo "Creating SQLite configuration file..."
+    cat > sqlite_config.py << 'EOL'
+import sys
+import pysqlite3
+sys.modules['sqlite3'] = pysqlite3
+EOL
+    
+    # Add the configuration to PYTHONPATH
+    export PYTHONPATH=$PYTHONPATH:$(pwd)
 fi
 
 # Start the application
