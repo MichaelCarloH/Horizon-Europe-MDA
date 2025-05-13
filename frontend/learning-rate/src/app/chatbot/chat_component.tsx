@@ -1,175 +1,277 @@
 'use client'
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { FiSend, FiCopy, FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import './chat.css';
+
+interface Message {
+  id: string;
+  sender: 'user' | 'bot';
+  text: string;
+  timestamp: Date;
+  feedback?: 'like' | 'dislike';
+}
+
+interface CodeProps {
+  node?: any;
+  inline?: boolean;
+  className?: string;
+  children?: React.ReactNode;
+}
 
 const ChatComponent = () => {
-  const [query, setQuery] = useState(""); // For user input
-  const [messages, setMessages] = useState<{ sender: string, text: string }[]>([]); // To store the conversation history
+  const [query, setQuery] = useState("");
+  const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
-  const handleSubmit = async () => {
-    if (!query) return;
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit();
+    }
+  };
 
-    // Add user's message to the chat
-    setMessages((prevMessages) => [...prevMessages, { sender: "user", text: query }]);
-
-    setLoading(true);
-    setError(null);
+  const copyToClipboard = async (text: string) => {
     try {
-      //const url = "https://mda-horizon-backend-2025.azurewebsites.net/query";
+      await navigator.clipboard.writeText(text);
+      // You could add a toast notification here
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
+  const handleFeedback = (messageId: string, feedback: 'like' | 'dislike') => {
+    setMessages(messages.map(msg => 
+      msg.id === messageId ? { ...msg, feedback } : msg
+    ));
+  };
+
+  const handleSubmit = async () => {
+    if (!query.trim() || loading) return;
+
+    const newMessage: Message = {
+      id: Date.now().toString(),
+      sender: "user",
+      text: query.trim(),
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, newMessage]);
+    setLoading(true);
+    setIsTyping(true);
+    setError(null);
+
+    try {
       const url = "http://localhost:8000/query";
       const payload = { text: query };
-      const headers = {
-        'Content-Type': 'application/json',
-        'Origin': 'https://horizon-europe-mda.vercel.app',
-        'Accept': 'application/json'
-      };
-
-      console.log('Request details:', {
-        url,
-        payload,
-        headers
-      });
-
+      
       const res = await axios.post(url, payload, {
-        headers,
-        timeout: 10000, // 10 second timeout
-        withCredentials: false // Don't send cookies
-      });
-
-      console.log('Response details:', {
-        status: res.status,
-        headers: res.headers,
-        data: res.data
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        timeout: 30000,
+        withCredentials: false
       });
 
       const botResponse = res.data.answer;
       const sources = res.data.sources;
       
-      // Format the response with sources
       let formattedResponse = botResponse;
-      if (sources && sources.length > 0) {
-        formattedResponse += "\n\nSources:\n";
+      if (sources?.length > 0) {
+        formattedResponse += "\n\n**Sources:**\n";
         sources.forEach((source: any, index: number) => {
           const metadata = source.metadata;
           formattedResponse += `\n${index + 1}. `;
-          if (metadata.title) formattedResponse += `Title: ${metadata.title}\n`;
-          if (metadata.projectID) formattedResponse += `Project ID: ${metadata.projectID}\n`;
-          if (metadata.projectAcronym) formattedResponse += `Acronym: ${metadata.projectAcronym}\n`;
-          formattedResponse += `Relevance: ${(source.relevance_score * 100).toFixed(1)}%\n`;
+          if (metadata.title) formattedResponse += `**Title:** ${metadata.title}\n`;
+          if (metadata.projectID) formattedResponse += `**Project ID:** ${metadata.projectID}\n`;
+          if (metadata.projectAcronym) formattedResponse += `**Acronym:** ${metadata.projectAcronym}\n`;
+          formattedResponse += `**Relevance:** ${(source.relevance_score * 100).toFixed(1)}%\n`;
         });
       }
 
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: "bot", text: formattedResponse },
-      ]);
+      setMessages(prev => [...prev, {
+        id: Date.now().toString(),
+        sender: "bot",
+        text: formattedResponse,
+        timestamp: new Date()
+      }]);
     } catch (err) {
-      console.error('Full error:', err);
-      if (axios.isAxiosError(err)) {
-        if (err.code === 'ECONNABORTED') {
-          setError('Request timed out. Please try again.');
-        } else if (err.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.error('Error response:', {
-            status: err.response.status,
-            statusText: err.response.statusText,
-            headers: err.response.headers,
-            data: err.response.data
-          });
-          setError(`Server error: ${err.response.status} - ${err.response.data?.detail || err.message}`);
-        } else if (err.request) {
-          // The request was made but no response was received
-          console.error('No response received:', {
-            request: err.request,
-            message: err.message
-          });
-          setError('No response from server. Please check your connection.');
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.error('Request setup error:', err.message);
-          setError(`Error: ${err.message}`);
-        }
-      } else {
-        console.error('Unexpected error:', err);
-        setError('An unexpected error occurred. Please try again.');
-      }
+      console.error('Error:', err);
+      setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
+      setIsTyping(false);
+      setQuery("");
     }
-
-    setQuery(""); // Clear the input field after sending the query
   };
 
-  return (
-    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#f7fafc', padding: '1.5rem' }}>
-      {/* Fixed Header */}
-      <div style={{ position: 'sticky', top: 0, width: '100%', backgroundColor: 'white', padding: '1.5rem', borderRadius: '0.375rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', zIndex: 10 }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: '600', textAlign: 'center', color: '#2d3748' }}>Ask the AI Chatbot</h1>
-      </div>
-
-      {/* Chat Messages and Input Area */}
-      <div style={{ maxWidth: '100%', width: '100%', backgroundColor: 'white', borderRadius: '0.375rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', padding: '1.5rem', overflowY: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        
-        {/* Chat Messages Section */}
-        <div style={{ flex: 1, overflowY: 'auto', marginBottom: '1rem' }}>
-          {messages.map((message, index) => (
-            <div key={index} style={{ display: 'flex', justifyContent: message.sender === "user" ? 'flex-end' : 'flex-start' }}>
-              <div
-                style={{
-                  padding: '1rem',
-                  maxWidth: '80%',
-                  borderRadius: '0.375rem',
-                  backgroundColor: message.sender === "user" ? '#bee3f8' : '#edf2f7',
-                  color: message.sender === "user" ? '#3182ce' : '#2d3748',
-                  boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
-                }}
+  const renderMarkdown = (text: string) => (
+    <ReactMarkdown
+      components={{
+        code: ({ node, inline, className, children, ...props }: CodeProps) => {
+          const match = /language-(\w+)/.exec(className || '');
+          return !inline && match ? (
+            <div className="relative group">
+              <button
+                onClick={() => copyToClipboard(String(children))}
+                className="absolute top-2 right-2 p-2 rounded bg-gray-700 opacity-0 group-hover:opacity-100 transition-opacity"
+                title="Copy code"
               >
-                {message.sender === "user" ? (
-                  <p style={{ fontWeight: '500' }}>{message.text}</p>
-                ) : (
-                  <div style={{ fontSize: '1rem', color: '#2d3748' }}>
-                    <ReactMarkdown>{message.text}</ReactMarkdown>
-                  </div>
-                )}
-              </div>
+                <FiCopy className="text-white" />
+              </button>
+              <SyntaxHighlighter
+                style={vscDarkPlus}
+                language={match[1]}
+                PreTag="div"
+                {...props}
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
             </div>
-          ))}
-        </div>
+          ) : (
+            <code className={className} {...props}>
+              {children}
+            </code>
+          );
+        }
+      }}
+    >
+      {text}
+    </ReactMarkdown>
+  );
 
-        {/* Input Field and Button */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <input
-            type="text"
-            value={query}
-            onChange={handleQueryChange}
-            placeholder="Ask a question"
-            className="p-3 border border-blue-400 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-          />
+  return (
+    <div className="flex h-screen bg-gray-100">
+      {/* Main Chat Area */}
+      <div className="flex-1 flex flex-col h-screen max-w-5xl mx-auto">
+        <div className="flex-1 flex flex-col bg-white shadow-lg relative h-full">
+          {/* Header */}
+          <div className="p-4 border-b bg-white sticky top-0 z-10">
+            <h1 className="text-xl font-semibold text-gray-800">AI Assistant</h1>
+          </div>
 
-          <button
-            onClick={handleSubmit}
-            disabled={loading}
-            style={{
-              backgroundColor: '#3182ce',
-              color: 'white',
-              padding: '0.75rem',
-              borderRadius: '0.375rem',
-              cursor: 'pointer',
-              transition: 'background-color 0.3s',
+          {/* Messages Container */}
+          <div 
+            ref={chatContainerRef}
+            className="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth"
+            style={{ 
+              height: 'calc(100vh - 180px)',
+              backgroundImage: 'radial-gradient(circle at center, #f3f4f6 1px, transparent 1px)',
+              backgroundSize: '24px 24px'
             }}
           >
-            {loading ? "Processing..." : "Submit"}
-          </button>
+            <AnimatePresence>
+              {messages.map((message) => (
+                <motion.div
+                  key={message.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div
+                    className={`max-w-[80%] rounded-lg p-4 shadow-sm ${
+                      message.sender === 'user'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-white border'
+                    }`}
+                  >
+                    {message.sender === 'user' ? (
+                      <p>{message.text}</p>
+                    ) : (
+                      <div className="prose dark:prose-invert max-w-none">
+                        {renderMarkdown(message.text)}
+                        <div className="flex items-center space-x-2 mt-2 message-feedback">
+                          <button
+                            onClick={() => handleFeedback(message.id, 'like')}
+                            className={`p-1 rounded hover:bg-gray-100 ${
+                              message.feedback === 'like' ? 'text-green-500' : 'text-gray-400'
+                            }`}
+                          >
+                            <FiThumbsUp />
+                          </button>
+                          <button
+                            onClick={() => handleFeedback(message.id, 'dislike')}
+                            className={`p-1 rounded hover:bg-gray-100 ${
+                              message.feedback === 'dislike' ? 'text-red-500' : 'text-gray-400'
+                            }`}
+                          >
+                            <FiThumbsDown />
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+              {isTyping && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex items-center space-x-2 text-gray-500"
+                >
+                  <div className="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <div ref={messagesEndRef} />
+          </div>
 
-          {error && <div style={{ color: '#e53e3e', textAlign: 'center' }}>{error}</div>}
+          {/* Input Area - Fixed at bottom */}
+          <div className="border-t bg-white p-4 sticky bottom-0 z-10">
+            {error && (
+              <div className="text-red-500 mb-2 text-center">{error}</div>
+            )}
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+              className="flex items-center space-x-2"
+            >
+              <input
+                type="text"
+                value={query}
+                onChange={handleQueryChange}
+                onKeyPress={handleKeyPress}
+                placeholder="Type your message..."
+                className="flex-1 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"
+                disabled={loading}
+              />
+              <button
+                type="submit"
+                disabled={loading || !query.trim()}
+                className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <FiSend className="w-5 h-5" />
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
