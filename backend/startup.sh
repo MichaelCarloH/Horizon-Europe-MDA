@@ -32,28 +32,24 @@ if [ "$AZURE_ENVIRONMENT" = "true" ]; then
     
     # Configure pysqlite3 to replace sqlite3
     echo "Configuring pysqlite3..."
-    python -c "
-import sys
-import pysqlite3
-sys.modules['sqlite3'] = pysqlite3
-"
     
-    # Create a Python file to ensure SQLite configuration is loaded
-    echo "Creating SQLite configuration file..."
-    cat > sqlite_config.py << 'EOL'
+    # Create a wrapper script that configures SQLite before importing the app
+    cat > run_app.py << 'EOL'
 import sys
 import pysqlite3
 sys.modules['sqlite3'] = pysqlite3
+
+# Now import and run the app
+from main import app
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 EOL
     
-    # Add the configuration to PYTHONPATH
-    export PYTHONPATH=$PYTHONPATH:$(pwd)
-fi
-
-# Start the application
-if [ "$AZURE_ENVIRONMENT" = "true" ]; then
+    # Start the application using the wrapper script
     echo "Starting application in Azure environment..."
-    gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 main:app
+    gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 run_app:app
 else
     echo "Starting application in local environment..."
     uvicorn main:app --host 0.0.0.0 --port 8000 --reload
