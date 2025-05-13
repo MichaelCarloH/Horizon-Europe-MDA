@@ -16,10 +16,8 @@ sys.path.insert(0, str(project_root))
 from src.config import settings
 from src.database.database import get_db_connection
 from src.processing.document_processor import DocumentProcessor
-from src.vector_store.vector_store import VectorStoreManager
 from src.processing.query_processor import QueryProcessor
 from src.utils.logging_config import setup_logging
-
 
 # Setup logging
 setup_logging()
@@ -43,8 +41,10 @@ app.add_middleware(
 
 # Initialize components
 document_processor = DocumentProcessor()
-vector_store = VectorStoreManager()
 query_processor = QueryProcessor()
+# Initialize vector store once
+query_processor.initialize_vector_store()
+query_processor.initialize_self_query_retriever()
 
 # Pydantic models
 class Query(BaseModel):
@@ -63,9 +63,12 @@ async def startup_event():
     """Initialize services during startup."""
     try:
         logger.info("Starting up services...")
+        # Ensure the vector store is initialized
+        if not query_processor.vector_store:
+            query_processor.initialize_vector_store()
+            query_processor.initialize_self_query_retriever()
     except Exception as e:
         logger.error(f"Error during startup: {e}")
-        # Log error but don't fail startup - services can initialize later
         print(f"Warning: Error during startup: {e}")
 
 # Health check endpoint
@@ -83,8 +86,12 @@ async def health_check() -> Dict[str, Any]:
 async def query_endpoint(query: Query):
     """Process a query and return the response."""
     try:
+        logger.info(f"Processing query: {query.text}")
         result = query_processor.query(query.text, query.conversation_id)
+        logger.info("Query processed successfully")
+        
         if "error" in result:
+            logger.error(f"Query processing error: {result['error']}")
             return JSONResponse(
                 status_code=500,
                 content=result
@@ -107,18 +114,26 @@ async def upload_document(file: UploadFile = File(...)):
     try:
         # Save file to upload directory
         file_path = os.path.join(settings.UPLOAD_DIR, file.filename)
+        os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
+        
+        logger.info(f"Saving file to: {file_path}")
         with open(file_path, "wb") as f:
             content = await file.read()
             f.write(content)
         
-        # Process document and add to vector store
+        # Process document
+        logger.info("Processing document")
         documents = document_processor.process_document(file_path)
-        vector_store.add_documents(documents)
         
-        logger.info(f"Successfully uploaded document: {file.filename}")
+        # Add to the shared vector store instance
+        logger.info("Adding documents to vector store")
+        query_processor.vector_store.add_documents(documents)
+        
+        logger.info(f"Successfully uploaded and processed document: {file.filename}")
         return {
-            "message": "Document uploaded successfully",
+            "message": "Document uploaded and processed successfully",
             "filename": file.filename,
+            "chunks": len(documents),
             "timestamp": datetime.now(timezone.utc).isoformat()
         }
         
@@ -129,7 +144,7 @@ async def upload_document(file: UploadFile = File(...)):
 @app.delete("/documents")
 async def delete_documents(document_delete: DocumentDelete):
     try:
-        vector_store.delete_documents(document_delete.document_ids)
+        query_processor.vector_store.delete_documents(document_delete.document_ids)
         return {"message": "Documents deleted successfully"}
     except Exception as e:
         logger.error(f"Error deleting documents: {str(e)}")
@@ -139,7 +154,7 @@ async def delete_documents(document_delete: DocumentDelete):
 @app.get("/vector-store/stats")
 async def get_vector_store_stats():
     try:
-        stats = vector_store.get_collection_stats()
+        stats = query_processor.vector_store.get_collection_stats()
         return stats
     except Exception as e:
         logger.error(f"Error getting vector store stats: {str(e)}")
@@ -148,7 +163,7 @@ async def get_vector_store_stats():
 @app.get("/vector-store/export-metadata")
 async def export_metadata():
     try:
-        metadata = vector_store.export_metadata()
+        metadata = query_processor.vector_store.export_metadata()
         return metadata
     except Exception as e:
         logger.error(f"Error exporting metadata: {str(e)}")

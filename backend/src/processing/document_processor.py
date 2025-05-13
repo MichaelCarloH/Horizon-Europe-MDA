@@ -12,6 +12,8 @@ from typing import List, Dict, Any, Optional, Union
 import hashlib
 from datetime import datetime
 from src.config import settings
+import json
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -34,6 +36,45 @@ class DocumentProcessor:
         self.markdown_splitter = MarkdownHeaderTextSplitter(
             headers_to_split_on=self.headers_to_split_on
         )
+        
+        # Load project metadata
+        self.project_metadata = self._load_project_metadata()
+
+    def _load_project_metadata(self) -> Dict[str, Dict[str, Any]]:
+        """Load project metadata from project_data_v2.json."""
+        try:
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            json_path = os.path.join(base_dir, 'data', 'processed', 'project_data_v2.json')
+            with open(json_path, 'r', encoding='utf-8') as f:
+                projects = json.load(f)
+            # Create a dictionary with project IDs as keys for faster lookup
+            return {str(p['id']): p for p in projects}
+        except Exception as e:
+            logger.error(f"Error loading project metadata: {str(e)}")
+            return {}
+
+    def _extract_cordis_metadata(self, file_path: str) -> Dict[str, Any]:
+        """Extract CORDIS metadata based on project ID in filename."""
+        try:
+            filename = os.path.basename(file_path)
+            match = re.search(r'CORDIS_project_(\d+)_en\.pdf', filename)
+            if not match:
+                logger.warning(f"Not a CORDIS project file: {filename}")
+                return {}
+                
+            project_id = match.group(1)
+            if project_id in self.project_metadata:
+                metadata = dict(self.project_metadata[project_id])
+                metadata['source'] = filename
+                logger.info(f"Found metadata for project ID: {project_id}")
+                return metadata
+            else:
+                logger.warning(f"No metadata found for project ID: {project_id}")
+                return {"source": filename, "project_id": project_id}
+                
+        except Exception as e:
+            logger.error(f"Error extracting CORDIS metadata: {str(e)}")
+            return {}
 
     def _generate_document_id(self, content: str, metadata: Dict[str, Any]) -> str:
         """Generate a unique document ID based on content and metadata."""
@@ -43,6 +84,7 @@ class DocumentProcessor:
 
     def _extract_metadata(self, file_path: str) -> Dict[str, Any]:
         """Extract metadata from a file."""
+        # Start with basic metadata
         metadata = {
             "source": os.path.basename(file_path),
             "file_type": os.path.splitext(file_path)[1].lower(),
@@ -50,7 +92,12 @@ class DocumentProcessor:
             "file_size": os.path.getsize(file_path),
         }
         
-        # Add file-specific metadata
+        # If it's a CORDIS PDF, get project metadata
+        if "CORDIS_project" in os.path.basename(file_path):
+            cordis_metadata = self._extract_cordis_metadata(file_path)
+            metadata.update(cordis_metadata)
+        
+        # Add PDF-specific metadata
         if file_path.endswith('.pdf'):
             try:
                 import PyPDF2

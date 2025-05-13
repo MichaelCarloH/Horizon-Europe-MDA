@@ -44,7 +44,7 @@ def test_upload_document():
         
         assert response.status_code == 200
         data = response.json()
-        assert data["message"] == "Document uploaded successfully"
+        assert data["message"] == "Document uploaded and processed successfully"
         assert data["filename"] == "test_doc.txt"
         assert "timestamp" in data
         return True
@@ -54,22 +54,47 @@ def test_upload_document():
         return False
 
 def test_query():
-    """Test query endpoint."""
+    """Test query endpoint with various self-querying scenarios."""
     try:
-        query_data = {
+        # Test 1: Basic content query
+        basic_query = {
             "text": "What is artificial intelligence?",
             "conversation_id": "test123"
         }
-        response = requests.post(f"{BASE_URL}/query", json=query_data)
-        
-        logger.info(f"Query response status: {response.status_code}")
-        logger.info(f"Query response content: {response.text}")
-        
+        response = requests.post(f"{BASE_URL}/query", json=basic_query)
+        logger.info(f"Basic query response: {response.text}")
         assert response.status_code == 200
+        
+        # Test 2: Metadata filtering query
+        metadata_query = {
+            "text": "Find projects with total cost over 1 million euros in artificial intelligence",
+            "conversation_id": "test123"
+        }
+        response = requests.post(f"{BASE_URL}/query", json=metadata_query)
+        logger.info(f"Metadata query response: {response.text}")
+        assert response.status_code == 200
+        
+        # Test 3: Combined content and metadata query
+        combined_query = {
+            "text": "What are the objectives of AI projects coordinated by institutions in Germany?",
+            "conversation_id": "test123"
+        }
+        response = requests.post(f"{BASE_URL}/query", json=combined_query)
+        logger.info(f"Combined query response: {response.text}")
+        assert response.status_code == 200
+        
+        # Verify response structure for all queries
         data = response.json()
         assert "answer" in data
         assert "sources" in data
+        assert isinstance(data["sources"], list)
         assert "timestamp" in data
+        
+        # Check if sources contain metadata
+        if data["sources"]:
+            assert "metadata" in data["sources"][0]
+            assert "content" in data["sources"][0]
+        
         return True
     except Exception as e:
         logger.error(f"Error in query test: {str(e)}")

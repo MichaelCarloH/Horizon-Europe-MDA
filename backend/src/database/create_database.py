@@ -1,7 +1,7 @@
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader, TextLoader
 import os
 import logging
 from typing import List, Dict, Any
@@ -20,6 +20,7 @@ load_dotenv()
 # Define paths
 CHROMA_PATH = os.getenv("CHROMA_PATH", "chroma")
 PDF_PATH = os.getenv("PDF_PATH", "data/pdf")
+TXT_PATH = os.getenv("TXT_PATH", "data/txt")
 
 class DatabaseCreator:
     def __init__(self, data_dir: str = PDF_PATH):
@@ -105,6 +106,51 @@ class DatabaseCreator:
             logger.error(f"Error loading PDFs: {str(e)}")
             raise Exception(f"Failed to load PDFs: {str(e)}")
 
+    def load_txt_file(self, file_path: str) -> List[Document]:
+        """Load a single TXT file and return its content as a document."""
+        try:
+            logger.info(f"Loading TXT file: {file_path}")
+            loader = TextLoader(file_path)
+            document = loader.load()
+            
+            # Add metadata
+            for doc in document:
+                doc.metadata.update({
+                    "source": os.path.basename(file_path),
+                    "file_type": "txt",
+                })
+            
+            logger.info(f"Successfully loaded TXT file: {file_path}")
+            return document
+        except Exception as e:
+            logger.error(f"Error loading TXT file {file_path}: {str(e)}")
+            raise
+
+    def load_txt_files(self) -> List[Document]:
+        """Load all TXT files from the TXT_PATH directory."""
+        documents = []
+        try:
+            if not os.path.exists(TXT_PATH):
+                logger.error(f"TXT directory not found: {TXT_PATH}")
+                raise FileNotFoundError(f"TXT directory not found: {TXT_PATH}")
+
+            txt_files = [f for f in os.listdir(TXT_PATH) if f.endswith(".txt")]
+            if not txt_files:
+                logger.warning(f"No TXT files found in {TXT_PATH}")
+                return []
+
+            logger.info(f"Found {len(txt_files)} TXT files: {txt_files}")
+            
+            for filename in txt_files:
+                txt_path = os.path.join(TXT_PATH, filename)
+                documents.extend(self.load_txt_file(txt_path))
+            
+            logger.info(f"Successfully loaded {len(documents)} TXT documents")
+            return documents
+        except Exception as e:
+            logger.error(f"Error loading TXT files: {str(e)}")
+            raise
+
     def split_documents(self, documents: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """Split documents into chunks."""
         try:
@@ -165,11 +211,20 @@ class DatabaseCreator:
             logger.error(f"Error saving to Chroma: {str(e)}")
             raise Exception(f"Failed to save to Chroma: {str(e)}")
 
-    def run(self) -> None:
+    def run(self, include_pdf: bool = True, include_txt: bool = True) -> None:
         """Run the complete database creation pipeline."""
         try:
             logger.info("Starting database creation pipeline")
-            documents = self.load_pdfs()
+            documents = []
+            
+            if include_pdf:
+                documents.extend(self.load_pdfs())
+            if include_txt:
+                documents.extend(self.load_txt_files())
+                
+            if not documents:
+                raise ValueError("No documents were loaded")
+                
             chunks = self.split_documents(documents)
             self.save_to_chroma(chunks)
             logger.info("Database creation completed successfully")
@@ -212,18 +267,41 @@ class DatabaseCreator:
             logger.error(f"Error splitting text: {str(e)}")
             raise Exception(f"Failed to split text: {str(e)}")
 
-def create_database():
-    """Create the database from PDF documents."""
+def create_database(include_pdf: bool = True, include_txt: bool = True):
+    """Create the database from documents."""
     try:
         creator = DatabaseCreator()
-        creator.run()
+        creator.run(include_pdf=include_pdf, include_txt=include_txt)
         return {"status": "success", "message": "Database created successfully"}
     except Exception as e:
         logger.error(f"Error creating database: {str(e)}")
         return {"status": "error", "message": str(e)}
 
+def add_txt_file(file_path: str):
+    """Add a single TXT file to the database."""
+    try:
+        creator = DatabaseCreator()
+        documents = creator.load_txt_file(file_path)
+        chunks = creator.split_documents(documents)
+        creator.save_to_chroma(chunks)
+        return {"status": "success", "message": f"TXT file {file_path} added successfully"}
+    except Exception as e:
+        logger.error(f"Error adding TXT file: {str(e)}")
+        return {"status": "error", "message": str(e)}
 
 if __name__ == "__main__":
-    # Create the database
-    result = create_database()
+    import sys
+    
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "--pdf-only":
+            result = create_database(include_pdf=True, include_txt=False)
+        elif sys.argv[1] == "--txt-only":
+            result = create_database(include_pdf=False, include_txt=True)
+        elif sys.argv[1] == "--add-txt" and len(sys.argv) > 2:
+            result = add_txt_file(sys.argv[2])
+        else:
+            result = create_database(include_pdf=True, include_txt=True)
+    else:
+        result = create_database(include_pdf=True, include_txt=True)
+    
     print(result)

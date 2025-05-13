@@ -5,7 +5,6 @@ This directory contains all database-related operations and utilities for the Eu
 ## Files
 - `database.py` - Core database connection and configuration
 - `create_database.py` - Database initialization and schema creation
-- `query_database.py` - Database query operations
 - `view_database.py` - Database viewing and inspection utilities
 
 ## Purpose
