@@ -19,16 +19,22 @@ REPORT_SUMMARIES_PATH = "data/raw/reportSummaries.xlsx"  # Path to report summar
 class CordisXmlScraper:
 
     def __init__(self):
-        """Initialize the XML scraper and ensure output directory exists."""
-        # Create output directory if it doesn't exist
-        os.makedirs(OUTPUT_DIR, exist_ok=True)
-        logger.info(f"XML data will be saved to {OUTPUT_DIR} directory")
-        
-        # Load Excel file with rcn and id values if it exists
-        self.report_data = self._load_report_data()
+        """Initialize the XML scraper without side effects."""
+        # Don't load Excel or create directories during initialization
+        self.report_data = None
+
+    def _ensure_output_dir_exists(self):
+        """Create output directory only when needed."""
+        if not os.path.exists(OUTPUT_DIR):
+            os.makedirs(OUTPUT_DIR, exist_ok=True)
+            logger.info(f"Created XML data directory at {OUTPUT_DIR}")
 
     def _load_report_data(self) -> Dict[str, Dict[str, Any]]:
         """Load report data from Excel file with rcn and id values."""
+        # If already loaded, return the cached data
+        if self.report_data is not None:
+            return self.report_data
+            
         report_data = {}
         try:
             if os.path.exists(REPORT_SUMMARIES_PATH):
@@ -62,6 +68,8 @@ class CordisXmlScraper:
         except Exception as e:
             logger.error(f"Error loading report data from {REPORT_SUMMARIES_PATH}: {e}")
         
+        # Cache the loaded data
+        self.report_data = report_data
         return report_data
 
     def _get_xml_download_url(self, page_url: str) -> Optional[str]:
@@ -248,6 +256,9 @@ class CordisXmlScraper:
         Returns:
             Path to the saved file
         """
+        # Ensure output directory exists before saving
+        self._ensure_output_dir_exists()
+        
         # Create filename
         filename = f"{project_id}_{data_type}.txt"
         filepath = os.path.join(OUTPUT_DIR, filename)
@@ -283,6 +294,10 @@ class CordisXmlScraper:
         
         logger.info(f"Starting factsheet XML scraping for project ID: {project_id}")
         result = {"project_id": project_id, "factsheet_xml_data": None, "saved_files": []}
+        
+        # Ensure project ID exists in the report data (lazy load)
+        # This isn't strictly necessary for factsheet, but ensures consistency
+        self._load_report_data()
         
         # Construct factsheet page URL
         factsheet_page_url = f"{CORDIS_BASE_URL}/project/id/{project_id}"
@@ -324,8 +339,8 @@ class CordisXmlScraper:
         logger.info(f"Starting reporting XML scraping for project ID: {project_id}")
         result = {"project_id": project_id, "reporting_xml_data": None, "saved_files": []}
         
-        # Get rcn and id from the report data if available
-        report_info = self.report_data.get(project_id)
+        # Get rcn and id from the report data if available - lazy load data
+        report_info = self._load_report_data().get(project_id)
         
         if report_info and 'rcn' in report_info:
             rcn = report_info['rcn']
@@ -423,6 +438,9 @@ class CordisXmlScraper:
             return {"error": "Project ID is required.", "factsheet_xml_data": None, "reporting_xml_data": None}
 
         logger.info(f"Starting XML scraping for project ID: {project_id}")
+        
+        # Lazy load report data just once for both operations
+        self._load_report_data()
         
         # Scrape factsheet
         factsheet_result = self.scrape_factsheet_xml(project_id)

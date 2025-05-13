@@ -43,17 +43,24 @@ def extract_project_id_from_url(url: str) -> Optional[str]:
     return None
 
 class DatabaseCreator:
-    def __init__(self, project_data_path: str = PROJECT_DATA_PATH):
-        """Initialize the database creator with project data from JSON file."""
+    def __init__(self, project_data_path: str = PROJECT_DATA_PATH, do_scraping: bool = False):
+        """
+        Initialize the database creator with project data from JSON file.
+        
+        Args:
+            project_data_path: Path to the project_data.json file
+            do_scraping: Whether to run the XML scraper (default: False)
+        """
         self.project_data_path = project_data_path
         self.cordis_urls = []
         self.project_metadata_store = {}  # Store for project_data.json
+        self.do_scraping = do_scraping  # Flag to control scraping
 
         # Load project data and initialize URLs
         self._load_project_json_data()
         self._initialize_cordis_urls()
 
-        self.xml_scraper = CordisXmlScraper() # Initialize XML scraper
+        self.xml_scraper = CordisXmlScraper() # Initialize XML scraper without running it
         self.embeddings = OpenAIEmbeddings()
         self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000,
@@ -368,6 +375,11 @@ class DatabaseCreator:
             except Exception as e:
                 logger.error(f"Error processing XML text file {xml_file}: {e}")
 
+        # Skip the scraping part if scraping is disabled
+        if not self.do_scraping:
+            logger.info("Scraping is disabled. Only loaded existing text files.")
+            return documents
+                
         # Process URLs for projects that don't have saved text files
         for url in self.cordis_urls:
             try:
@@ -777,12 +789,37 @@ class DatabaseCreator:
             logger.error(f"Error during database creation: {e}")
             raise
 
-def create_database():
-    """Create the database."""
-    db_creator = DatabaseCreator()
+def create_database(do_scraping: bool = False):
+    """
+    Create the database.
+    
+    Args:
+        do_scraping: Whether to scrape data from CORDIS (default: False)
+    
+    Returns:
+        True if successful
+    """
+    db_creator = DatabaseCreator(do_scraping=do_scraping)
     db_creator.run()
     return True
 
+# For backward compatibility with main.py - this is the original function
+def create_database_without_scraping():
+    """Create the database without scraping (for backward compatibility)."""
+    return create_database(do_scraping=False)
+
+# Preserve the original name for imports in main.py
+# When main.py imports DatabaseCreator, it will still work with the default do_scraping=False
+# But our new script with the command line argument will use the new functionality
+
 if __name__ == "__main__":
-    create_database()
+    import argparse
+    
+    # Set up command line arguments
+    parser = argparse.ArgumentParser(description="Create a database from CORDIS XML data")
+    parser.add_argument('--scrape', action='store_true', help='Enable scraping of CORDIS data')
+    args = parser.parse_args()
+    
+    # Create database with scraping enabled only if --scrape flag is provided
+    create_database(do_scraping=args.scrape)
 
