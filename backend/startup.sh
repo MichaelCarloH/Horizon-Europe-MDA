@@ -29,6 +29,14 @@ if [ "$AZURE_ENVIRONMENT" = "true" ]; then
     pip install -r requirements-azure.txt
     echo "Installing gunicorn and uvicorn..."
     pip install gunicorn uvicorn
+    
+    # Configure pysqlite3 to replace sqlite3
+    echo "Configuring pysqlite3..."
+    python -c "
+import sys
+import pysqlite3
+sys.modules['sqlite3'] = pysqlite3
+"
 fi
 
 # Start the application
