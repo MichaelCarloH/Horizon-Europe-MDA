@@ -6,6 +6,7 @@ from langchain.prompts import ChatPromptTemplate
 import os
 import logging
 from dotenv import load_dotenv
+from typing import Dict, Optional
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -43,10 +44,19 @@ def format_source_info(doc):
     
     return " | ".join(source_info) if source_info else "Unknown source"
 
-def query_database(query_text: str, k: int = 3):
+def query_database(query_text: str, k: int = 3, metadata_filter: Optional[Dict[str, str]] = None):
     """
     Query the Chroma vector store for similar documents based on the query text.
-    Returns the response text with detailed source information.
+    Optionally filters results based on provided metadata.
+
+    Args:
+        query_text: The text to search for.
+        k: The number of results to return.
+        metadata_filter: A dictionary specifying metadata fields and values to filter by.
+                         Example: {"author": "John Doe", "title": "Report Title"}
+
+    Returns:
+        The response text with detailed source information, or an error message.
     """
     try:
         if not os.path.exists(CHROMA_PATH):
@@ -61,10 +71,14 @@ def query_database(query_text: str, k: int = 3):
             persist_directory=CHROMA_PATH
         )
 
-        # Search the DB for relevant documents
-        logger.info(f"Searching database for query: {query_text}")
-        results = db.similarity_search_with_relevance_scores(query_text, k=k)
-        logger.info(f"Found {len(results)} results")
+        # Search the DB for relevant documents, applying metadata filter if provided
+        logger.info(f"Searching database for query: {query_text} with filter: {metadata_filter}")
+        results = db.similarity_search_with_relevance_scores(
+            query_text, 
+            k=k,
+            filter=metadata_filter
+        )
+        logger.info(f"Found {len(results)} results after filtering")
 
         # Handle case where no relevant results are found
         if len(results) == 0 or results[0][1] < 0.1:
@@ -111,11 +125,11 @@ class QueryProcessor:
                 raise FileNotFoundError(f"Chroma database not found at {CHROMA_PATH}")
 
             self.vector_store = Chroma(
-                collection_name="horizon_europe",
+                collection_name="cordis_summaries",
                 embedding_function=self.embeddings,
                 persist_directory=CHROMA_PATH
             )
-            logger.info("Successfully initialized Chroma vector store")
+            logger.info("Successfully initialized Chroma vector store from cordis_summaries collection")
             return True
         except Exception as e:
             logger.error(f"Error initializing vector store: {str(e)}")
@@ -138,13 +152,25 @@ class QueryProcessor:
             logger.error(f"Error initializing QA chain: {str(e)}")
             raise Exception(f"Failed to initialize QA chain: {str(e)}")
 
-    def query(self, query_text: str) -> str:
-        """Process a query and return the response."""
+    def query(self, query_text: str, metadata_filter: Optional[Dict[str, str]] = None) -> str:
+        """Process a query and return the response, potentially with metadata filtering."""
         try:
-            if not self.qa_chain:
+            if not self.qa_chain or not self.vector_store:
                 self.initialize_qa_chain()
             
-            response = self.qa_chain.invoke({"query": query_text})
+            # Configure retriever with filter if provided
+            retriever = self.vector_store.as_retriever(
+                search_kwargs={'k': 3, 'filter': metadata_filter} if metadata_filter else {'k': 3}
+            )
+            
+            # Recreate chain with potentially filtered retriever for this query
+            qa_chain = RetrievalQA.from_chain_type(
+                llm=ChatOpenAI(temperature=0),
+                chain_type="stuff",
+                retriever=retriever 
+            )
+
+            response = qa_chain.invoke({"query": query_text})
             return response["result"]
         except Exception as e:
             logger.error(f"Error processing query: {str(e)}")
