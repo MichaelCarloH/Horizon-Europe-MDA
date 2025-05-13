@@ -1,0 +1,16 @@
+Project ID: 101058385
+Data Type: factsheet
+==================================================
+
+## title
+
+Social and Technological Innovation Factory for Low-Carbon and Circular Industrial Value Chains
+
+----------------------------------------
+
+## objective
+
+The SoTecIn Factory - Social and Technological Innovation Factory for Low-Carbon and Circular Industrial Value Chains - goal is to connect industry with society in a community of mission-oriented social innovators, to support social entrepreneurs in their drive to increase the circularity of key product value chains, and to promote a culture of social innovation in European manufacturing businesses. The SoTecIn Factory serves the EU priority ?A European green deal? and its European industrial strategy by giving financial and capacity-building support to social innovations that improve the circularity of the seven key product value chains, as defined by the EU Circular Economy Action Plan. It supports systemic transformation towards restructuring value chains to be low-carbon and circular, by implementing higher value circular economy strategies, i.e. reuse, repair, refurbish and remanufacture. Specifically, the SoTecIn Factory will support 40 mission-oriented social entrepreneurs with services regarding governance (through the creation of stewardship councils for each innovation), business model, capacity-building, fund-raising and exploitation, and 30 mission-oriented pre-market demonstration projects.
+
+----------------------------------------
+

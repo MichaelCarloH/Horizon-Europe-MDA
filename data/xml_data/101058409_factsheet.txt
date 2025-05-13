@@ -1,0 +1,22 @@
+Project ID: 101058409
+Data Type: factsheet
+==================================================
+
+## title
+
+Boosting the adoption of Ultrashort Pulsed Laser large scale structuring with an agile, dexterous and efficient manufacturing platform
+
+----------------------------------------
+
+## objective
+
+OPeraTIC will develop a highly efficient and modular manufacturing platform to boost the adoption of high-power Ultra-Short Pulsed Lasers, as a sustainable alternative to current surface processing. The OPeraTIC open, interoperable and expandable architecture will tackle the industrial entrance barriers of laser microstructuring of large 3D parts.
+
+OPeraTIC provides the required productivity/quality through different developments: (i) combination of advanced optical modules for beam transport and manipulation  (ii) dexterous and precision robotic manipulator. iii) AI-enhanced process planning and adaptability.   OPeraTIC proposes a modular and automated routing of optical components guaranteeing versatility and replicability, i.e beam delivery (polarization maintaining fiber), management (dynamic control beam shaping) and metrology (novel optical setups for product & process monitoring).
+
+On top of that, OPeraTIC will develop a system architecture for the upscaling of USPL machines to large envelope and complex trajectories, driven by a novel RAMI4.0-compliant controller (merging dexterous manipulation with high level CNC motion accuracy and full synchronization of motion, laser process and quality control). Finally, OPeraTIC proposes an I4.0-compliant platform for systematic data exchange and integrated bidirectional communication (Automation-ML and OPC-UA standards) between real environment and its digital representation. This end-to-end seamless connection enhances a Machine Intelligence Framework for the definition of Zero Defect Manufacturing strategies, empowered by AI and real-time monitorization and control, for process optimisation.
+
+A consortium of 4 top Research Institutions and 7 laser sector industry partners, backed by 2 adoption-oriented partners, will demonstrate OPeraTIC potential on relevant and high impact large-scale use-cases by 4 industrial end-users in the automotive, aeronautic, lighting, and white goods sectors.
+
+----------------------------------------
+

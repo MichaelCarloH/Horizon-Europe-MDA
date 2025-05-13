@@ -1,0 +1,51 @@
+Project ID: 101058406
+Data Type: reporting
+==================================================
+
+## summary
+
+AMBIANCE's impact will be two-fold: firstly, we will showcase disruptively innovative bio-based products in different sectors and manufacturing processes, while we will demonstrate applicability in daily-life products, starring green urban areas that will lead the transition to sustainability. 
+
+AMBIANCE’s project's expected results will bring about benefits for research communities, policymakers, industry (manufacturing and building industries), and citizens. Within these main target groups, there are several specific interest groups, which constitute the stakeholders of the project. AMBIANCE project will generate impact at different stages of bio-based product production, covering the complete design and manufacturing of new bio-based products, bio-materials sourcing, recycling, and compound development.
+
+The pathways towards expected results, outcomes and long-term impact of the project are reported below, together with the specific needs addressed.
+
+-Contribute to making urban areas more sustainable with daily-use durable bio-based products
+-Smart shopfloor adaptation for bio-based products manufacturing
+-Recyclable bio-based materials as an answer to the Climate Emergency
+-Circular path of bio-based products through sustainable sourcing and material recycling
+
+Moreover, the objectives of the project are: 
+
+-Reduce the environmental impact of durable products by leveraging novel bio-based materials.
+-Manufacture cost-effective, high-performance products with 100% bio-based material content.
+-Enhance manufacturing processes and quality of bio-based products by combining experimental approaches and digital tools.
+-Showcase successful manufacturing processes and durable bio-based products for sustainable cities.
+-Accelerate uptake of bio-based products through upskilling and standardization. This objective aims to promote the adoption of bio-based materials and products by enhancing the skills of manufacturing professionals and undertaking dedicated standardization activities.
+
+----------------------------------------
+
+## workPerformed
+
+The use case leaders and end users have made a description of the current production process in all the use cases. All the parts involved in the manufacture have been considered.
+The responsible for data models has actively participated in the visits organised in each of the 3 use cases, to understand in depth the different manufacturing processes, the existing sensors and the SCADA system utilized in each use case. Challenges faced by the end-users were also identified and analysed.
+Use case leaders have worked on the selection of biobased materials. Several compatible material grades have been acquired and analysed, both in the raw state and in the processed state. 
+Identification of critical process information: Data input and output parameters for UC1, UC2 and UC3 have been identified and a spreadsheet with information that can be used in the digital tools has been prepared and shared with the responsible partners.
+LCA Indicators and Baseline Pilot Analysis: The responsible for LCA analysis has done a state-of-the-art analysis was carried out to identify the main indicators of environmental impact specific to bio-based polymers. Furthermore, best practices concerning LCA analyses of bio-based materials were collected. 
+Definition of a baseline for LCA assessment in each pilot. 
+Dedicated workshops were organised to define the maturity level regarding LCA in each pilot and identification of available data for the calculation of environmental impacts. 
+Development of novel Bio-based materials
+The main objective of this task is to select appropriate bioplastics, additives, and reinforcement, based on the industrial requirement specification defined in the first part of the project, for manufacturing the targeted use case demos. The selected biomaterials are being processed at the lab scale for each use case, their properties will be characterized through test campaigns based on testing standards and/or protocols used for benchmark materials in each use case. The biodegradability of the processed biomaterials will be assessed, to further modify the formulations. The reusability and recyclability of them are also being evaluated to initiate the circularity and environmental impact study for the targeted demos. The potential of using digital tools to support materials processing has also been studied.
+Biomaterials for each of the three targeted use cases have been selected, respectively. Bio(based) composite materials were prepared from the selected raw bio(based) materials; characterization of raw bio(based) materials and processed bio(based) composite materials were carried out. Based on the characterization results, the selection of raw bio(based) materials and processing parameters for bio(based) composite materials manufacturing is being optimized. Reusability and recyclability study against the developed bio(based) composite material(s) in each use case was also initiated – research on second-life alternatives for the products of the three use cases were investigated; study of the approach of biodegradability tests in soil and/or water, as well as the potential recycling methods were being carried out. Digital support tools in WP2 were aimed to be developed for all use cases. 
+Reusability and recyclability of developed bio-based composite materials
+Firstly, reusability options for the three use cases were analysed; secondly, alternative recycling processes were sought for the manufactured materials. 
+In the next steps, the following objectives have to be reached: determination of the optimal processing windows for the three different UCs. Identification of the key process parameters for manufacturing and to develop/integrate, accordingly, appropriate monitoring tools. Definition of communication protocols and data exchange between modelling and process control. Development of process digital twins and their integration into the three different manufacturing processes, and finally to set up the fabrication lines for each UC.
+
+----------------------------------------
+
+## finalResults
+
+In the particular use case of artificial turf, supportive regulatory and standardisation framework is needed. Biobased naphtha comes from the refining of biobased feedstocks and the manufacturing process to obtain the biopolymer is the same as in the fossil-based polymer. These biopolymers must be certified by using independent mass balance certification to guarantee the processing of renewable feedstocks and at the end of the process the final product also must be certified. It must be certified by the International Sustainability and Carbon Certification (ISCC) carrying the audits by an independent third party. This certification includes the entire value chain and verifies that the renewable feedstock used is certified as being 100% renewable and sustainable produced, including traceability to the point of origin.
+
+----------------------------------------
+

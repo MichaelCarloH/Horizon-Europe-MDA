@@ -1,0 +1,52 @@
+Project ID: 101055476
+Data Type: reporting
+==================================================
+
+## summary
+
+The European Partnership on Innovative SMEs is composed of 41 National and regional funding authorities from 37 countries under the umbrella of Eureka and is coordinated by the Eureka Association in Brussels. The consortium reaches beyond the EU Member States and Horizon Europe Associated countries, which gives the partnership a unique value within the European innovation landscape. 
+The consortium has a clear vision and an ambitious mission for the partnership: 
+Vision: To stimulate economic growth and job creation by enhancing the competitiveness of innovative SMEs, while contributing to delivering a positive societal and environmental impact and Europe and beyond. 
+Mission: To support innovative SMEs to develop products, processes and services and bring them to the market by funding market-led, international collaborative R&D&I projects and connecting the innovative SMEs to accompanying measures. 
+Based on this vision and mission, this partnership has three general objectives and subsets of specific objectives: 
+1.	To enable SMEs to provide SMEs all forms of innovation, including breakthrough innovation, and strengthen market deployment of innovative solutions. 
+        a.	Facilitate SME’s capacity of innovate and reach the market
+        b.	Increase employment and turnover of innovative SMEs
+        c.	Increase the access of SMEs to innovation finance
+        d.	Increase sustainable and environmentally friendly societal and economic impact
+2.	To foster the internationalisation of innovative SMEs.
+        a.	Improve access to global knowledge and high-quality collaboration
+        b.	Improve access to new markets and value chains
+        c.	Become the steppingstone to international R&D&I collaboration for SMEs
+3.	To connect Member States programmes to unlock the potential of all partners in order to strengthen the EU innovation capacity of SMEs and its technological base and to spread the benefits within a stronger European Research Area.  
+        a.	Strengthen links to other national, regional, European and Eureka support schemes
+        b.	Achieve a balanced participation of consortium members, with a special focus on widening countries.
+
+----------------------------------------
+
+## workPerformed
+
+The main activity of the partnership is regular single transnational calls for proposals. The European Partnership on Innovative SMEs will comprise two main funding instruments: Eurostars-3 and Eureka-Innowwide, as well as measures to connect to existing EU programmes, initiatives, other European Partnerships, and the Missions. Eurostars-3 is the third iteration of the Eurostars programme, which has been running since 2008 by Eureka with the support of the European Commission under FP7 and Horizon 2020. 
+Eurostars-3 is a bottom-up instrument that supports the international cooperation of innovative SMEs and other innovation actors in R&D projects with the aim of bringing products, processes, or services to the market. An Eurostars-3 projects must be composed of at least 2 independent entities from at least two participating countries, one of which must be an EU Member State or Horizon Europe Associated countries. The partnership will run two Eurostars-3 transnational calls per year until 2027, providing a steady, continuous support to innovative SMEs in Europe and beyond. 
+Eureka-Innowwide is a bottom-up funding instrument for the internationalisation of SMEs. It is aimed for companies that wish to bring their product, process, or services outside their country. SMEs will be supported by 400 lump-sum grants of 60,000 € to conduct Market Feasibility Projects on any target market around the globe. The partnership will launch 6 calls of Eureka-Innowwide in the period 2022-2027. 
+In addition to Eurostars-3 and Eureka-Innowwide, the European Partnership on Innovative SMEs will deploy a set of accompanying measures to broaden the support provided to SMEs. These accompanying measures will focus on different aspects such as exploiting synergies with other key actors in the European innovation landscape like to European Innovation Council and Enterprise Europe Network. 
+Finally, the European Partnership on Innovative SMEs aims to be a tool to close the innovation gap within and outside Europe. With a dedicated network of National Project Coordinators from 37 countries and the Eureka Secretariat in Brussels, the partnership will be a forum for mutual learning and support between countries.
+
+----------------------------------------
+
+## finalResults
+
+SMEs in Europe employ around 100 million people and account for more than half of of Europe's GDP. 
+
+SMEs in Europe employ around 100 million people and account for more than half of Europe’s GDP . As such, SMEs are a main backbone of the European economy and play a key role in providing innovations to address economic, societal, and environmental challenges related to climate change, digitalisation, healthcare, circular economy, and social cohesion across regions. However, evidence shows obstacles for SMEs related to growth and international development, barriers to enter new markets, access to finance, low R&D&I intensity, lack of skills and administrative burdens. Many of these problems stem from the lack of solid international partners. Such barriers become even greater when looking beyond the European Union. Therefore, there is a need for policies and bottom-up initiatives directly targeting SMEs and helping them to internationalise as well as contribute to covering the high costs linked to innovation. 
+
+Currently, several obstacles to SME innovation may hinder SME’s innovative growth and thus negatively impact not only on possible SME contributions to EU growth but also on : 
+
+	SME competitiveness and internationalisation, where the small size of SMEs, with a consequent lack of financial and human resources, is a strong barrier to entering new markets.
+	SME research and development capabilities, so that limited innovation in many enterprises make SME products less competitive in external markets.
+	SME company performance, evident in the fact that in comparison with large enterprises SMEs perform worse in terms of turnover and value-added.	 
+
+This is where the partnership can help. Based on the consortium’s former experience and efforts while running the Eurostars-1 and Eurostars-2 (FP7 and H2020) programmes, the new European Partnership on Innovative SMEs will help to stimulate SME innovation. There is a need for policies and bottom-up initiatives directly targeting SMEs and helping them to internationalize as well as contribute to covering their often-high costs of innovation.  The consortium will also reach out to, motivate, and try to include companies that currently do not (yet) plan any (international) innovation activities. Also, as the Annual Report on European SMEs 2018/2019 concluded, all improvements in the overall innovation environment have important spill-over effects and stimulate SME innovation across the European Union. So, linking to all relevant existing and new EU initiatives will also be a key part of the work. These spill-over effects will also contribute to a broader adoption of breakthrough technologies, disruptive innovations, and new business model via commercialization in foreign markets and knowledge exchange and mutual learning between SMEs and other innovation actors within the funded consortia.
+
+----------------------------------------
+

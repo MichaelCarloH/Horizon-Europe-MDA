@@ -1,0 +1,27 @@
+Project ID: 101058391
+Data Type: factsheet
+==================================================
+
+## title
+
+Standardisation Booster for H2020 & HE research results
+
+----------------------------------------
+
+## objective
+
+HSbooster.eu will increase the European standardisation impact coming from H2020 & Horizon Europe Research & Innovation projects, by designing, launching, and managing a dedicated booster-type initiative. 
+HSbooster.eu will draw from the positive and practical experience of the H2020 CSA StandICT.eu and two previous Boosters (Common Dissemination Booster, CDB & Horizon Results Booster, HRB) and it will:
+a) Design and implement an effective range of Automated, Proactive, and Premium Services to boost standardisation results from European-led initiatives; 
+b) Launch & manage a robust and efficient Facility to serve R&I projects over 30 months, also owing to an External Pool of Experts to support the Premium Services delivered; 
+c) Deliver a Training Academy of next generation of standardisation experts; 
+d) Enjoy steering from an authoritative Expert Advisory Group, tapping directly into the WGs & TCs of SDOs, tackling EU priorities, challenges & gaps. 
+HSbooster.eu is proposed by a lean Consortium of Partners with extensive experience in the Standardisation landscape 
+Trust-IT Srl (IT), the Coordinator of StandICT.eu and CDB, Dublin City University (IE), an active player in SDO WGs & TCs and in educating future standards experts, Dansk Standard (DE), with a track record in increasing European impact on the international standards scene, University of Belgrade (RS), experts in delivering training packages to support standardisation efforts, and SGS (ES), experts in certification. 
+Principal outputs: 
+The HSbooster.eu Service Facility, serving 300+ projects/organisations and providing feedback on the services received, 
+A continuous Open Call delivering 230+ Premium Services, 250+ experts contractualised, and 1,500+ people trained); 
+14 Webinars, 3 Workshops, 1 final event, 3 Standards Impact Reports, an engaged, multi-stakeholder Community of 2,000+ individuals in Europe, bridging the R&I community (1,000+ H2020 and HE projects) and the standardisation experts.
+
+----------------------------------------
+
