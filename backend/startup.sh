@@ -11,9 +11,12 @@ export PYTHONPATH=$PYTHONPATH:$(pwd)
 export AZURE_ENVIRONMENT=${AZURE_ENVIRONMENT:-"false"}
 
 # Create and activate virtual environment
-echo "Creating virtual environment..."
-python -m venv .venv
-source .venv/bin/activate
+echo "Creating virtual environment .venv-py311 with Python 3.11..."
+python3.11 -m venv .venv-py311
+source .venv-py311/bin/activate
+
+# Verify Python version
+python --version
 
 # Install dependencies
 echo "Installing requirements..."
