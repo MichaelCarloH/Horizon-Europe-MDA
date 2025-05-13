@@ -62,6 +62,8 @@ class Settings(BaseSettings):
         "http://localhost:8000",
         "https://localhost:3000",
         "https://localhost:8000",
+        "https://mda-horizon-backend-2025.azurewebsites.net",
+        "*"  # Allow all origins in production for now
     ]
     
     # Added from the code block
