@@ -1,6 +1,7 @@
 export const API_CONFIG = {
     CHAT: {
-        BASE_URL: "http://localhost:8000",
+        //BASE_URL: "http://localhost:8000",
+        BASE_URL: "https://mda-horizon-backend-2025.azurewebsites.net",
         ENDPOINTS: {
             QUERY: "/query"
         },
