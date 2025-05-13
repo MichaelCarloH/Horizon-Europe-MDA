@@ -1,8 +1,10 @@
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
+from langchain.retrievers.self_query.base import SelfQueryRetriever
+from langchain.chains.query_constructor.base import AttributeInfo, StructuredQueryOutputParser
 import os
 import logging
 from dotenv import load_dotenv
@@ -27,6 +29,40 @@ Answer the question based only on the following context:
 
 Answer the question based on the above context: {question}
 """
+
+# Define metadata field information (add all fields from your project_data_v2.json)
+METADATA_FIELD_INFO = [
+    AttributeInfo(name="id", description="The unique project ID as assigned by the CORDIS database. Used to uniquely identify each project.", type="string"),
+    AttributeInfo(name="acronym", description="The official acronym of the project, typically a short memorable code.", type="string"),
+    AttributeInfo(name="status", description="The current status of the project (e.g., SIGNED, ONGOING, COMPLETED).", type="string"),
+    AttributeInfo(name="title", description="The full title of the project, describing its main focus.", type="string"),
+    AttributeInfo(name="totalCost", description="The total cost of the project in euros, as a string.", type="string"),
+    AttributeInfo(name="ecMaxContribution", description="The maximum contribution from the European Commission in euros, as a string.", type="string"),
+    AttributeInfo(name="legalBasis", description="The legal basis or funding program under which the project is funded.", type="string"),
+    AttributeInfo(name="topic", description="The main research topic(s) or keywords associated with the project.", type="string"),
+    AttributeInfo(name="coordinatorName", description="The name of the main coordinating institution or organization.", type="string"),
+    AttributeInfo(name="coordinatorID", description="The unique identifier for the coordinating institution.", type="string"),
+    AttributeInfo(name="street", description="The street address of the coordinator institution.", type="string"),
+    AttributeInfo(name="postCode", description="The postal code of the coordinator institution.", type="string"),
+    AttributeInfo(name="city", description="The city where the coordinator institution is located.", type="string"),
+    AttributeInfo(name="country", description="The country code (e.g., BE, FR) of the coordinator institution.", type="string"),
+    AttributeInfo(name="geolocation", description="The latitude and longitude of the coordinator institution as a string.", type="string"),
+    AttributeInfo(name="participants", description="A comma-separated list of all participating institutions in the project.", type="string"),
+    AttributeInfo(name="startYear", description="The year the project started (e.g., 2023).", type="string"),
+    AttributeInfo(name="startMonth", description="The month (1-12) the project started.", type="string"),
+    AttributeInfo(name="startDay", description="The day (1-31) the project started.", type="string"),
+    AttributeInfo(name="endYear", description="The year the project ended or is expected to end.", type="string"),
+    AttributeInfo(name="endMonth", description="The month (1-12) the project ended or is expected to end.", type="string"),
+    AttributeInfo(name="endDay", description="The day (1-31) the project ended or is expected to end.", type="string"),
+]
+
+DOCUMENT_CONTENT_DESCRIPTION = (
+    "This document contains information about Horizon Europe research projects. "
+    "Each document includes project details such as title, acronym, status, total cost, EC max contribution, legal basis, "
+    "main research topic, coordinator and participants, and project timeline (startYear, startMonth, startDay, endYear, endMonth, endDay). "
+    "All metadata fields are available for filtering and retrieval. "
+
+)
 
 def format_source_info(doc):
     """Format source information from document metadata."""
@@ -83,7 +119,7 @@ def query_database(query_text: str, k: int = 3):
         # Generate the response using OpenAI model
         logger.info("Generating response with OpenAI model...")
         model = ChatOpenAI()
-        response_text = model.predict(prompt)
+        response_text = model.invoke(prompt)
 
         # Format sources with detailed information
         sources = [format_source_info(doc) for doc, _score in results]
@@ -103,6 +139,7 @@ class QueryProcessor:
         self.embeddings = OpenAIEmbeddings()
         self.vector_store = None
         self.qa_chain = None
+        self.self_query_retriever = None
 
     def initialize_vector_store(self):
         """Initialize the Chroma vector store."""
@@ -139,14 +176,50 @@ class QueryProcessor:
             logger.error(f"Error initializing QA chain: {str(e)}")
             raise Exception(f"Failed to initialize QA chain: {str(e)}")
 
-    def query(self, query_text: str) -> str:
-        """Process a query and return the response."""
+    def initialize_self_query_retriever(self):
+        """Initialize the self-query retriever."""
         try:
-            if not self.qa_chain:
-                self.initialize_qa_chain()
+            if not self.vector_store:
+                self.initialize_vector_store()
             
-            response = self.qa_chain.invoke({"query": query_text})
-            return response["result"]
+            llm = ChatOpenAI(temperature=0)
+            parser = StructuredQueryOutputParser.from_components()
+            self.self_query_retriever = SelfQueryRetriever.from_llm(
+                llm=llm,
+                vectorstore=self.vector_store,
+                document_contents=DOCUMENT_CONTENT_DESCRIPTION,
+                metadata_field_info=METADATA_FIELD_INFO,
+                structured_query_output_parser=parser,
+                verbose=True
+            )
+            logger.info("Successfully initialized self-query retriever")
+            return True
+        except Exception as e:
+            logger.error(f"Error initializing self-query retriever: {str(e)}")
+            raise Exception(f"Failed to initialize self-query retriever: {str(e)}")
+
+    def query(self, query_text: str, use_metadata: bool = True) -> str:
+        """Process a query and return the response. Set use_metadata=True to use self-query retriever."""
+        try:
+            if use_metadata:
+                if not self.self_query_retriever:
+                    self.initialize_self_query_retriever()
+                documents = self.self_query_retriever.invoke(query_text)
+                if not documents:
+                    return "No documents found matching the criteria."
+                context_text = "\n\n---\n\n".join([doc.page_content for doc in documents])
+                prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
+                prompt = prompt_template.format(context=context_text, question=query_text)
+                model = ChatOpenAI(temperature=0)
+                response_text = model.invoke(prompt)
+                # Only return the answer string, not the full object
+                return response_text.content
+            else:
+                if not self.qa_chain:
+                    self.initialize_qa_chain()
+                response = self.qa_chain.invoke({"query": query_text})
+                # Only return the answer string, not the full object
+                return response["result"]
         except Exception as e:
             logger.error(f"Error processing query: {str(e)}")
             raise Exception(f"Failed to process query: {str(e)}")
