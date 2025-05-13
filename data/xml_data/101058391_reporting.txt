@@ -1,0 +1,37 @@
+Project ID: 101058391
+Data Type: reporting
+==================================================
+
+## summary
+
+HSbooster.eu is a 24-month Coordination and Support Action that will provide the European Standardisation Booster. The booster provides expert services to ongoing and completed H2020 and Horizon Europe projects to help them to increase and valorise project results by contributing to the creation or revision of standards.
+Contributing to standards is often an objective of R&I projects. However, actually navigating the path to engage with standardisation working groups and technical committees can be complex and costly. This is where HSbooster.eu comes in. HSbooster.eu will provide consultancy services to guide and support beneficiaries and consortia of R&I projects to make sure they take the right strategic approach and contribute efficiently to the standardisation process. 
+Services are delivered by over 250 experts from the European and international standardisation community who are recruited by HSbooster.eu. They will provide one-on-one guidance and support to projects to ensure they approach standardisation in the most strategic way. 
+Projects can apply quickly and simply through a continuously open call which addresses priority topics highlighted in the EC’s Standardisation Strategy including 5 high-level topics: Health, Reslience, Sustainable digitalization, Green transition, Smart cities and circular economy in buildings.
+With standardisation so embedded in the EU single market and an essential ingredient of industrial competitiveness, HSbooster.eu can support European standardisation experts and projects to play their part in meeting the objectives of the EU Standardisation Strategy to make the EU standardisation system more functional, agile and effective.
+
+----------------------------------------
+
+## workPerformed
+
+The first year has been one of development and engagement. Developing the services and the procedures and platform behind them to ensure that they run smoothly and efficiently as any broad-reaching European booster service needs to do. Engaging a community of standardisation experts and R&I projects to improve project approaches and contributions to standardisation. 
+Main achievements to date:
+The service matrix: From the identification of the open call topics based on EU standardisation priorities to the design, piloting and revision of the 3 services which respond to various recommendations cited in the Code of Practice on Standardisation (CoP).
+The service delivery machine: Design and construction of the procedures, monitoring files and platform to ensure the operation of the EPE open call and the delivery of the services.
+The services: Over 150 standardisation experts recruited, ranked and ready to deliver premium services to projects. 86 premium services currently being delivered or completed. 2 Proactive webinars mapping the standards landscape and Automated service actions raising awareness of standardisation as a means to valorise project results. 
+The standardisation training academy: 6 modules addressing different levels of learning material, and 2 webinars delivered.
+
+----------------------------------------
+
+## finalResults
+
+The service matrix: The continued piloting of the 3 booster services will continue in Y2 where we aim to increase numbers. The intelligence and data gathered from the experiences of both projects and experts will be important to understand how the services can be continuously improved and become more effective. The services,  chatbot, StRl tool, and training academy are KERs that will be weaved into the services more effectively in Y2. 
+The service delivery machine: Y2 will see an increase in applications from projects and experts. The platform, procedures and support documentation require constant monitoring and revisions so that by the end of the project all aspects work efficiently and address pain points. 
+The services: With Premium services now in full swing, we are collecting service delivery reports provided by the experts and satisfaction surveys. We are already able to identify examples of value that Premium services can bring to projects in providing standards-specific and practical guidance. The effectiveness of the current service delivery model will also be reviewed as we gather feedback from experts. 
+The Training Academy: This represents a very tangible KER addressing a very specific need highlighted in the CoP. The training academy material is purposefully open for use with no log-in restrictions on the HSbooster.eu website. With multiple workshops being delivered in Y2 we believe that this particular KER can help us to attract more projects to access our services. Through the consortium's networks, the EPE and EAG, new material will be published in Y2.
+A growing community: In Y2 we aim to grow this community but also tap into the experience and expertise of the projects, EPE and EAG in order to provide recommendations on a series of topics around a future standardisation booster. This includes service delivery, standardisation priorities and training content. 
+The potential impact of these KERs depend greatly on us providing more services to a larger number of projects. As services are rolled out 
+we will identify success stories and capture better how projects are supported by the services as we now have real examples. Y2 will also see us use EC communications channels more. New approaches involving the EC could also be explored such as EC-branded Info days, which have proved to have relative success in the Horizon Results Booster.
+
+----------------------------------------
+

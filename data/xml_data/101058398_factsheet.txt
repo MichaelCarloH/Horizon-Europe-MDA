@@ -1,0 +1,17 @@
+Project ID: 101058398
+Data Type: factsheet
+==================================================
+
+## title
+
+Research Infrastructures Consortium of NCPs in Horizon Europe
+
+----------------------------------------
+
+## objective
+
+RICH Europe is a 84 month Coordination and Support Action built on the past experience and achievements of the Research Infrastructures Networks funded under H2020 (RICH and RICH-2). The overall aim of the project is to improve and support the professionalisation and harmonisation of Research Infrastructures National Contact Points (NCPs) services across Europe and to contribute to the consolidation of the European research infrastructure ecosystem. RICH Europe activities have been designed to (1) raise the general standard of support to programme applicants by enhancing NCPs knowledge and capacities and building a more professionalised and collaborative NCPs community, (2) enhance the quality of knowledge of RIs stakeholders about EU RIs calls & programme and raise their awareness about the trans-national and virtual access opportunities to research infrastructures, (3) lower the entry barriers for newcomers, with a focus on widening countries, (4) mainstream RIs in HE with a special focus on Clusters and the EIC programmes, (5) foster the cooperation among RIs at European and international level, and between RIs and the local/regional socio-economic ecosystem.
+RICH Europe will be implemented by a consortium of 11 officially nominated NCP organizations from 10 EU Member States and 1 candidate Associated Country. The Consortium  has an excellent representation of Widening countries (more than half of the partners are from Widening countries) as well as experienced and less experienced NCPs. The project, in its 7 years duration, will address four major target groups: (i) NCPs for Research Infrastructures, (ii) applicants in Horizon Europe RIs calls, (iii) Research Infrastructures and Academia, (iv) Industries and SMEs.
+
+----------------------------------------
+

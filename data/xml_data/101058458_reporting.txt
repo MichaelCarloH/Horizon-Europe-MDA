@@ -1,0 +1,57 @@
+Project ID: 101058458
+Data Type: reporting
+==================================================
+
+## summary
+
+The FLASH-COMP project aims to develop a fast and reliable (FLASH) human-oriented quality control solution capable of identifying in a timely-manner effectiveness during Liquid Resin Infusion (LRI) composites manufacturing process and consequently, to determine the in-situ corrective actions to be implemented, towards zero-defects manufacturing, significantly reducing the generation of polymer composites waste.
+FLASH-COMP idea is to employ novel, fast and accurate Inspection and Monitoring techniques (FLASH-IM) within the most critical manufacturing stages – pre-forming and infusion, to retrieve key process parameters. This data will feed an AI-based Defect Severity Estimation Tool (FLASH-DSET), capable of estimating the generation of defects and, in consequence, determining if and what kind of corrective actions should be adopted within the pre-forming and resin infusion operations. Instructions will be linked to real-time feedforward and feedback (FF/FB) control strategy Decision Support System (FLASH-DSS) which will allow workers to take instant and precise corrective actions paving the way towards first-time-right manufacturing.
+The smart knowledge will be fed from interoperable and sovereign data sharing between sites and factories. In this way, the composite sector will take advantage of the latest technological innovations to digitalise manufacturing processes towards a more sustainable and competitive composite industry.
+
+----------------------------------------
+
+## workPerformed
+
+Requirements and specifications definition
+Comprehensive process map describing all the details about data and data workflow was created for the FLASH-COMP project use cases in collaboration with AZI and IAI. It is the basis of a container development that supports the whole interoperability activities and actual implementation of the solution at the production line.
+FLASH-IM systems specifications were defined with respect to use case requirements, actual state of the art and prototype solutions available.
+Set of relevant performance categories, objectives and their related KPIs was identified. Quality, Time, Cost, Innovation, Environmental and Social aspects were taken into consideration and a first set of 10 KPIs was developed. KPIs were instantiated in each industrial pilot to obtain their reference values in the current industrial scenario of IAI and AZI.
+The architectural design, characterized by its functional and modular nature, has been developed to accommodate the demands of IIoT (Industrial Internet of Things) and Hybrid Twin technologies.
+
+FLASH-IM development
+The usefulness of specific technologies for monitoring steps of the LRI process has been successfully analysed. Technologies were tailored to the specifics of the process, and the data collected was effectively used to build machine vision algorithms and improve LIDAR accuracy. 
+Core placement detection, inlet flow (bubbles detection, resin velocity) and front flow (position) monitoring algorithms were developed. Methodology to evaluate resin mixing and degree of curing with HSI was developed.
+Baseline algorithms for defective infusion process detection with FOS was developed, as well as a methodology for resin flow arrival detection with FOS.
+Failure Mode Effect Analysis for both use cases was performed, considering industry process maps assessed by industry partners by means of Severity, Occurrence and Detectability of the defects addressed. Additionally, a Fault Tree Analysis to discover the Root causes of the defects was performed.
+First proposal of FF/FB control strategies was made, as well as definition of main focus parameters for both use cases.
+
+Systemic data management
+A reference model for the FLASH-COMP Data-Sharing Environment for Multi-Factories was developed and aligned to state-of-the-art Data Spaces, based on standard, open Data Models and Ontologies, as well as EU best practices.
+FLASH-COMP Data Space was established, with Data Homogenization module, Synthetic Data Creation module and the entire interoperability system. The Data Space can operate through HTTPS, MQTT or OPC UA to provide different microservices and is designed to easily integrate new microservices. Integration of an HMI Dashboard into the Data Space has been accomplished, with plans for further integration of the Human Knowledge gathering tool.  
+The FLASH-COMP Data Space facilitates the Data-Sharing Environment, granting external manufacturers access to the system. Therefore, secure communication channels and Data Governance rules were established to maintain proper data handling and access control within the Data Space.
+
+FLASH Simulations: AI & Physics Driven Digital Hybrid Twin™ Platform
+Constrains for integration of Inspection and Monitoring tools were defined. As result, appropriate strategy to combine quasi-real time simulation tools with data stemming from FLASH-IM systems was established.
+Reduced Order Model (MOR) simulation for curing was developed and successfully validated on fuselage demo panel mode.
+The developed metamodel for curing can be considered as a building block of the thermal runaway alarm to be developed together with the exploitation of data coming from sensors and through the FLASH-DSS platform.
+
+Economic, Green & Waste Assessment Framework
+Overall framework for the FLASH-COMP sustainability assessment was defined, consisting of:
+-	The Zero-Defect Manufacturing Maturity assessment, covering 6 dimensions (i.e., Product, Process, Platform, Performance, People, Partners) that are crucial for the implementation of ZDM.
+-	The Efficiency and Eco-efficiency assessment, which is focused on the liquid resin infusion process and aims at evaluating the time efficiency, resource efficiency and environmental impacts.
+-	The Human Factor assessment, which covers both expert ergonomic analysis as well as usability analysis involving final end users of the FLASH-COMP solutions.
+
+----------------------------------------
+
+## finalResults
+
+Main progress beyond the state of the art so far was made in category of NDT tools for composite manufacturing:
+-	Linear cameras developed alongside Deep Learning algorithms into powerful tools for core positioning and resin input monitoring, planned for demonstration as one of system key points (thanks to an attractive low price for the industry),
+-	HSI proved as great tool for resin curing degree monitoring as well as analysing resin mixture catalysis and its contents, although final calibration and adaptation for industry specific requirements is pending,
+-	FLASH-LIDAR with sub cm precision for monitoring composite layup developed and tested, with further research needed on monitoring of highly reflective and transparent structures,
+-	FOS developed into source of valuable data for complex process monitoring and defects prediction,
+-	Introduction of Pyzoflex sensor to complex composite manufacturing process, although further research to withstand extreme conditions and demonstration of use in glass fibre is pending.
+Moreover, ROM fast simulation tool for composite curing was developed, setting a breakthrough foundation for near real time Hybrid Twin process modelling.
+
+----------------------------------------
+

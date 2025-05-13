@@ -1,0 +1,18 @@
+Project ID: 101058450
+Data Type: factsheet
+==================================================
+
+## title
+
+METAL MATRIX NANO-COMPOSITE COATINGS UTILIZATION AS ALTERNATIVE TO HARD CHROMIUM
+
+----------------------------------------
+
+## objective
+
+The MOZART project proposes sustainable coating solutions for replacement of hard chromium in specific applications based on nano-composite electroplating processes. Nano-composite coatings are potential candidates as durable protective coatings in applications where high wear and corrosion resistance is needed. Their significant advantage compared to other alternative solutions to HC is that they can be produced from the existing infrastructure of plating shops by applying low-cost modification in the lines for the safe integration of nano-particles, keeping thus the investment level low. 
+The MOZART project proposes a multidisciplinary approach for achieving high quality durable composite coatings as replacement to hard chromium. The proposed technologies have been already validated in the lab scale (TRL 3) on previous EC, national or institutional projects and will reach TRL 5 by the end of the project, validated in pilot scale and real demonstrators. The proper integration and combination of these technologies will bring the nano-composite coatings to the desired technology maturity. More specifically during the MOZART project a combination of technologies will be used under a Safe & Sustainable by Desing strategy: In-silico method (Artificial Intelligence and Simulations), on-line monitoring technologie, chemical functionalization of nanoparticles and advance electroplating techniques. 
+The novel nano-composite coatings will be tested in demonstrators introduced from companies (SMEs or LEs) in the field of manufacturing, automotive and machinery.
+
+----------------------------------------
+

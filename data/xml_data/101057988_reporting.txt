@@ -1,0 +1,34 @@
+Project ID: 101057988
+Data Type: reporting
+==================================================
+
+## summary
+
+The recent COVID-19 pandemic, caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) arose the need for contingency methods against infectious diseases. The losses caused due to the infections caused by the virus accounted for millions on both the economic and more importantly on the human side. The World Health Organisation reported 4.565.483 deaths derived from COVID-19 at the beginning of the third trimester of 2021. It is also caused significant economic losses due to lost work hours. In order to reduce the virus transmissions, politicians proposed different measures like lockdowns to increase social distancing but when doing essential tasks people had to go out and infections happened.  
+Even after the pandemic, the situation is critic when referring to infectious diseases. More than 20% of the global annual deaths are caused by infectious diseases and up to a third of those are caused by virus infections. Apart from that, food contamination poses a challenge to be solved in the European union. There were 5146 reported foodborne outbreaks in 2018 from the EU Member States resulting in illnesses to 48,365 people. A vital agent in the process of disease transmission are the high traffic surfaces also known as fomites. Examples of these are, toilets in theatres, schools, restaurants, bars, shopping centres and sports facilities. 80% of infectious diseases are transmitted by unclean hands touching contaminated surfaces. There are existing strategies to mitigate the effect of these so-called fomites. One of them is the development of self-decontaminating surfaces. The methodology used consists on applying antimicrobial coatings to the surfaces to be treated. The issue with the actual treatments is that they are not durable enough for the destined task and they cause environmental hazards, due to their formulations. 
+In this sense, SUSAAN project poses a solution to help reducing the infection cases of the viruses. The project focuses on the development of new, sustainable antiviral (AV) and antimicrobial (AM) coatings with high durability for textiles and high traffic objects made of plastic and metal. SUSAAN addresses the main aspects related to high performance surface coatings. With the combined forces of key-players in the current value chain of coatings, textiles and high traffic surfaces, SUSAAN covers a set of ambitious targets focused on: a) Effective inorganic and bio-based Active Nano Materials, b) Scalable, high-performance and sustainable formulations, c) Antiviral and antimicrobial non-porous high traffic surfaces, d) Antiviral antimicrobial textiles.
+These objectives will be developed considering three main pillars addressing all those aspects related to (1) Scalable manufacturing technologies and easy to repair solutions, (2) Safer-by-design materials avoiding environmental concerns and impact and (3) Standardisation aspects for effective European deployment of marketable and usable technologies. 
+The following specific objectives are set:
+•	Objective 1: Developing a range of improved Active Nano Materials (ANMs) safely tailored to the applications.
+•	Objective 2: Increasing fast performance and durability of the AM/AV coatings in high traffic non-porous surfaces.
+•	Objective 3: Increasing sustainability and stability of the AM/AV coatings in textiles.
+•	Objective 4: Validating the scalability of the products and the pathways for commercialization.
+
+----------------------------------------
+
+## workPerformed
+
+Current periodic report of SUSAAN (SUStainable Antimicrobial and Antiviral Nanocoating) project corresponds to the period M1 to M18 (1st of June of 2022 to 30th of November of 2023).
+SUSAAN is divided in seven WPs. During the first 18 month of the project WP1 Specific definition of requirements has been completed, WP2 Development and production of active nanomaterials (ANMs) is entering the last quarter of its duration and WP3 Development and production of coatings has reached almost a third part of its duration. Milestone 1 (M1- Agreement on the definition of Sustainable Performance Indicators and methodology for decision) has been reached and lately Milestone 2 (M2- Successful development at lab-scale and decision of candidate ANMs according to SPIs) was reached too. Some tasks in the WP5 Toxicity, Regulatory and Sustainability assessment have been going on since the first month of the project and relevant results have been collected. Work of all the partners has been of main importance on WP6 Dissemination, exploitation and Stakeholder Engagement, covering all the value chain. WP7 day to day and overall project management has been carried out during the first 18 Month of the project, including also Data Management Plan (DMP).
+
+For the second periodic report corresponds to the period M19 to M30 (1 December of 2023 to 30 November 2024). During this second reporting period, WP2 in which the active nanomaterials where developed finished and the best active nanomaterials were selected accoding to their score on the SSPI indicators reaching milestone 3 Successful upscaling of ANMs and development at lab-scale and decision of candidate coatings for metals, plastics and textiles according to SPIs. With the best candidates the formulations of the coatings form metalllic surfaces, plastic surfaces and textiles where developed and the fouthr milestone was achieved Successful production of selected coating formulations at pilot scale (batches of 100 litres). The first trials of applications in the substrates started and progress according to expected.
+
+----------------------------------------
+
+## finalResults
+
+The antimicrobial coatings market as well as the ones of global hygiene bathroom accessories, high traffic surface devices and antimicrobial textiles are expected to grow on the next years due to a higher conscience about the importance of maintaining a proper personal hygiene in order to avoid diseases transmissions. In order to assure the proper functioning of these goods SUSAAN will work on different technologies to assure high performance and sustainable technologies.  
+SUSAAN project will work on different nanomaterials, formulations and techniques as cost associated with this are also important. The technology concepts of SUSAAN linked to previous research knowledge and activities within the consortium are based on: antiviral and antimicrobial nanomaterials with no environmental hazards, antimicrobial and antiviral protection for high traffic non porous surfaces and textiles, pretreatments for surfaces to increase durability of the coatings, assure the sustainability of the formulations.
+
+----------------------------------------
+

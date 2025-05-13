@@ -1,0 +1,16 @@
+Project ID: 101052304
+Data Type: factsheet
+==================================================
+
+## title
+
+Development of indicators & econometric analysis on R&I performance
+
+----------------------------------------
+
+## objective
+
+This project continues the research activity carried out by the JRC in support of the work on better evidence for policy-making by the Directorate-General for Research & Innovation (R&I). It focuses on three interrelated research streams. The first research line consists in the development, refinement and update of the methodologies concerning composite indicators and dashboards measuring R&I performance of EU Member States (MSs) and selected benchmark countries, more specifically, the Innovation Output Indicator (IOI) and the People, Planet and Prosperity (3P) dashboards. The second research line concerns the green and digital technologies in the EU and the knowledge base needed for their development, and includes a description of recent technological trajectories and an analysis of the role of innovative foreign direct investments flows to the establishment of the related knowledge base. The third research line is about the complex relationships between digital technologies on the one side and the social, economic and environmental domains of sustainable development on the other one. Using the lens of scientific knowledge through scientific publications, the research entails first the benchmarking of EU MSs performance in the production of pertinent scientific knowledge, and second the assessment of the contribution of advanced digital technologies to the achievement of Societal Development Goals.
+
+----------------------------------------
+

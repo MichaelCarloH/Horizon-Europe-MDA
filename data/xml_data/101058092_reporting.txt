@@ -1,0 +1,54 @@
+Project ID: 101058092
+Data Type: reporting
+==================================================
+
+## summary
+
+The overall objective of StR-ESFRI3 is to further strengthen ESFRI under the guidance of its Chairs, and in close cooperation with the EC-based secretariat, by providing additional resources, tools and expertise to support its activities and structures. The project builds on the experience of the previous ESFRI support projects. StR-ESFRI3 aims to enhance its current provision of support in all areas, including the new areas of the ESFRI Workplans 22-23 and 23-24, providing high-quality and flexible support to ESFRI in achieving its goals, increasing its visibility, operational and analytical capacity, along with its impact on developing a consistent and dynamic ERA policy for RIs, recognising and reflecting RI-related ERA Policy Agenda actions.
+The Specific Objectives (SO) foreseen are the following:
+SO1 – Supporting the ESFRI Chairs and related structures (2022-2025), along with the definition and commissioning of other activities and studies (WP2)
+SO2 – Supporting the Landscape Analysis and next ESFRI Roadmap (WP3)
+SO3 – Communicating, Disseminating, Engaging with key stakeholders, raising awareness of ESFRI-related results and outputs to the EU and global Research Infrastructures area (WP4)
+SO4 – Fostering the strategic positioning of ESFRI within the ERA, and its policy agenda, including EOSC, and other key policy initiatives (WP5)
+SO5 – Supporting the effective review, monitoring and assessment of ESFRI RIs through appropriate analytical tools, i.e. MoS (WP6)
+SO6 – Planning for a sustainable ESFRI support structure (ESFRI office) beyond 2024, including consideration of a sustainable legal entity (WP7)
+Flexibility is a key goal in supporting ESFRI in such a dynamic environment. Thus, Work Packages have been planned to incorporate such flexibility
+By supporting ESFRI, the StR-ESFRI3 project is expected to raise the impact of ESFRI and contribute towards the European Research Area Policy agenda and its related actions on Research Infrastructures, but also other areas such as Technology Infrastructures and Open Science. In the current period (2023-24), ESFRI has adopted demanding Work Plans expanding beyond the usual ESFRI Roadmap, Landscape Analysis and ESFRI projects/landmarks monitoring, to a series of other areas, such as Access to RIs, RI Funding, Impact of RIs, Energy and Supply Challenges, Communication, Transparency and Outreach, Stakeholder Engagement, International Cooperation and Industrial Cooperation. StR-ESFRI3 is expected to contribute to all areas of the Work Plan, supporting all the related ESFRI groups, developing questionnaires, analysing the data and summarising the outputs in all the areas above.
+
+----------------------------------------
+
+## workPerformed
+
+The main achievements during the second project period (April 2023-September 2024)are summarised below:
+1. WP1 – Project Management
+- Facilitated the transition from the outgoing to the incoming Chair, including two PMB meetings in Athens and Ljubljana in October and December 2023
+- Organised the internal communication of the project and with the EC Secretariat, including 16 monthly meetings, along with calls between the Chair’s team and the coordinator
+- Supervised the progress of the numerous ESFRI groups part of ESFRI Work Plans 22-23 and 23-24, as this was not foreseen during the StR-ESFRI3 proposal preparation
+- Coordinated the contracting and reimbursement of the selected (by ESFRI) experts for the 2nd and 3rd batch of monitoring of ESFRI Landmarks 
+2. WP2 - Support to ESFRI Chair and Bodies
+- Supported the ESFRI Chairs Jana Kolar and JL Martinez, in all ESFRI related activities, including preparation of the ESFRI Meetings, other work and support for meetings/workshops for the Drafting Groups, Stakeholders Forum events, EB-SWG chairs meetings, EOSC, and others
+- Assisted the ESFRI Executive Board (EB) members and related meetings, including joint EB and WG chairs meetings
+- Organised extra meetings with the ESFRI Chair's team or other StR-ESFRI members, including debriefings about EB decisions
+- Provided analytical support to the ESFRI Chair and bodies in performing specific activities or studies
+3. WP3 - Support to the Landscape Analysis
+- Provided support for the review/monitoring of ESFRI Landmarks and Projects, assisting the Monitoring Committee to develop an enhanced updated workflow
+- Provided support for the development, publication and distribution of the Landscape Analysis publication
+4. WP4 - Support to ESFRI communication and engagement
+- Developed and implemented the Communication plan, including branding, the project website, social media, and events planning, ran a series of virtual, hybrid or physical events and provided communications’ support to all ESFRI activities
+- Developed the ESFRI Stakeholders Forum platform and co-organised the 2nd Stakeholders Forum meetup
+5. WP5 - Support to ESFRI in strategic cooperation with EOSC, ERA and other initiatives (reported in D5.1)
+- Supported ESFRI in several drafting groups related to WP5, namely on industry, impact, funding, access of RIs and others
+- Supported ESFRI in all EOSC related matters, including the contribution towards a new Task Force, as well as one workshop in Milan and two related publications 
+6. WP6 - Support the review, monitoring & assessment of RIs through appropriate tools (MoS)
+- Developed further the ESFRI MoS system, evolving it and enhancing it with additional functionality, including for the monitoring of ESFRI Landmarks and projects and the RIs portfolio
+7. WP7 - Support to ESFRI in development of a sustainable support structure
+- Reviewed all material on the establishment of the ESFRI support structure (ESFRI Office) and delivered related deliverables, as well as organised related meetings (with the ESFRI EB and StR-ESFRI).
+
+----------------------------------------
+
+## finalResults
+
+In the current period ESFRI has adopted a demanding Work Plans expanding beyond the usual ESFRI Roadmap, Landscape Analysis and ESFRI projects/landmarks monitoring, to a series of other areas, such as Access to RIs, RI Funding, Impact of RIs, Energy and Supply Challenges, Communication, Transparency and Outreach, Stakeholder Engagement, International Cooperation and Industrial Cooperation. With increased effort in the new activities, StR-ESFRI managed to deliver all the required competences and expertise to be able to materialise and contribute to the ESFRI results. This included developing questionnaires, analysing the data and summarising the outputs in all the areas of the work plan and the related ESFRI groups. During this period, already a set of groups was concluded, producing corresponding reports, published in Zenodo, and some others are still ongoing. StR-ESFRI provided significant contributions in all areas and helped ESFRI achieving its objectives, maximising its impact.
+
+----------------------------------------
+
