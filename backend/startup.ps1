@@ -27,14 +27,16 @@ if (-not (Test-Path ".venv")) {
     .\.venv\Scripts\Activate.ps1
 }
 
-# Process data and update vector store
-Write-Host "Processing data and updating vector store..."
-python -m src.update_vector_store
-
 # Start the application
 if ($env:AZURE_ENVIRONMENT -eq "true") {
     Write-Host "Starting application in Azure environment..."
-    gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 main:app
+    gunicorn -w 1 \
+             --worker-class uvicorn.workers.UvicornWorker \
+             --timeout 300 \
+             --worker-connections 1000 \
+             --keep-alive 5 \
+             --worker-tmp-dir /dev/shm \
+             -b 0.0.0.0:8000 main:app
 } else {
     Write-Host "Starting application in local environment..."
     uvicorn main:app --host 0.0.0.0 --port 8000 --reload

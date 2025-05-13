@@ -47,9 +47,15 @@ if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
 EOL
     
-    # Start the application using the wrapper script
+    # Start the application using the wrapper script with optimized settings
     echo "Starting application in Azure environment..."
-    gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 run_app:app
+    gunicorn -w 1 \
+             --worker-class uvicorn.workers.UvicornWorker \
+             --timeout 300 \
+             --worker-connections 1000 \
+             --keep-alive 5 \
+             --worker-tmp-dir /dev/shm \
+             -b 0.0.0.0:8000 run_app:app
 else
     echo "Starting application in local environment..."
     uvicorn main:app --host 0.0.0.0 --port 8000 --reload
