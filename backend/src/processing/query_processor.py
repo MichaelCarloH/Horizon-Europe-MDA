@@ -43,7 +43,7 @@ METADATA_FIELD_INFO = [
     AttributeInfo(name="acronym", description="The official acronym of the project, typically a short memorable code.", type="string"),
     AttributeInfo(name="status", description="The current status of the project (e.g., SIGNED, ONGOING, COMPLETED).", type="string"),
     AttributeInfo(name="title", description="The full title of the project, describing its main focus.", type="string"),
-    AttributeInfo(name="totalCost", description="The total cost of the project in euros, as a int.", type="int"),
+    AttributeInfo(name="totalCost", description="The total cost of the project in euros, as a string.", type="int"),
     AttributeInfo(name="ecMaxContribution", description="The maximum contribution from the European Commission in euros, as a int.", type="int"),
     AttributeInfo(name="legalBasis", description="The legal basis or funding program under which the project is funded.", type="string"),
     AttributeInfo(name="topic", description="The main research topic(s) or keywords associated with the project.", type="string"),

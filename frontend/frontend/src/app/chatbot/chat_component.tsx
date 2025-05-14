@@ -33,6 +33,21 @@ const ChatComponent = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (messages.length === 0) {
+      setMessages([{
+        id: 'welcome',
+        sender: 'bot',
+        text: `Welcome! I'm your Horizon Europe project assistant. I can help you navigate funding opportunities and project management.
+
+For detailed information, visit the [official Horizon Europe portal](https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe_en).
+
+What would you like to know about Horizon Europe?`,
+        timestamp: new Date()
+      }]);
+    }
+  }, []);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -85,7 +100,10 @@ const ChatComponent = () => {
       const { BASE_URL, ENDPOINTS, TIMEOUT, HEADERS } = API_CONFIG.CHAT;
       const url = `${BASE_URL}${ENDPOINTS.QUERY}`;
       
-      const res = await axios.post<QueryResponse>(url, { text: query }, {
+      const res = await axios.post<QueryResponse>(url, { 
+        text: query,
+        context: "This is a Horizon Europe project assistant. Please provide responses relevant to Horizon Europe funding, project management, and related topics."
+      }, {
         headers: HEADERS,
         timeout: TIMEOUT,
         withCredentials: false
@@ -135,7 +153,49 @@ const ChatComponent = () => {
               {children}
             </code>
           );
-        }
+        },
+        p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
+        h1: ({ children }) => <h1 className="text-2xl font-bold mb-4 mt-6">{children}</h1>,
+        h2: ({ children }) => <h2 className="text-xl font-bold mb-3 mt-5">{children}</h2>,
+        h3: ({ children }) => <h3 className="text-lg font-bold mb-2 mt-4">{children}</h3>,
+        ul: ({ children }) => <ul className="list-disc pl-6 mb-4 space-y-2">{children}</ul>,
+        ol: ({ children }) => <ol className="list-decimal pl-6 mb-4 space-y-2">{children}</ol>,
+        li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+        blockquote: ({ children }) => (
+          <blockquote className="border-l-4 border-blue-500 pl-4 py-2 my-4 bg-blue-50">
+            {children}
+          </blockquote>
+        ),
+        a: ({ href, children }) => (
+          <a 
+            href={href} 
+            className="text-blue-600 hover:text-blue-800 underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {children}
+          </a>
+        ),
+        table: ({ children }) => (
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full divide-y divide-gray-200">
+              {children}
+            </table>
+          </div>
+        ),
+        th: ({ children }) => (
+          <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            {children}
+          </th>
+        ),
+        td: ({ children }) => (
+          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            {children}
+          </td>
+        ),
+        hr: () => <hr className="my-6 border-gray-200" />,
+        strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+        em: ({ children }) => <em className="italic">{children}</em>,
       }}
     >
       {text}
@@ -179,7 +239,7 @@ const ChatComponent = () => {
                     }`}
                   >
                     {message.sender === 'user' ? (
-                      <p>{message.text}</p>
+                      <p className="whitespace-pre-wrap">{message.text}</p>
                     ) : (
                       <div className="prose dark:prose-invert max-w-none">
                         {renderMarkdown(message.text)}

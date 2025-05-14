@@ -74,14 +74,7 @@ class VectorStoreManager:
             self.vector_store = Chroma(
                 collection_name=settings.COLLECTION_NAME,
                 embedding_function=self.embeddings,
-                persist_directory=settings.CHROMA_PATH,
-                collection_metadata={
-                    "_type": "collection",
-                    "hnsw:space": "cosine",
-                    "hnsw:construction_ef": 100,
-                    "hnsw:search_ef": 100,
-                    "hnsw:M": 16
-                }
+                persist_directory=settings.CHROMA_PATH
             )
             
             logger.info("VectorStoreManager initialized successfully")
