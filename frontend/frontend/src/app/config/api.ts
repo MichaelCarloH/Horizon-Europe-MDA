@@ -19,7 +19,7 @@ export interface QueryResponse {
         metadata: {
             title?: string;
             projectID?: string;
-            projectAcronym?: string;
+            projectAcronym?: string; 
         };
         relevance_score: number;
     }[];
