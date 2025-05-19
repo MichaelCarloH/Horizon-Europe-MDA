@@ -38,13 +38,19 @@ export default function OrgMapDashboard() {
     const [allTopics, setAllTopics] = useState<string[]>([]);
     const [topicSearch, setTopicSearch] = useState('');
     const [topN, setTopN] = useState<number>(25);
-    const [selectedOrg, setSelectedOrg] = useState<Organization | null>(null);
-    const [showAll, setShowAll] = useState(false);
+    const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
+    const [allCountries, setAllCountries] = useState<string[]>([]);
+    const [countrySearch, setCountrySearch] = useState('');
     const [error, setError] = useState<string | null>(null);
 
     // Filter topics based on search
     const filteredTopics = allTopics.filter(topic => 
         topic.toLowerCase().includes(topicSearch.toLowerCase())
+    );
+
+    // Filter countries based on search
+    const filteredCountries = allCountries.filter(country => 
+        country.toLowerCase().includes(countrySearch.toLowerCase())
     );
 
     useEffect(() => {
@@ -70,9 +76,12 @@ export default function OrgMapDashboard() {
                                     topic: String(row.topic || '')
                                 }));
 
-                            // Get unique topics
+                            // Get unique topics and countries
                             const topics = Array.from(new Set(parsedData.map(org => org.topic))).filter(Boolean);
+                            const countries = Array.from(new Set(parsedData.map(org => org.country))).filter(Boolean).sort();
+                            
                             setAllTopics(topics);
+                            setAllCountries(countries);
                             setData(parsedData);
                             setError(null);
                         } catch (err) {
@@ -92,9 +101,12 @@ export default function OrgMapDashboard() {
             });
     }, []);
 
-    // Filter data based on selected topics and top N
+    // Filter data based on selected topics, countries and top N
     const filteredData = data
-        .filter(org => showAll || selectedTopics.length === 0 || selectedTopics.includes(org.topic))
+        .filter(org => 
+            (selectedTopics.length === 0 || selectedTopics.includes(org.topic)) &&
+            (selectedCountries.length === 0 || selectedCountries.includes(org.country))
+        )
         .sort((a, b) => b.totalecContribution - a.totalecContribution)
         .slice(0, topN);
 
@@ -119,50 +131,85 @@ export default function OrgMapDashboard() {
                 <h1 className="text-2xl font-bold mb-4">European Research Organizations by Topic</h1>
                 
                 <div className="flex gap-4 mb-6">
-                    <div className="w-2/3">
-                        <div className="flex items-center gap-2 mb-2">
-                            <label className="text-sm font-semibold">Select topic(s):</label>
-                            <button
-                                onClick={() => setShowAll(!showAll)}
-                                className={`px-2 py-1 text-sm rounded ${
-                                    showAll ? 'bg-blue-600 text-white' : 'bg-gray-200'
-                                }`}
-                            >
-                                Show All
-                            </button>
-                        </div>
-                        <div className="space-y-2">
-                            <input
-                                type="text"
-                                placeholder="Search topics..."
-                                value={topicSearch}
-                                onChange={(e) => setTopicSearch(e.target.value)}
-                                className="w-full p-2 border rounded"
-                            />
-                            <select 
-                                multiple
-                                className="w-full p-2 border rounded"
-                                value={selectedTopics}
-                                onChange={(e) => setSelectedTopics(Array.from(e.target.selectedOptions, option => option.value))}
-                            >
-                                {filteredTopics.map(topic => (
-                                    <option key={topic} value={topic}>{topic}</option>
-                                ))}
-                            </select>
+                    <div className="w-1/2">
+                        <div className="mb-4">
+                            <div className="flex justify-between items-center mb-2">
+                                <label className="text-sm font-semibold">Select topic(s):</label>
+                                <button
+                                    onClick={() => setSelectedTopics(selectedTopics.length === allTopics.length ? [] : allTopics)}
+                                    className="text-sm text-blue-600 hover:text-blue-800"
+                                >
+                                    {selectedTopics.length === allTopics.length ? 'Deselect All' : 'Select All Topics'}
+                                </button>
+                            </div>
+                            <div className="space-y-2">
+                                <input
+                                    type="text"
+                                    placeholder="Search topics..."
+                                    value={topicSearch}
+                                    onChange={(e) => setTopicSearch(e.target.value)}
+                                    className="w-full p-2 border rounded"
+                                />
+                                <select 
+                                    multiple
+                                    className="w-full p-2 border rounded h-32"
+                                    value={selectedTopics}
+                                    onChange={(e) => setSelectedTopics(Array.from(e.target.selectedOptions, option => option.value))}
+                                >
+                                    {filteredTopics.map(topic => (
+                                        <option key={topic} value={topic}>{topic}</option>
+                                    ))}
+                                </select>
+                                <p className="text-sm text-gray-500">Hold Ctrl/Cmd to select multiple topics</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div className="w-1/3">
-                        <label className="block text-sm font-semibold mb-2">Top N organizations:</label>
-                        <input
-                            type="number"
-                            min="1"
-                            max="100"
-                            value={topN}
-                            onChange={(e) => setTopN(Number(e.target.value))}
-                            className="w-full p-2 border rounded"
-                        />
+                    <div className="w-1/2">
+                        <div className="mb-4">
+                            <div className="flex justify-between items-center mb-2">
+                                <label className="text-sm font-semibold">Select country(s):</label>
+                                <button
+                                    onClick={() => setSelectedCountries(selectedCountries.length === allCountries.length ? [] : allCountries)}
+                                    className="text-sm text-blue-600 hover:text-blue-800"
+                                >
+                                    {selectedCountries.length === allCountries.length ? 'Deselect All' : 'Select All Countries'}
+                                </button>
+                            </div>
+                            <div className="space-y-2">
+                                <input
+                                    type="text"
+                                    placeholder="Search countries..."
+                                    value={countrySearch}
+                                    onChange={(e) => setCountrySearch(e.target.value)}
+                                    className="w-full p-2 border rounded"
+                                />
+                                <select 
+                                    multiple
+                                    className="w-full p-2 border rounded h-32"
+                                    value={selectedCountries}
+                                    onChange={(e) => setSelectedCountries(Array.from(e.target.selectedOptions, option => option.value))}
+                                >
+                                    {filteredCountries.map(country => (
+                                        <option key={country} value={country}>{country}</option>
+                                    ))}
+                                </select>
+                                <p className="text-sm text-gray-500">Hold Ctrl/Cmd to select multiple countries</p>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <div className="w-full mb-4">
+                    <label className="block text-sm font-semibold mb-2">Top N organizations:</label>
+                    <input
+                        type="number"
+                        min="1"
+                        max="100"
+                        value={topN}
+                        onChange={(e) => setTopN(Number(e.target.value))}
+                        className="w-full p-2 border rounded"
+                    />
                 </div>
 
                 {/* Insights Panel */}
@@ -203,8 +250,7 @@ export default function OrgMapDashboard() {
                             {filteredData.map((org, index) => (
                                 <tr 
                                     key={index} 
-                                    className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-blue-50 cursor-pointer`}
-                                    onClick={() => setSelectedOrg(org)}
+                                    className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-blue-50`}
                                 >
                                     <td className="px-6 py-4 whitespace-nowrap">{org.organizationName}</td>
                                     <td className="px-6 py-4 whitespace-nowrap">{org.country}</td>
