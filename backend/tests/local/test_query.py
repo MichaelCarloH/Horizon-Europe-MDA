@@ -35,7 +35,7 @@ def test_basic_query():
     """Test basic content query functionality."""
     try:
         logger.info("🔍 Testing basic content query...")
-        query_text = "What is the project in Leuven about?"
+        query_text = "What is the project in Leiden about?"
         basic_query = {
             "text": query_text,
             "conversation_id": "test123"
