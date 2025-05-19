@@ -355,7 +355,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         if sys.argv[1] == "--scrape":
             result = create_database(do_scraping=True)
-        elif sys.argv[1] == "--addtxt":
+        elif sys.argv[1] == "--add txt":
             if len(sys.argv) > 2:
                 txt_path = sys.argv[2]
                 result = add_txt_file(txt_path)
