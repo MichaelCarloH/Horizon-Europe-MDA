@@ -4,7 +4,7 @@ from dash import dcc, html, dash_table, Input, Output, State
 import plotly.express as px
 
 # Load data
-df = pd.read_csv('../data/processed/org_by_research.csv')
+df = pd.read_csv('/Users/keithatienza/Desktop/Academics/Modern Data Analytics/Horizon-Europe-MDA/data/processed/org_by_research.csv')
 
 # Prepare topic list
 all_topics = sorted(df['topic'].dropna().unique())

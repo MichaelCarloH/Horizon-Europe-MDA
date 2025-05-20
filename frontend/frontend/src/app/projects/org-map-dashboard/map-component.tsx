@@ -13,6 +13,7 @@ interface Organization {
     latitude: number;
     longitude: number;
     topic: string;
+    project_id?: string;  // Optional as it might not be used in the map display
 }
 
 interface MapComponentProps {
