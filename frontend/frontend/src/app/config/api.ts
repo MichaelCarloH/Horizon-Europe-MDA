@@ -36,7 +36,7 @@ export const formatResponse = (response: QueryResponse): string => {
             if (metadata.title) formattedResponse += `**Title:** ${metadata.title}\n`;
             if (metadata.projectID) formattedResponse += `**Project ID:** ${metadata.projectID}\n`;
             if (metadata.projectAcronym) formattedResponse += `**Acronym:** ${metadata.projectAcronym}\n`;
-            formattedResponse += `**Relevance:** ${(source.relevance_score * 100).toFixed(1)}%\n`;
+            //formattedResponse += `**Relevance:** ${(source.relevance_score * 100).toFixed(1)}%\n`;
         });
     }
 

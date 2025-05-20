@@ -28,13 +28,7 @@ Metadata:
 
 Question: {question}
 
-Answer the question based on the above information. Include relevant details such as:
-- Project title and acronym
-- Start and end dates
-- Total cost and EC contribution
-- Project objective
-- Coordinator and participants
-- Any other relevant information from the context and metadata
+Answer the question based only on the information above.
 """
 
 # Define metadata field information (add all fields from your project_data_v2.json)
@@ -136,7 +130,7 @@ class QueryProcessor:
                 formatted.append(f"{key}: {value}")
         return "\n".join(formatted)
 
-    def query(self, text: str, conversation_id: Optional[str] = None, k: int = 5) -> Dict[str, Any]:
+    def query(self, text: str, conversation_id: Optional[str] = None, k: int = 15) -> Dict[str, Any]:
         """Process a query using self-query retriever and return formatted results."""
         try:
             if not self.self_query_retriever:
