@@ -46,11 +46,13 @@ backend/
 - Environment variables and application settings
 - API keys and connection strings
 - CORS and security settings
+- Azure Storage configuration
 
 ### Database (`src/database/`)
 - SQLite database operations
 - Document storage and retrieval
 - Database viewing utilities
+- Azure Storage integration
 
 ### Processing (`src/processing/`)
 - Document processing and chunking
@@ -61,6 +63,7 @@ backend/
 - ChromaDB integration
 - Document embedding and storage
 - Similarity search operations
+- Azure Storage support
 
 ### Utilities (`src/utils/`)
 - Directory management
@@ -80,15 +83,24 @@ source .venv-py311/bin/activate
 
 2. Install dependencies:
 ```bash
+# For local development:
 pip install -r requirements.txt
+
+# For Azure deployment:
+pip install -r requirements-azure.txt
 ```
 
 3. Create a `.env` file:
 ```env
+# Development environment
 OPENAI_API_KEY=your_api_key_here
 CHROMA_PATH=./data/chroma
 COLLECTION_NAME=documents
 UPLOAD_DIR=./data/uploads
+
+# Production environment (Azure)
+AZURE_STORAGE_CONNECTION_STRING=your_connection_string
+CHROMA_PATH=azure://your_storage_account/chroma-db
 ```
 
 4. Start the server:
@@ -98,7 +110,23 @@ python main.py
 
 # Or using uvicorn directly:
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+# For Azure deployment:
+python run_app.py
 ```
+
+## Database Setup
+
+### Local Development
+The Chroma database is stored locally in the `./data/chroma` directory.
+
+### Production (Azure)
+1. Create an Azure Storage Account
+2. Create a container named `chroma-db`
+3. Set the environment variables:
+   - `AZURE_STORAGE_CONNECTION_STRING`: Your Azure Storage connection string
+   - `CHROMA_PATH`: Set to `azure://your_storage_account/chroma-db`
+4. Upload the database files to the container
 
 ## API Documentation
 
@@ -171,13 +199,21 @@ python -m pytest tests/
    - Check database file permissions
    - Verify database connection string
    - Check for database migrations
+   - Verify Azure Storage connection and permissions
 
 3. Vector Store Issues:
    - Verify ChromaDB installation
    - Check vector store path permissions
    - Ensure OpenAI API key is valid
+   - Check Azure Storage container access
 
 4. Document Processing:
    - Check upload directory permissions
    - Verify file format support
-   - Check document size limits 
+   - Check document size limits
+
+5. Azure Storage Issues:
+   - Verify connection string is correct
+   - Check container exists and is accessible
+   - Ensure database files are properly uploaded
+   - Check network connectivity to Azure 

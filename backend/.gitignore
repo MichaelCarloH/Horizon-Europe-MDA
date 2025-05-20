@@ -1,3 +1,37 @@
+# Ignore Chroma database
+chroma/
+chroma/**
+
+# Ignore uploads
+uploads/
+uploads/**
+
+# Ignore all PDFs
+*.pdf
+
+# Ignore XML data and PDFs, but keep processed and raw data
+data/xml_data/
+data/xml_data/**
+
+data/pdf/
+data/pdf/**
+
+# Keep these (negate previous rules for processed/raw)
+!data/processed/
+!data/processed/**
+!data/raw/
+!data/raw/**
+
+# Ignore SQLite and other large files
+*.sqlite3
+*.zip
+
+# Python/venv/IDE
+__pycache__/
+*.pyc
+.venv*/
 .env
-.venv/
-.venv-py311/
+.DS_Store
+.vscode/
+.idea/
+logs/
