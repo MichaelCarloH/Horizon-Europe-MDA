@@ -66,9 +66,13 @@ class VectorStoreManager:
                 openai_api_key=settings.OPENAI_API_KEY
             )
             
-            # Create Chroma directory if it doesn't exist
-            os.makedirs(settings.CHROMA_PATH, exist_ok=True)
-            logger.info(f"Using Chroma directory: {settings.CHROMA_PATH}")
+            # In Azure, we use the database from Azure Storage
+            if settings.AZURE_ENVIRONMENT:
+                logger.info(f"Using Azure Storage database at {settings.CHROMA_PATH}")
+            else:
+                # For local development, create directory if it doesn't exist
+                os.makedirs(settings.CHROMA_PATH, exist_ok=True)
+                logger.info(f"Using local Chroma directory: {settings.CHROMA_PATH}")
 
             # Initialize Chroma with proper configuration
             self.vector_store = Chroma(

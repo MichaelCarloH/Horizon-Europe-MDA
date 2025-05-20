@@ -86,7 +86,18 @@ class QueryProcessor:
     def initialize_vector_store(self):
         """Initialize the Chroma vector store."""
         try:
-            # Handle dimension mismatch by recreating the database if needed
+            # In Azure, we should use the existing database from Azure Storage
+            if settings.AZURE_ENVIRONMENT:
+                logger.info(f"Initializing vector store from Azure Storage at {settings.CHROMA_PATH}")
+                self.vector_store = Chroma(
+                    collection_name=settings.COLLECTION_NAME,
+                    embedding_function=self.embeddings,
+                    persist_directory=settings.CHROMA_PATH
+                )
+                logger.info("Successfully initialized vector store from Azure Storage")
+                return
+
+            # For local development, handle dimension mismatch by recreating the database if needed
             if os.path.exists(settings.CHROMA_PATH):
                 try:
                     self.vector_store = Chroma(
