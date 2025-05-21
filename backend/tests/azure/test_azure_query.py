@@ -9,7 +9,7 @@ import json
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-AZURE_URL = "https://mda-horizon-backend-2025.azurewebsites.net"
+AZURE_URL = "https://mda-backend-egdkfreqeve7evd4.westeurope-01.azurewebsites.net/"
 
 
 def print_query_result(query_text: str, data: dict):
