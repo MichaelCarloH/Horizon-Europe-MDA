@@ -1,25 +1,23 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8-slim as backend
+FROM python:3.11-slim
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the pyproject.toml and uv.lock from the root folder
-COPY pyproject.toml uv.lock ./
+RUN apt-get update && apt-get install -y build-essential python3-dev
 
-# Install uv environment and dependencies based on pyproject.toml
-RUN pip install uv 
-RUN apt-get update && apt-get install -y build-essential
-# Ensure uvicorn is installed
-RUN pip install fastapi uvicorn
+COPY backend/ .
 
-RUN uv sync 
+# Install uv (fast Python installer)
+RUN pip install uv
 
-# Copy the entire backend directory into the container
-COPY backend/ ./backend
+# Use uv to install dependencies
+RUN uv pip install --system -r requirements.txt
+RUN uv pip install --system -r requirements-azure.txt
 
-# Expose port for FastAPI server
+RUN chmod +x startup.sh
+
+ENV AZURE_ENVIRONMENT=true
+ENV RUNNING_IN_DOCKER=true
+
 EXPOSE 8000
 
-# Command to start the FastAPI server with uvicorn
-CMD ["uvicorn", "backend.api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["./startup.sh"]
