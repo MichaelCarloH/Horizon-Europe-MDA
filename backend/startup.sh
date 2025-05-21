@@ -51,7 +51,7 @@ EOL
     echo "Starting application in Azure environment..."
     gunicorn -w 1 \
              --worker-class uvicorn.workers.UvicornWorker \
-             --timeout 300 \
+             --timeout 600 \
              --worker-connections 1000 \
              --keep-alive 5 \
              --worker-tmp-dir /dev/shm \
