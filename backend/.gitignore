@@ -1,4 +1,5 @@
 .env
 .venv/
 .venv-py311/
-data/ 
+data/xml_data/
+data/xml_data.zip
