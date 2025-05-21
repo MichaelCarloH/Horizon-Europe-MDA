@@ -89,7 +89,6 @@ export default function MapComponent({ data }: MapComponentProps) {
                                     <p><span className="font-semibold text-gray-700">Country:</span> {org.country}</p>
                                     <p><span className="font-semibold text-gray-700">Projects:</span> {org.numofProjects}</p>
                                     <p><span className="font-semibold text-gray-700">EC Contribution:</span> €{org.totalecContribution.toLocaleString()}</p>
-                                    <p><span className="font-semibold text-gray-700">Topic:</span> {org.topic}</p>
                                 </div>
                             </div>
                         </Popup>

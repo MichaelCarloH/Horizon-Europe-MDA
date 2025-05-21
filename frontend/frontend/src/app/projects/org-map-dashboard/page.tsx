@@ -160,14 +160,65 @@ export default function OrgMapDashboard() {
     // Filter data based on selected topics, countries and top N
     // Also calculate project counts and contributions
     const filteredData = React.useMemo(() => {
-        // Step 1: Filter organizations by selected topics and countries
+        if (selectedTopics.length === 0 && selectedCountries.length === 0) {
+            return [];
+        }
+
+        // First, get all project IDs that match ALL of the selected topics
+        let projectsThatMatchAllTopics = new Set<string>();
+        
+        // If no topics selected, include all projects
+        if (selectedTopics.length === 0) {
+            data.forEach(org => {
+                projectsThatMatchAllTopics.add(org.project_id);
+            });
+        } else {
+            // Start with projects that match the first topic
+            const projectsByTopic = new Map<string, Set<string>>();
+            
+            // Group projects by topic
+            selectedTopics.forEach(topic => {
+                projectsByTopic.set(topic, new Set<string>());
+            });
+            
+            // Fill the sets with projects that match each topic
+            data.forEach(org => {
+                if (selectedTopics.includes(org.topic)) {
+                    projectsByTopic.get(org.topic)?.add(org.project_id);
+                }
+            });
+            
+            // Find the intersection of all topic project sets
+            if (selectedTopics.length === 1) {
+                // If only one topic, just use those projects
+                projectsThatMatchAllTopics = projectsByTopic.get(selectedTopics[0]) || new Set();
+            } else {
+                // For each project, check if it exists in all topic sets
+                const allProjects = new Set<string>();
+                data.forEach(org => allProjects.add(org.project_id));
+                
+                allProjects.forEach((projectId: string) => {
+                    let matchesAllTopics = true;
+                    for (const topic of selectedTopics) {
+                        if (!projectsByTopic.get(topic)?.has(projectId)) {
+                            matchesAllTopics = false;
+                            break;
+                        }
+                    }
+                    if (matchesAllTopics) {
+                        projectsThatMatchAllTopics.add(projectId);
+                    }
+                });
+            }
+        }
+        
+        // Step 1: Filter organizations by projects that match all topics and by selected countries
         const filteredOrgs = data.filter(org => 
-            (selectedTopics.length === 0 || selectedTopics.includes(org.topic)) &&
+            projectsThatMatchAllTopics.has(org.project_id) &&
             (selectedCountries.length === 0 || selectedCountries.includes(org.country))
         );
 
-        // Step 2: Group by organization name to find unique projects across all topics
-        // Use Map to track org name to all its project IDs and combined data
+        // Step 2: Group by organization name to find unique projects
         const orgProjects = new Map<string, {
             projects: Set<string>,
             orgData: Organization | null,
@@ -195,12 +246,13 @@ export default function OrgMapDashboard() {
         // Step 3: Create aggregated data with combined project counts and contributions
         const aggregatedData: Organization[] = [];
         
-        for (const [orgName, orgInfo] of orgProjects.entries()) {
-            if (!orgInfo.orgData) continue;
+        // Fix TypeScript error by converting Map.entries() to Array and then iterating
+        Array.from(orgProjects.entries()).forEach(([orgName, orgInfo]) => {
+            if (!orgInfo.orgData) return;
             
             // Calculate total contribution from all projects
             let totalContribution = 0;
-            orgInfo.projects.forEach(projectId => {
+            Array.from(orgInfo.projects).forEach((projectId: string) => {
                 const project = projectData.get(projectId);
                 if (project) {
                     totalContribution += project.ecMaxContribution;
@@ -214,7 +266,7 @@ export default function OrgMapDashboard() {
                 totalecContribution: totalContribution,
                 // We'll keep topic as the first encountered topic, but we won't display it
             });
-        }
+        });
         
         // Sort by total contribution and limit to top N
         return aggregatedData
@@ -223,31 +275,90 @@ export default function OrgMapDashboard() {
     }, [data, selectedTopics, selectedCountries, topN, projectData]);
 
     // Calculate insights without double-counting
-    // Get all unique project IDs across all filtered organizations
-    const uniqueProjectIds = new Set<string>();
-    filteredData.forEach(org => {
-        // In the data model, each organization may have multiple project_id references
-        // We need to extract these from the original data to avoid double-counting
-        data.filter(item => 
-            item.organisationID === org.organisationID && 
-            item.topic === org.topic
-        ).forEach(item => {
-            if (item.project_id) {
-                uniqueProjectIds.add(item.project_id);
+    // Use the existing projectsThatMatchAllTopics set from the filteredData calculation
+    // This way we ensure we only count projects that match ALL selected topics
+    const uniqueProjectIds = React.useMemo(() => {
+        // Calculate unique projects that match ALL selected topics
+        const uniqueProjects = new Set<string>();
+        
+        if (selectedTopics.length === 0) {
+            // If no topics are selected, include all projects
+            data.forEach(org => {
+                uniqueProjects.add(org.project_id);
+            });
+        } else {
+            // Group projects by topic
+            const projectsByTopic = new Map<string, Set<string>>();
+            
+            selectedTopics.forEach(topic => {
+                projectsByTopic.set(topic, new Set<string>());
+            });
+            
+            // Fill the sets with projects that match each topic
+            data.forEach(org => {
+                if (selectedTopics.includes(org.topic)) {
+                    projectsByTopic.get(org.topic)?.add(org.project_id);
+                }
+            });
+            
+            // Find the intersection - projects that exist in ALL topic sets
+            if (selectedTopics.length === 1) {
+                // If only one topic, just use those projects
+                return projectsByTopic.get(selectedTopics[0]) || new Set();
+            } else {
+                // For each project, check if it exists in all topic sets
+                const allProjects = new Set<string>();
+                data.forEach(org => allProjects.add(org.project_id));
+                
+                allProjects.forEach(projectId => {
+                    let matchesAllTopics = true;
+                    for (const topic of selectedTopics) {
+                        if (!projectsByTopic.get(topic)?.has(projectId)) {
+                            matchesAllTopics = false;
+                            break;
+                        }
+                    }
+                    if (matchesAllTopics) {
+                        uniqueProjects.add(projectId);
+                    }
+                });
             }
-        });
-    });
+        }
+        
+        // Filter by country if needed
+        if (selectedCountries.length > 0) {
+            // Find projects in selected countries
+            const projectsInSelectedCountries = new Set<string>();
+            data.filter(org => selectedCountries.includes(org.country))
+                .forEach(org => {
+                    projectsInSelectedCountries.add(org.project_id);
+                });
+            
+            // Only keep projects that are both in the topic intersection AND in selected countries
+            return new Set(
+                Array.from(uniqueProjects).filter(projectId => 
+                    projectsInSelectedCountries.has(projectId)
+                )
+            );
+        }
+        
+        return uniqueProjects;
+    }, [data, selectedTopics, selectedCountries]);
     
     // Calculate accurate total contribution from unique projects
-    let totalContribution = 0;
-    uniqueProjectIds.forEach(projectId => {
-        const project = projectData.get(projectId);
-        if (project) {
-            totalContribution += project.ecMaxContribution;
-        }
-    });
+    const totalContribution = React.useMemo(() => {
+        let total = 0;
+        // Fix TypeScript error by explicitly casting array elements to string
+        Array.from(uniqueProjectIds).forEach((projectId) => {
+            const project = projectData.get(projectId as string);
+            if (project) {
+                total += project.ecMaxContribution;
+            }
+        });
+        return total;
+    }, [uniqueProjectIds, projectData]);
     
-    // Use unique project count instead of summing individual org counts
+    // Use unique project count
     const totalProjects = uniqueProjectIds.size;
     const uniqueCountries = new Set(filteredData.map(org => org.country)).size;
 
@@ -404,18 +515,6 @@ export default function OrgMapDashboard() {
                     </div>
                 </div>
 
-                <div className="w-full mb-4">
-                    <label className="block text-sm font-semibold mb-2">Top N organizations:</label>
-                    <input
-                        type="number"
-                        min="1"
-                        max="100"
-                        value={topN}
-                        onChange={(e) => setTopN(Number(e.target.value))}
-                        className="w-full p-2 border rounded"
-                    />
-                </div>
-
                 {/* Insights Panel */}
                 <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="bg-white p-4 rounded-lg shadow">
@@ -435,12 +534,27 @@ export default function OrgMapDashboard() {
                 </div>
             </div>
 
+                <div className="w-full mb-4">
+                    <label className="block text-sm font-semibold mb-2">Top N organizations:</label>
+                    <input
+                        type="number"
+                        min="1"
+                        max="100"
+                        value={topN}
+                        onChange={(e) => setTopN(Number(e.target.value))}
+                        className="w-full p-2 border rounded"
+                    />
+                </div>
+
             <div className="h-[600px] border rounded-lg overflow-hidden mb-6">
                 <MapComponent data={filteredData} />
             </div>
+            
+            <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold">Organization Table</h2>
+            </div>
 
             <div className="mt-6">
-                <h2 className="text-xl font-bold mb-4">Organization Table</h2>
                 <div className="overflow-x-auto">
                     <table className="min-w-full bg-white border rounded-lg">
                         <thead className="bg-gray-50">
