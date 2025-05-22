@@ -4,7 +4,15 @@ import React from "react"
 import Image from "next/image";
 import Link from "next/link";
 
-function ProjectCard(props: { title: string; tag: string; text: string; imgLink: string; isLocked: number; projectLink: string }) {
+function ProjectCard(props: { 
+    title: string; 
+    tag: string; 
+    text: string; 
+    imgLink: string; 
+    isLocked: number; 
+    projectLink: string;
+    buttonText: string;
+}) {
     const isUpcoming = props.isLocked === 1;
     
     return (
@@ -42,7 +50,7 @@ function ProjectCard(props: { title: string; tag: string; text: string; imgLink:
                         {isUpcoming ? (
                             <span>Coming Soon</span>
                         ) : (
-                            <Link href={"." + props.projectLink}>Interactive Map</Link>
+                            <Link href={"." + props.projectLink}>{props.buttonText}</Link>
                         )}
                     </button>
                 </div>
