@@ -18,8 +18,8 @@ export interface QueryResponse {
     sources?: {
         metadata: {
             title?: string;
-            projectID?: string;
-            projectAcronym?: string; 
+            project_id?: string;
+            acronym?: string; 
         };
         relevance_score: number;
     }[];
