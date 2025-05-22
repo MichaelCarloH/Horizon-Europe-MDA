@@ -9,7 +9,8 @@ const projects = [
         projectDescription: "Interactive dashboard showing European research organizations by topic, with map visualization and detailed statistics.",
         projectImg: "/Europe_map.png",
         projectLink: "/projects/org-map-dashboard",
-        isLocked: 0
+        isLocked: 0,
+        buttonText: "Interactive Map"
     },
     {
         projectID: 2,
@@ -18,16 +19,18 @@ const projects = [
         projectDescription: "Analyze funding patterns and trends across different research domains in Europe.",
         projectImg: "/coming_soon.png",
         projectLink: "/projects/funding-analysis",
-        isLocked: 1
+        isLocked: 0,
+        buttonText: "View Analysis"
     },
     {
         projectID: 3,
-        projectTitle: "Collaboration Network",
-        projectTag: "Network Analysis",
+        projectTitle: "Research Impact Metrics",
+        projectTag: "Project Analytics",
         projectDescription: "Visualize and analyze research collaboration networks between organizations.",
-        projectImg: "/coming_soon.png",
-        projectLink: "/projects/collaboration-network",
-        isLocked: 1
+        projectImg: "/compass.png",
+        projectLink: "/projects/research-impact-metrics",
+        isLocked: 0,
+        buttonText: "View Metrics"
     },
     {
         projectID: 4,
@@ -36,7 +39,8 @@ const projects = [
         projectDescription: "Track and analyze the impact of research projects using various metrics.",
         projectImg: "/coming_soon.png",
         projectLink: "/projects/impact-metrics",
-        isLocked: 1
+        isLocked: 1,
+        buttonText: "View Metrics"
     },
     {
         projectID: 5,
@@ -45,7 +49,8 @@ const projects = [
         projectDescription: "Monitor and visualize project timelines and milestones across different research initiatives.",
         projectImg: "/coming_soon.png",
         projectLink: "/projects/timeline-tracker",
-        isLocked: 1
+        isLocked: 1,
+        buttonText: "View Timeline"
     },
     {
         projectID: 6,
@@ -54,7 +59,8 @@ const projects = [
         projectDescription: "Comprehensive dashboard showing research outputs, publications, and patents.",
         projectImg: "/coming_soon.png",
         projectLink: "/projects/output-dashboard",
-        isLocked: 1
+        isLocked: 1,
+        buttonText: "View Dashboard"
     }
 ];
 
@@ -70,6 +76,7 @@ export default function Home() {
                     imgLink={project.projectImg}
                     isLocked={project.isLocked}
                     projectLink={project.projectLink}
+                    buttonText={project.buttonText}
                 />
             ))}
         </main>
