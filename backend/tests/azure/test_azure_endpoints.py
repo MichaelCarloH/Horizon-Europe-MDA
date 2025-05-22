@@ -5,7 +5,7 @@ import time
 import os
 from typing import Dict, Any
 
-AZURE_URL = "https://mda-horizon-backend-2025.azurewebsites.net"
+AZURE_URL = "https://mda-backend-egdkfreqeve7evd4.westeurope-01.azurewebsites.net/"
 
 def test_health_endpoint():
     """Test the health check endpoint."""

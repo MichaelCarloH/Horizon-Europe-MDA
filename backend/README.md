@@ -95,6 +95,7 @@ UPLOAD_DIR=./data/uploads
 ```bash
 # Development mode with auto-reload:
 python main.py
+docker run -it --rm -p 8000:8000 mda-backend:latest
 
 # Or using uvicorn directly:
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
