@@ -124,7 +124,8 @@ class QueryProcessor:
             document_contents=DOCUMENT_CONTENT_DESCRIPTION,
             metadata_field_info=METADATA_FIELD_INFO,
             structured_query_output_parser=parser,
-            verbose=True
+            verbose=True,
+            search_kwargs={"k": 10}
         )
         logger.info("Successfully initialized self-query retriever")
 
