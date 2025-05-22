@@ -1,7 +1,7 @@
 export const API_CONFIG = {
     CHAT: {
-        //BASE_URL: "http://localhost:8000",
-        BASE_URL: "https://mda-backend-egdkfreqeve7evd4.westeurope-01.azurewebsites.net/",
+        BASE_URL: "http://localhost:8000",
+        //BASE_URL: "https://mda-backend-egdkfreqeve7evd4.westeurope-01.azurewebsites.net/",
         ENDPOINTS: {
             QUERY: "/query"
         },
@@ -18,8 +18,8 @@ export interface QueryResponse {
     sources?: {
         metadata: {
             title?: string;
-            projectID?: string;
-            projectAcronym?: string; 
+            project_id?: string;
+            acronym?: string; 
         };
         relevance_score: number;
     }[];
@@ -34,9 +34,9 @@ export const formatResponse = (response: QueryResponse): string => {
             const metadata = source.metadata;
             formattedResponse += `\n${index + 1}. `;
             if (metadata.title) formattedResponse += `**Title:** ${metadata.title}\n`;
-            if (metadata.projectID) formattedResponse += `**Project ID:** ${metadata.projectID}\n`;
-            if (metadata.projectAcronym) formattedResponse += `**Acronym:** ${metadata.projectAcronym}\n`;
-            formattedResponse += `**Relevance:** ${(source.relevance_score * 100).toFixed(1)}%\n`;
+            if (metadata.project_id) formattedResponse += `**Project ID:** ${metadata.project_id}\n`;
+            if (metadata.acronym) formattedResponse += `**Acronym:** ${metadata.acronym}\n`;
+            //formattedResponse += `**Relevance:** ${(source.relevance_score * 100).toFixed(1)}%\n`;
         });
     }
 
