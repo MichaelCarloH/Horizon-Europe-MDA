@@ -34,7 +34,7 @@ export default function Page() {
           header: true,
           dynamicTyping: true,
           complete: results => resolve(results.data),
-          error: err => reject(err)
+          error: (err:Error) => reject(err)
         });
       });
     };
