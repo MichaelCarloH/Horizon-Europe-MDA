@@ -1,0 +1,101 @@
+year_quarter,macro_topic,num_projects,total_funding
+2021Q3,Engineering and Technology,2,150000.0
+2021Q3,Medical and Health Sciences,1,250000.0
+2021Q4,Agricultural and Environmental Sciences,5,0.0
+2021Q4,Computer and Information Sciences,5,551442000.0
+2021Q4,Engineering and Technology,8,49913750.0
+2021Q4,Medical and Health Sciences,9,0.0
+2021Q4,Natural Sciences,5,153100000.0
+2021Q4,Social Sciences,11,40494697.0
+2022Q1,Agricultural and Environmental Sciences,113,180475833.0
+2022Q1,Computer and Information Sciences,141,213882436.0
+2022Q1,Engineering and Technology,139,178880574.0
+2022Q1,Humanities,141,248893359.0
+2022Q1,Medical and Health Sciences,163,266774647.0
+2022Q1,Natural Sciences,273,360571043.0
+2022Q1,Social Sciences,145,195584738.0
+2022Q2,Agricultural and Environmental Sciences,740,1447855660.0
+2022Q2,Computer and Information Sciences,713,1316110273.0
+2022Q2,Engineering and Technology,731,1297903742.0
+2022Q2,Humanities,758,1542629679.0
+2022Q2,Medical and Health Sciences,689,1167395585.0
+2022Q2,Natural Sciences,1298,2275833752.0
+2022Q2,Social Sciences,600,986664143.0
+2022Q3,Agricultural and Environmental Sciences,448,375941048.0
+2022Q3,Computer and Information Sciences,484,412783457.0
+2022Q3,Engineering and Technology,509,609857952.0
+2022Q3,Humanities,412,398416283.0
+2022Q3,Medical and Health Sciences,492,332628733.0
+2022Q3,Natural Sciences,972,761331969.0
+2022Q3,Social Sciences,532,439525901.0
+2022Q4,Agricultural and Environmental Sciences,479,805048303.0
+2022Q4,Computer and Information Sciences,517,1028937599.0
+2022Q4,Engineering and Technology,536,967322753.0
+2022Q4,Humanities,547,1383238090.0
+2022Q4,Medical and Health Sciences,546,966970486.0
+2022Q4,Natural Sciences,1002,2229182623.0
+2022Q4,Social Sciences,567,802040175.0
+2023Q1,Agricultural and Environmental Sciences,263,433253740.0
+2023Q1,Computer and Information Sciences,326,337862420.0
+2023Q1,Engineering and Technology,352,437205409.0
+2023Q1,Humanities,288,346840319.0
+2023Q1,Medical and Health Sciences,307,318277040.0
+2023Q1,Natural Sciences,598,594003270.0
+2023Q1,Social Sciences,310,344577812.0
+2023Q2,Agricultural and Environmental Sciences,638,621416884.0
+2023Q2,Computer and Information Sciences,601,1368049172.0
+2023Q2,Engineering and Technology,697,735599220.0
+2023Q2,Humanities,602,744116401.0
+2023Q2,Medical and Health Sciences,613,545461121.0
+2023Q2,Natural Sciences,1334,1083253277.0
+2023Q2,Social Sciences,591,487162735.0
+2023Q3,Agricultural and Environmental Sciences,340,293466372.0
+2023Q3,Computer and Information Sciences,306,293609625.0
+2023Q3,Engineering and Technology,330,478376405.0
+2023Q3,Humanities,292,260139894.0
+2023Q3,Medical and Health Sciences,333,281089359.0
+2023Q3,Natural Sciences,572,567616805.0
+2023Q3,Social Sciences,327,263844215.0
+2023Q4,Agricultural and Environmental Sciences,461,718546184.0
+2023Q4,Computer and Information Sciences,486,796095245.0
+2023Q4,Engineering and Technology,467,899141658.0
+2023Q4,Humanities,524,735964485.0
+2023Q4,Medical and Health Sciences,555,984465349.0
+2023Q4,Natural Sciences,974,1535593698.0
+2023Q4,Social Sciences,527,859748681.0
+2024Q1,Agricultural and Environmental Sciences,341,376246958.0
+2024Q1,Computer and Information Sciences,325,252799941.0
+2024Q1,Engineering and Technology,300,302178680.0
+2024Q1,Humanities,358,350744749.0
+2024Q1,Medical and Health Sciences,316,285408450.0
+2024Q1,Natural Sciences,610,406881315.0
+2024Q1,Social Sciences,275,180841339.0
+2024Q2,Agricultural and Environmental Sciences,584,437873224.0
+2024Q2,Computer and Information Sciences,567,341093002.0
+2024Q2,Engineering and Technology,551,370740704.0
+2024Q2,Humanities,513,463795886.0
+2024Q2,Medical and Health Sciences,503,422492174.0
+2024Q2,Natural Sciences,1075,764759813.0
+2024Q2,Social Sciences,564,514432788.0
+2024Q3,Agricultural and Environmental Sciences,290,442636423.0
+2024Q3,Computer and Information Sciences,233,304183073.0
+2024Q3,Engineering and Technology,297,524602231.0
+2024Q3,Humanities,212,292485740.0
+2024Q3,Medical and Health Sciences,235,278448857.0
+2024Q3,Natural Sciences,484,589195473.0
+2024Q3,Social Sciences,251,425788602.0
+2024Q4,Agricultural and Environmental Sciences,320,403182649.0
+2024Q4,Computer and Information Sciences,327,347421766.0
+2024Q4,Engineering and Technology,315,534357817.0
+2024Q4,Humanities,368,623630263.0
+2024Q4,Medical and Health Sciences,326,554422630.0
+2024Q4,Natural Sciences,632,924829161.0
+2024Q4,Social Sciences,300,432086738.0
+2025Q1,Agricultural and Environmental Sciences,77,218920324.0
+2025Q1,Computer and Information Sciences,36,68544665.0
+2025Q1,Engineering and Technology,46,147711672.0
+2025Q1,Humanities,17,53407025.0
+2025Q1,Medical and Health Sciences,50,92644008.0
+2025Q1,Natural Sciences,95,357800891.0
+2025Q1,Social Sciences,43,99151816.0
+NaT,Natural Sciences,5,24831900.0
