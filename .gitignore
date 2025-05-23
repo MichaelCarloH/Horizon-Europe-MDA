@@ -56,3 +56,8 @@ coverage.xml
 
 # Azure
 publishProfile.publishsettings
+
+chroma
+backend/chroma
+data/xml_2024
+backend/data/xml_2024

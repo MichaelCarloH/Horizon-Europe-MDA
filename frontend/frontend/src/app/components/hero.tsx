@@ -46,7 +46,7 @@ const Hero = () => {
             className={`transition-opacity ease-in duration-700 ${headerVisible ? "opacity-100" : "opacity-0"}`}
           >
             <h1 className="title-font sm:text-5xl text-3xl text-white mb-4 font-medium">
-              Quickly find the right document you need!
+              Welcome to Horizon Intelligence!
             </h1>
           </div>
           <div
@@ -54,9 +54,8 @@ const Hero = () => {
             className={`transition-opacity ease-in duration-700 delay-300 ${paragraphVisible ? "opacity-100" : "opacity-0"}`}
           >
             <p className="mb-8 leading-relaxed text-white">
-            Horizon Europe fully integrates the power of RAG (Retrieval-Augmented Generation) 
-            for efficient and seamless information retrieval. Our platform helps researchers 
-            and policymakers quickly find and analyze critical Horizon Europe documents using advanced AI technologies. 
+            Our platform helps researchers, policymakers, and the general public to 
+            analyze and gather insights regarding critical projects in the Horizon Europe program using advanced data science and AI technologies. 
 
             </p>
           </div>
@@ -76,10 +75,10 @@ const Hero = () => {
           className={`lg:max-w-lg lg:w-full md:w-1/2 w-5/6 shadow-xl bg-white rounded-3xl p-5 transition-opacity ease-in duration-2000 delay-600 ${imageVisible ? "opacity-100" : "opacity-0"}`}
         >
           <Image
-            src={"/Horizon-Europe.png"}
+            src={"/horizon-intelligence-logo.jpg"}
             alt="hero"
-            width={720}
-            height={600}
+            width={640}
+            height={400}
             className="object-cover object-center rounded"
           />
         </div>

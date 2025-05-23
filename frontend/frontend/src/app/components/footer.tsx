@@ -13,10 +13,10 @@ const Footer = () => {
             height={40}
             className="bg-blue-950  rounded-full"
           />
-          <span className="ml-3 text-xl text-white">EuroRAG</span>
+          <span className="ml-3 text-xl text-white">Horizon Intelligence</span>
         </a>
         <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          © 2025 EuroRAG
+          © 2025 Horizon Intelligence
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
           <a className="text-white" data-testid="facebook-link">
