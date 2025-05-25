@@ -35,12 +35,12 @@ const projects = [
     {
         projectID: 4,
         projectTitle: "Network Analysis",
-        projectTag: "Analytics",
-        projectDescription: "Track and analyze the impact of research projects using various metrics.",
+        projectTag: "Who are the key collaborators in research networks?",
+        projectDescription: "Explore organization networks with interactive visualizations showing centrality measures, community detection, and collaboration patterns.",
         projectImg: "/coming_soon.png",
-        projectLink: "/projects/impact-metrics",
-        isLocked: 1,
-        buttonText: "View Metrics"
+        projectLink: "/projects/network-analysis",
+        isLocked: 0,
+        buttonText: "View Network"
     },
     {
         projectID: 5,
