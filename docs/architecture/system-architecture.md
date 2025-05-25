@@ -1,153 +1,153 @@
 # System Architecture
 
-## Overview
-
-EuroRAG is a Retrieval-Augmented Generation (RAG) system that combines document retrieval with large language models to provide accurate, context-aware responses to user queries. The system is built using a modern microservices architecture with a FastAPI backend and React frontend.
+The Horizon Europe MDA system is built on a modern, scalable architecture that combines
+frontend and backend services with advanced document processing and query capabilities.
 
 ## System Components
 
 ### 1. Frontend Layer
+
 - **React Application**
-  - Next.js framework for server-side rendering
+  - Next.js framework
   - TypeScript for type safety
   - Tailwind CSS for styling
-  - React Query for data fetching
-  - React Router for navigation
+  - React Query for state management
 
 ### 2. Backend Layer
+
 - **FastAPI Application**
-  - RESTful API endpoints
-  - WebSocket support for real-time updates
+  - Python 3.11+
   - Async request handling
   - OpenAPI documentation
-  - JWT authentication
+  - Dependency injection
 
 ### 3. Document Processing Pipeline
+
 - **Document Ingestion**
-  - File upload handling
-  - Document parsing
+  - Multi-format support (PDF, DOCX, TXT)
   - Text extraction
-  - Chunking and preprocessing
-  - Metadata extraction
+  - Metadata processing
+  - Chunking and indexing
 
 - **Vector Store**
-  - ChromaDB for vector storage
-  - Embedding generation
-  - Similarity search
-  - Metadata indexing
-  - Cache management
+  - ChromaDB integration
+  - Document embeddings
+  - Semantic search
+  - Metadata filtering
 
 ### 4. Query Processing Pipeline
-- **Query Understanding**
-  - Query preprocessing
-  - Intent recognition
-  - Context gathering
-  - Query expansion
 
-- **Response Generation**
+- **Query Understanding**
+  - Natural language processing
   - Context retrieval
-  - Prompt construction
-  - LLM integration
-  - Response formatting
+  - Response generation
   - Source attribution
 
-## Data Flow
+- **Knowledge Base**
+  - Document embeddings
+  - Semantic indexing
+  - Context management
+  - Response caching
 
-1. **Document Processing Flow**
-   ```
-   Upload → Parse → Chunk → Embed → Store
-   ```
-
-2. **Query Processing Flow**
-   ```
-   Query → Preprocess → Retrieve → Generate → Respond
-   ```
-
-## System Interactions
+## System Communication
 
 ### Frontend-Backend Communication
+
 - REST API calls for CRUD operations
 - WebSocket for real-time updates
-- JWT for authentication
-- CORS for security
+- JWT authentication
+- Rate limiting
 
 ### Backend-Vector Store Communication
+
 - Direct ChromaDB integration
-- Batch processing for embeddings
-- Caching layer for frequent queries
-- Error handling and retries
+- Batch processing
+- Caching layer
+- Error handling
 
 ### External Services Integration
-- OpenAI API for embeddings and completions
-- File storage service
-- Monitoring and logging services
 
-## Security Architecture
+- OpenAI API for embeddings and generation
+- Cloud storage for documents
+- Monitoring services
+- Logging systems
+
+## Security
 
 ### Authentication
+
 - JWT-based authentication
 - Role-based access control
 - Session management
-- Rate limiting
+- Token refresh
 
 ### Data Protection
+
 - Input validation
 - Output sanitization
-- Data encryption
-- Secure storage
+- Rate limiting
+- CORS configuration
 
 ## Scalability
 
 ### Horizontal Scaling
+
 - Stateless backend services
 - Load balancing
 - Database sharding
 - Cache distribution
 
 ### Performance Optimization
+
 - Response caching
 - Query optimization
-- Batch processing
-- Resource pooling
+- Connection pooling
+- Resource management
 
 ## Monitoring and Logging
 
 ### System Monitoring
+
 - Health checks
 - Performance metrics
 - Resource utilization
-- Error tracking
+- Alert system
 
 ### Logging
-- Application logs
-- Access logs
-- Error logs
-- Audit trails
 
-## Deployment Architecture
+- Application logs
+- Error tracking
+- Audit trails
+- Performance logs
+
+## Deployment
 
 ### Development Environment
+
 - Local development setup
 - Docker containers
-- Development databases
-- Mock services
+- Hot reloading
+- Debug tools
 
 ### Production Environment
+
 - Kubernetes orchestration
 - CI/CD pipeline
-- Automated testing
 - Blue-green deployment
+- Rollback capability
 
-## Future Considerations
+## Future Roadmap
 
 ### Planned Improvements
+
 - Multi-language support
-- Advanced caching strategies
-- Enhanced security features
-- Performance optimizations
+- Advanced analytics
+- Custom model training
+- Enhanced security
 
 ### Scalability Roadmap
+
 - Microservices decomposition
 - Service mesh implementation
-- Advanced monitoring
-- Automated scaling 
+- Global distribution
+- Enhanced monitoring 
