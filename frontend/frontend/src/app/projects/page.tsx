@@ -35,8 +35,8 @@ const projects = [
     {
         projectID: 4,
         projectTitle: "Collaboration Networks Analysis",
-        projectTag: "Who are the most influential organizations in Horizon Europe, and what do their collaboration networks look like?",
-        projectDescription: "Explore organization networks with interactive visualizations showing centrality measures and network graphs of collaborations.",
+        projectTag: "Who are the most influential organizations in Horizon Europe?",
+        projectDescription: "Explore organization influence in their collaborative networks using centrality measures and visualize their networks with graph interface.",
         projectImg: "/network.jpg",
         projectLink: "/projects/network-analysis",
         isLocked: 0,
