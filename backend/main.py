@@ -151,46 +151,6 @@ async def delete_documents(document_delete: DocumentDelete):
         logger.error(f"Error deleting documents: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-# Vector store management endpoints
-@app.get("/vector-store/stats")
-async def get_vector_store_stats():
-    try:
-        stats = query_processor.vector_store.get_collection_stats()
-        return stats
-    except Exception as e:
-        logger.error(f"Error getting vector store stats: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.get("/vector-store/export-metadata")
-async def export_metadata():
-    try:
-        metadata = query_processor.vector_store.export_metadata()
-        return metadata
-    except Exception as e:
-        logger.error(f"Error exporting metadata: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
-
-# Conversation management endpoints
-@app.post("/conversations/{conversation_id}/clear")
-async def clear_conversation(conversation_id: str):
-    """Clear conversation history."""
-    try:
-        query_processor.clear_conversation(conversation_id)
-        return {"message": "Conversation cleared successfully"}
-    except Exception as e:
-        logger.error(f"Error clearing conversation: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
-
-@app.get("/conversations/{conversation_id}/history")
-async def get_conversation_history(conversation_id: str):
-    """Get conversation history."""
-    try:
-        history = query_processor.get_conversation_history(conversation_id)
-        return {"history": history}
-    except Exception as e:
-        logger.error(f"Error getting conversation history: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
-
 if __name__ == "__main__":
     import uvicorn
     # Ensure upload directory exists
