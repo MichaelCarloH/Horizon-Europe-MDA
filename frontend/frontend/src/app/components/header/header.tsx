@@ -20,7 +20,7 @@ const Header = async () => {
             data-testid="logo-image"
           />
           <span className="ml-3 text-xl text-white" data-testid="company-name">
-           EuroRAG 
+           Horizon Intelligence 
           </span>
         </a>
         <nav

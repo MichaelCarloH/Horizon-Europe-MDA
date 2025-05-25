@@ -4,9 +4,9 @@ import ProjectCard from "./projects-components/project_card";
 const projects = [
     {
         projectID: 1,
-        projectTitle: "Organization Map Dashboard",
-        projectTag: "Interactive Map",
-        projectDescription: "Interactive dashboard showing European research organizations by topic, with map visualization and detailed statistics.",
+        projectTitle: "Organizations by Research Area Dashboard",
+        projectTag: "Which organizations are the centers of expertise in the EU?",
+        projectDescription: "Find out via this interactive dashboard showing European research organizations by research topic, with map visualizations and detailed statistics.",
         projectImg: "/Europe_map.png",
         projectLink: "/projects/org-map-dashboard",
         isLocked: 0,
@@ -15,18 +15,18 @@ const projects = [
     {
         projectID: 2,
         projectTitle: "Research Funding Analysis",
-        projectTag: "Data Analysis",
-        projectDescription: "Analyze funding patterns and trends across different research domains in Europe.",
-        projectImg: "/coming_soon.png",
+        projectTag: "How are EU funds distributed across research areas?",
+        projectDescription: "Get insights on funding patterns and trends across different research domains of projects in the Horizon Europe program.",
+        projectImg: "/bargraph.jpg",
         projectLink: "/projects/funding-analysis",
         isLocked: 0,
         buttonText: "View Analysis"
     },
     {
         projectID: 3,
-        projectTitle: "Research Impact Metrics",
-        projectTag: "Project Analytics",
-        projectDescription: "Visualize and analyze research collaboration networks between organizations.",
+        projectTitle: "Research Impact Metrics Dashboard",
+        projectTag: "What's the impact of research projects across the Horizon Europe program?",
+        projectDescription: "We analyzed and visualized the impact of organizations involved and their projects in the Horizon Europe program ",
         projectImg: "/compass.png",
         projectLink: "/projects/research-impact-metrics",
         isLocked: 0,
@@ -34,7 +34,7 @@ const projects = [
     },
     {
         projectID: 4,
-        projectTitle: "Research Impact Metrics",
+        projectTitle: "Network Analysis",
         projectTag: "Analytics",
         projectDescription: "Track and analyze the impact of research projects using various metrics.",
         projectImg: "/coming_soon.png",

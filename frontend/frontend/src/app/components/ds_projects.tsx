@@ -28,7 +28,7 @@ export function useIsVisible(ref: React.RefObject<HTMLDivElement>) {
   return isIntersecting;
 }
 
-const ChatbotInfo = () => {
+const DataScienceProjects = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const paragraphRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -42,12 +42,12 @@ const ChatbotInfo = () => {
   // Markdown content
   const markdownContent = `
 
-  Our chatbot is powered by **Retrieval-Augmented Generation (RAG)**, a cutting-edge AI technology that combines **document retrieval** and **text generation** to provide highly relevant and human-like responses.  
+  Our data science projects provide a **comprehensive overview** of Horizon Europe projects so that you can understand the latest trends and developments in the program using **intuitive and interactive** visualizations and dashboards.
+  
 
-
-  The chatbot first retrieves the most relevant documents from a large database of information about Horizon Europe projects, ensuring that answers are based on **real-time, accurate information**. It proceeds to generate coherent, natural language responses to help users quickly access the information that they need.
-
-  Whether you’re looking for Horizon Europe funding information or need to extract key insights from vast document sets, the chatbot helps you find exactly what you’re looking for—**fast** and **efficiently**.
+  With the use of modern data science techniques, our projects cover topics such as fundings by organizations, trends in research areas, and the impact of Horizon Europe projects on various sectors - allowing you to **stay informed** about the **latest developments** in the billion-euro initiative by the EU.
+  
+  
   `;
 
   return (
@@ -59,7 +59,7 @@ const ChatbotInfo = () => {
             className={`transition-opacity ease-in duration-700 ${headerVisible ? "opacity-100" : "opacity-0"}`}
           >
             <h1 className="title-font sm:text-5xl text-3xl mb-4 font-medium text-gray-900">
-              Chatbot with RAG Technology
+              Data Science Projects
             </h1>
           </div>
           <div
@@ -77,10 +77,10 @@ const ChatbotInfo = () => {
         >
           <Image
             className="object-cover object-center border-2 border-blue-950 shadow-xl"
-            alt="chatbot"
+            alt="projects"
             width={500}  // Adjusted width to resize the image
             height={500} // Adjusted height to match the aspect ratio
-            src={"/chatbot.png"} // Replace with your chatbot image
+            src={"/ds-project-about.jpg"} // Replace with your chatbot image
             style={{ borderRadius: "2rem" }}
           />
         </div>
@@ -90,11 +90,11 @@ const ChatbotInfo = () => {
         className={`flex justify-center mt-8 transition-opacity ease-in duration-700 delay-900 ${buttonVisible ? "opacity-100" : "opacity-0"}`}
       >
         <button className="inline-flex text-white bg-blue-950 border-0 py-3 px-8 focus:outline-none rounded-full text-base shadow-xl">
-          <Link href="./chatbot">Try the Chatbot</Link>
+          <Link href="./projects">Check out our projects</Link>
         </button>
       </div>
     </section>
   );
 };
 
-export default ChatbotInfo;
+export default DataScienceProjects;
