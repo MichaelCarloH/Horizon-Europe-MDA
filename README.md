@@ -1,17 +1,17 @@
-# EuroRAG Project
+# Horizon Intelligence
 
 A Retrieval-Augmented Generation (RAG) system for document-based question answering, built with FastAPI and React.
 
-[![Documentation](https://img.shields.io/badge/Documentation-Wiki-blue)](docs/WIKI.md)
+[![Documentation](https://img.shields.io/badge/Documentation-Wiki-blue)](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ## Quick Links
 
-- [📚 Full Documentation](docs/WIKI.md)
-- [🚀 Getting Started](docs/getting-started/quickstart.md)
-- [🔧 Development Guide](docs/development/setup.md)
-- [📋 API Reference](docs/api/endpoints.md)
-- [🔐 Security Guide](docs/security/overview.md)
+- [📚 Project Overview](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/Project-Overview)
+- [🚀 Getting Started](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/Getting-Started)
+- [🔧 Development Guide](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/Development-Guide)
+- [📋 API Documentation](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/API-Documentation)
+- [🔐 System Architecture](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/System-Architecture)
 
 ## Project Structure
 
@@ -36,8 +36,8 @@ A Retrieval-Augmented Generation (RAG) system for document-based question answer
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/euro-rag.git
-cd euro-rag
+git clone https://github.com/MichaelCarloH/Horizon-Europe-MDA.git
+cd Horizon-Europe-MDA
 ```
 
 2. Set up the backend:
@@ -67,19 +67,18 @@ npm run dev
 
 ## Documentation
 
-Our documentation is organized in the `docs/` directory and includes:
+All documentation is available in our [GitHub Wiki](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki), including:
 
-- [System Architecture](docs/architecture/system-architecture.md)
-- [API Documentation](docs/api/overview.md)
-- [Development Guide](docs/development/setup.md)
-- [Deployment Guide](docs/deployment/guide.md)
-- [Troubleshooting Guide](docs/troubleshooting/common-issues.md)
-
-For the complete documentation, please visit our [Wiki](docs/WIKI.md).
+- Project Overview
+- Getting Started Guide
+- Development Guide
+- API Documentation
+- System Architecture
+- Troubleshooting Guide
 
 ## Contributing
 
-We welcome contributions! Please see our [Contributing Guide](docs/contributing/guide.md) for details.
+We welcome contributions! Please see our [Contributing Guide](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/Contributing) in the Wiki.
 
 ## License
 
@@ -88,7 +87,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 If you encounter any issues or have questions, please:
-1. Check our [Troubleshooting Guide](docs/troubleshooting/common-issues.md)
+1. Check our [Troubleshooting Guide](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/Troubleshooting)
 2. Open an issue on GitHub
 3. Contact the maintainers
 
