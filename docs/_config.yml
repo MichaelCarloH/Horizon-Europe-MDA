@@ -1,0 +1,9 @@
+theme: jekyll-theme-minimal
+title: EuroRAG Documentation
+description: Documentation for the EuroRAG project
+show_downloads: true
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+  hard_wrap: false 

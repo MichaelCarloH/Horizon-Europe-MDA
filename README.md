@@ -2,6 +2,17 @@
 
 A Retrieval-Augmented Generation (RAG) system for document-based question answering, built with FastAPI and React.
 
+[![Documentation](https://img.shields.io/badge/Documentation-Wiki-blue)](docs/WIKI.md)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
+## Quick Links
+
+- [📚 Full Documentation](docs/WIKI.md)
+- [🚀 Getting Started](docs/getting-started/quickstart.md)
+- [🔧 Development Guide](docs/development/setup.md)
+- [📋 API Reference](docs/api/endpoints.md)
+- [🔐 Security Guide](docs/security/overview.md)
+
 ## Project Structure
 
 ```
@@ -21,65 +32,72 @@ A Retrieval-Augmented Generation (RAG) system for document-based question answer
     └── package.json      # Dependencies
 ```
 
-## Prerequisites
+## Quick Start
 
-- Python 3.11+
-- Node.js 18+
-- npm or yarn
-- OpenAI API key
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/euro-rag.git
+cd euro-rag
+```
 
-## Setup
-
-### Backend Setup
-
-1. Create and activate a virtual environment with Python 3.11:
+2. Set up the backend:
 ```bash
 cd backend
 python3.11 -m venv .venv-py311
-# On Windows:
-.venv-py311\Scripts\activate
-# On Unix/MacOS:
-source .venv-py311/bin/activate
-```
-
-2. Install dependencies:
-```bash
+source .venv-py311/bin/activate  # or `.venv-py311\Scripts\activate` on Windows
 pip install -r requirements.txt
 ```
 
-3. Create a `.env` file in the backend directory:
-```env
-OPENAI_API_KEY=your_api_key_here
-CHROMA_PATH=./data/chroma
-COLLECTION_NAME=documents
-UPLOAD_DIR=./data/uploads
-```
-
-4. Start the backend server:
-```bash
-# Development mode with auto-reload:
-python main.py
-
-# Or using uvicorn directly:
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
-
-The API will be available at `http://localhost:8000`
-
-### Frontend Setup
-
-1. Install dependencies:
+3. Set up the frontend:
 ```bash
 cd frontend
 npm install
 ```
 
-2. Start the development server:
+4. Start the development servers:
 ```bash
+# Terminal 1 (Backend)
+cd backend
+python main.py
+
+# Terminal 2 (Frontend)
+cd frontend
 npm run dev
 ```
 
-The frontend will be available at `http://localhost:5173`
+## Documentation
+
+Our documentation is organized in the `docs/` directory and includes:
+
+- [System Architecture](docs/architecture/system-architecture.md)
+- [API Documentation](docs/api/overview.md)
+- [Development Guide](docs/development/setup.md)
+- [Deployment Guide](docs/deployment/guide.md)
+- [Troubleshooting Guide](docs/troubleshooting/common-issues.md)
+
+For the complete documentation, please visit our [Wiki](docs/WIKI.md).
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guide](docs/contributing/guide.md) for details.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you encounter any issues or have questions, please:
+1. Check our [Troubleshooting Guide](docs/troubleshooting/common-issues.md)
+2. Open an issue on GitHub
+3. Contact the maintainers
+
+## Acknowledgments
+
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [React](https://reactjs.org/)
+- [ChromaDB](https://www.trychroma.com/)
+- [OpenAI](https://openai.com/)
 
 ## API Endpoints
 
@@ -172,16 +190,4 @@ The project uses:
    - Check the upload directory permissions
    - Verify the OpenAI API key is valid
    - Check the logs for detailed error messages
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
