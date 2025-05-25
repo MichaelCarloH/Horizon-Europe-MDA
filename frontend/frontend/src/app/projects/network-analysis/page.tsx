@@ -1,6 +1,7 @@
 'use client'
 
 import CentralityAnalysis from "./centrality-analysis";
+import OrgNetworkVisualization from "./org-network-visualization";
 
 export default function NetworkAnalysisPage() {
   return (
@@ -14,6 +15,14 @@ export default function NetworkAnalysisPage() {
           Centrality metrics help identify the most influential and well-connected organizations in the research collaboration network.
         </p>
         <CentralityAnalysis />
+      </section>
+      
+      <section className="mb-10">
+        <h2 className="text-2xl font-semibold mb-4">Organization Collaboration Network</h2>
+        <p className="mb-6 text-gray-700">
+          This visualization shows the collaborative relationships between organizations. By default, the top 25 collaborative relationships are displayed. Use the filter to focus on specific organizations.
+        </p>
+        <OrgNetworkVisualization />
       </section>
     </main>
   );
