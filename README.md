@@ -7,7 +7,7 @@ A Retrieval-Augmented Generation (RAG) system for document-based question answer
 
 ## Quick Links
 
-- [📚 Project Overview](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/Project-Overview)
+- [📚 Project Overview](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/Home)
 - [🚀 Getting Started](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/Getting-Started)
 - [🔧 Development Guide](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/Development-Guide)
 - [📋 API Documentation](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki/API-Documentation)
