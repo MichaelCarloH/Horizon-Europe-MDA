@@ -1,12 +1,12 @@
 'use client'
 
-import CentralityAnalysis from "./centrality-analysis";
-import OrgNetworkVisualization from "./org-network-visualization";
+import CentralityAnalysis from "./centrality-analysis.tsx";
+import OrgNetworkVisualization from "./org-network-visualization.tsx";
 
 export default function NetworkAnalysisPage() {
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">Network Analysis Dashboard</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Network Analysis Dashboard (2024 Projects)</h1>
       
       <section className="mb-10">
         <h2 className="text-2xl font-semibold mb-4">Centrality Analysis</h2>

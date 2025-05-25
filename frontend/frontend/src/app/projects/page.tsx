@@ -34,13 +34,13 @@ const projects = [
     },
     {
         projectID: 4,
-        projectTitle: "Network Analysis",
-        projectTag: "Who are the key collaborators in research networks?",
-        projectDescription: "Explore organization networks with interactive visualizations showing centrality measures, community detection, and collaboration patterns.",
-        projectImg: "/coming_soon.png",
+        projectTitle: "Collaboration Networks Analysis",
+        projectTag: "Who are the most influential organizations in Horizon Europe, and what do their collaboration networks look like?",
+        projectDescription: "Explore organization networks with interactive visualizations showing centrality measures and network graphs of collaborations.",
+        projectImg: "/network.jpg",
         projectLink: "/projects/network-analysis",
         isLocked: 0,
-        buttonText: "View Network"
+        buttonText: "View Network Analysis"
     },
     {
         projectID: 5,
