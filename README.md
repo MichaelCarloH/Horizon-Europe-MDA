@@ -113,39 +113,6 @@ POST /query
     "conversation_id": "optional_conversation_id"
 }
 ```
-
-### Document Management
-```bash
-# Upload document
-POST /documents/upload
-Content-Type: multipart/form-data
-file: <file>
-
-# Delete documents
-DELETE /documents
-{
-    "document_ids": ["id1", "id2"]
-}
-```
-
-### Vector Store Management
-```bash
-# Get vector store statistics
-GET /vector-store/stats
-
-# Export metadata
-GET /vector-store/export-metadata
-```
-
-### Conversation Management
-```bash
-# Clear conversation
-POST /conversations/{conversation_id}/clear
-
-# Get conversation history
-GET /conversations/{conversation_id}/history
-```
-
 ## Making Queries
 
 1. Through the API:
@@ -165,7 +132,7 @@ curl -X POST http://localhost:8000/query \
 ### Running Tests
 ```bash
 cd backend
-python -m pytest tests/
+python tests/
 ```
 
 ### Code Style
