@@ -1,7 +1,7 @@
 'use client'
 
 import CentralityAnalysis from "./centrality-analysis.tsx";
-import OrgNetworkVisualization from "./org-network-visualization.tsx";
+import OrgNetworkVisualizationWrapper from "./org-network-visualization-wrapper";
 
 export default function NetworkAnalysisPage() {
   return (
@@ -22,7 +22,7 @@ export default function NetworkAnalysisPage() {
         <p className="mb-6 text-gray-700">
           This visualization shows the collaborative relationships between organizations. By default, the top 25 collaborative relationships are displayed. Use the filter to focus on specific organizations.
         </p>
-        <OrgNetworkVisualization />
+        <OrgNetworkVisualizationWrapper />
       </section>
     </main>
   );

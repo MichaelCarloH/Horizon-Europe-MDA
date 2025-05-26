@@ -341,38 +341,25 @@ export default function OrgNetworkVisualization() {
             linkColor={() => 'rgba(187, 187, 187, 0.6)'}
             nodeCanvasObject={getNodeCanvasObject}
             cooldownTicks={100}
-            d3AlphaDecay={0.01} // Slower decay for better positioning
-            d3VelocityDecay={0.7} // Higher value (0.7) to make nodes much more stable when dragged
-            enableNodeDrag={true} // Explicitly enable node dragging
-            enableZoomInteraction={true} // Enable zoom and pan (correct prop)
-            // centerAt removed to prevent collapsing to center
-            minZoom={0.4} // Allow zooming out more to see the entire graph
-            maxZoom={5} // Allow zooming in for more detail
-            warmupTicks={50} // More initial ticks to better position nodes
-            onNodeDrag={(node) => {
-              // Freeze node during drag to prevent simulation from moving it
+            d3AlphaDecay={0.01}
+            d3VelocityDecay={0.7}
+            enableNodeDrag={true}
+            enableZoomInteraction={true}
+            minZoom={0.4}
+            maxZoom={5}
+            warmupTicks={50}
+            onNodeDrag={node => {
+              // Allow free movement, do not clamp or fix node
               node.fx = node.x;
               node.fy = node.y;
-              
-              // Also keep node within container bounds during drag
-              const containerWidth = document.querySelector(".w-full.h-\\[600px\\]")?.clientWidth || 800;
-              const containerHeight = document.querySelector(".w-full.h-\\[600px\\]")?.clientHeight || 600;
-              const padding = 50;
-              
-              if (node.x < padding) node.fx = padding;
-              if (node.x > containerWidth - padding) node.fx = containerWidth - padding;
-              if (node.y < padding) node.fy = padding;
-              if (node.y > containerHeight - padding) node.fy = containerHeight - padding;
             }}
             onNodeDragEnd={node => {
-              // Fix node position when drag ends so it doesn't move anymore
-              node.fx = node.x;
-              node.fy = node.y;
+              // Release node so simulation can move it again
+              node.fx = null;
+              node.fy = null;
             }}
-            // Use width & height to constrain the simulation
             width={document.querySelector(".w-full.h-\\[600px\\]")?.clientWidth}
             height={document.querySelector(".w-full.h-\\[600px\\]")?.clientHeight}
-            // Removed onEngineStop to prevent node tampering after simulation
           />
         </div>
       )}
