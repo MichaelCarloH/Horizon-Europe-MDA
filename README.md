@@ -3,7 +3,6 @@
 A Retrieval-Augmented Generation (RAG) system for document-based question answering, built with FastAPI and React.
 
 [![Documentation](https://img.shields.io/badge/Documentation-Wiki-blue)](https://github.com/MichaelCarloH/Horizon-Europe-MDA/wiki)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ## Quick Links
 
