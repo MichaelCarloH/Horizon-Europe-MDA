@@ -34,13 +34,13 @@ const projects = [
     },
     {
         projectID: 4,
-        projectTitle: "Network Analysis",
-        projectTag: "Analytics",
-        projectDescription: "Track and analyze the impact of research projects using various metrics.",
-        projectImg: "/coming_soon.png",
-        projectLink: "/projects/impact-metrics",
-        isLocked: 1,
-        buttonText: "View Metrics"
+        projectTitle: "Collaboration Networks Analysis",
+        projectTag: "Who are the most influential organizations in Horizon Europe?",
+        projectDescription: "Explore organization influence in their collaborative networks using centrality measures and visualize their networks with graph interface.",
+        projectImg: "/network.jpg",
+        projectLink: "/projects/network-analysis",
+        isLocked: 0,
+        buttonText: "View Network Analysis"
     },
     {
         projectID: 5,
