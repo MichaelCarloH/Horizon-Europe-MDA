@@ -156,3 +156,6 @@ The project uses:
    - Verify the OpenAI API key is valid
    - Check the logs for detailed error messages
 
+## Aknowledgments 
+
+The template of the website was taken as template for the creators of learning rate. 
